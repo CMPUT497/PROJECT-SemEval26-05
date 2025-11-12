@@ -15,7 +15,7 @@ def check_formatting(filepath: str, gold_data: dict) -> bool:
         lines = f.readlines()
     questionable_lines = []
     error_lines = []
-    expected_ids = [v["id"] for v in gold_data]
+    expected_ids = [id for id, label in gold_data.items()]
     line_ids = []
     missing_lines = []
 
@@ -66,4 +66,11 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Please give the file to check formatting of as an argument")
 
-    check_formatting(sys.argv[1])
+    with open("input/ref/solution.jsonl", 'r', encoding='utf-8') as f:
+        data_dict = {}
+        for line in f:
+            import json
+            item = json.loads(line)
+            data_dict[item["id"]] = item["label"]
+            
+    check_formatting(sys.argv[1], data_dict)
