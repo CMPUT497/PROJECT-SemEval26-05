@@ -443,7 +443,7 @@ def run(train_file):
     results = process_dataset(wsd_system, data)
     
     predictions = [result['predicted_relevance_score'] for i, result in enumerate(results, 1)]
-    with open(f"predictions/wsd_predictions.JSONL", "a", encoding='utf8') as outfile:
+    with open(f"predictions/wsd_baseline_predictions.JSONL", "a", encoding='utf8') as outfile:
         idx = 0
         for id in file_dict.keys():
             entry = {"id": id, "prediction": int(predictions[idx])}
