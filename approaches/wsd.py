@@ -45,32 +45,177 @@ class WSDOutput:
     relevance_score: float  # 1-5
     details: Dict
 
-class RelevanceMLP(nn.Module):
-    """A simple regression head that learns the optimal weights for the relevance subfeatures and penalty/scale."""
-    def __init__(self):
-        super().__init__()
-        # Input: [relevance, coherence, confidence, wn_sim, penalty]
-        # Output: single regression value (unscaled relevance 0-1)
-        self.linear = nn.Linear(5, 1)
-        # Learn a scale (to multiply with output for 1-5 range)
-        self.scale = nn.Parameter(torch.tensor(3.75))
 
+class ImprovedRelevanceMLP(nn.Module):
+    """
+    Enhanced MLP for learning plausibility scores with better expressiveness
+    and direct output in [1, 5] range without post-hoc scaling.
+    Now uses 7 features including ending-specific metrics.
+    """
+    def __init__(self, input_dim=7, hidden_dims=[64, 32, 16]):
+        super().__init__()
+        
+        # Input normalization layer (learnable)
+        self.input_norm = nn.BatchNorm1d(input_dim, affine=True)
+        
+        # Build deeper network with residual connections
+        layers = []
+        prev_dim = input_dim
+        
+        for i, h in enumerate(hidden_dims):
+            layers.append(nn.Linear(prev_dim, h))
+            layers.append(nn.LayerNorm(h))  # More stable than BatchNorm for small batches
+            layers.append(nn.ReLU())
+            layers.append(nn.Dropout(0.3))
+            prev_dim = h
+        
+        self.hidden_layers = nn.Sequential(*layers)
+        
+        # Output layer: 5 neurons for ordinal regression (scores 1-5)
+        self.output_layer = nn.Linear(prev_dim, 5)
+        
+        # Initialize weights for better gradient flow
+        self._initialize_weights()
+    
+    def _initialize_weights(self):
+        """Xavier/Kaiming initialization for better training"""
+        for m in self.modules():
+            if isinstance(m, nn.Linear):
+                nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
+                if m.bias is not None:
+                    nn.init.constant_(m.bias, 0)
+    
     def forward(self, features):
         """
         Args:
-            features: [batch, 5]
+            features: [batch, 7]
         Returns:
-            [batch, 1] (unscaled, to be scaled for 1-5 prediction)
+            [batch] scores in range [1, 5]
         """
-        out = self.linear(features)
-        scaled = torch.sigmoid(out) * self.scale
-        # Clamp to [1, 5] for safety
-        final = torch.clamp(scaled, 1.0, 5.0)
-        return final.squeeze(-1)  # [batch]
+        # Normalize inputs
+        x = self.input_norm(features)
+        
+        # Pass through hidden layers
+        x = self.hidden_layers(x)
+        
+        # Output layer gives logits for 5 classes
+        logits = self.output_layer(x)  # [batch, 5]
+        
+        # Use softmax to get probabilities, then compute expected value
+        probs = torch.softmax(logits, dim=-1)  # [batch, 5]
+        
+        # Expected value: sum of (class * probability)
+        # Classes are 1, 2, 3, 4, 5
+        class_values = torch.arange(1, 6, dtype=torch.float32, device=features.device)
+        scores = torch.sum(probs * class_values, dim=-1)  # [batch]
+        
+        return scores
 
-class DeBERTaWSDSystem:
-    def __init__(self, model_name: str = "microsoft/deberta-v3-large", mlp_path: str = None, train_relevance_head: bool = False):
-        print(f"Loading model: {model_name}")
+
+class OrdinalRelevanceMLP(nn.Module):
+    """
+    Alternative: Use ordinal regression with cumulative link model
+    Often better for ordered scores like 1-5 ratings.
+    Now uses 7 features including ending-specific metrics.
+    """
+    def __init__(self, input_dim=7, hidden_dims=[64, 32]):
+        super().__init__()
+        
+        self.input_norm = nn.BatchNorm1d(input_dim, affine=True)
+        
+        layers = []
+        prev_dim = input_dim
+        for h in hidden_dims:
+            layers.append(nn.Linear(prev_dim, h))
+            layers.append(nn.LayerNorm(h))
+            layers.append(nn.ReLU())
+            layers.append(nn.Dropout(0.3))
+            prev_dim = h
+        
+        self.hidden_layers = nn.Sequential(*layers)
+        
+        # For ordinal regression: learn thresholds
+        # We need 4 thresholds to separate 5 classes
+        self.output_layer = nn.Linear(prev_dim, 1)
+        self.thresholds = nn.Parameter(torch.tensor([0.5, 1.5, 2.5, 3.5]))
+        
+        self._initialize_weights()
+    
+    def _initialize_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Linear):
+                nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
+                if m.bias is not None:
+                    nn.init.constant_(m.bias, 0)
+    
+    def forward(self, features):
+        """
+        Args:
+            features: [batch, 7]
+        Returns:
+            [batch] scores in range [1, 5]
+        """
+        x = self.input_norm(features)
+        x = self.hidden_layers(x)
+        logit = self.output_layer(x).squeeze(-1)  # [batch]
+        
+        # Compute probabilities for each class using cumulative model
+        # P(Y > k) = sigmoid(logit - threshold_k)
+        batch_size = logit.size(0)
+        thresholds = self.thresholds.unsqueeze(0).expand(batch_size, -1)  # [batch, 4]
+        logit_expanded = logit.unsqueeze(1).expand(-1, 4)  # [batch, 4]
+        
+        # Cumulative probabilities
+        cum_probs = torch.sigmoid(logit_expanded - thresholds)  # [batch, 4]
+        
+        # Convert to class probabilities
+        # P(Y=1) = 1 - P(Y>1)
+        # P(Y=k) = P(Y>k-1) - P(Y>k) for k=2,3,4
+        # P(Y=5) = P(Y>4)
+        zeros = torch.zeros(batch_size, 1, device=features.device)
+        ones = torch.ones(batch_size, 1, device=features.device)
+        
+        cum_probs_padded = torch.cat([ones, cum_probs, zeros], dim=1)  # [batch, 6]
+        class_probs = cum_probs_padded[:, :-1] - cum_probs_padded[:, 1:]  # [batch, 5]
+        
+        # Expected value
+        class_values = torch.arange(1, 6, dtype=torch.float32, device=features.device)
+        scores = torch.sum(class_probs * class_values, dim=-1)
+        
+        return scores
+
+
+class FocalMSELoss(nn.Module):
+    """
+    Focal loss variant for MSE to focus on hard examples
+    """
+    def __init__(self, gamma=2.0):
+        super().__init__()
+        self.gamma = gamma
+    
+    def forward(self, predictions, targets):
+        mse = (predictions - targets) ** 2
+        # Weight larger errors more heavily
+        weights = (1 + mse) ** self.gamma
+        return (weights * mse).mean()
+
+
+class SenseBERTWSDSystem:
+    def __init__(self, model_name: str = "bert-large-uncased-whole-word-masking", 
+                 mlp_path: str = None, 
+                 train_relevance_head: bool = False, 
+                 model_type: str = "softmax"):
+        """
+        Initialize SenseBERT-based WSD System
+        Note: SenseBERT is based on BERT-large-wwm and uses supersenses.
+        For simplicity, we'll use the base BERT-large-wwm model.
+        To use actual SenseBERT, download weights from:
+        https://github.com/AI21Labs/sense-bert
+        """
+        print(f"Loading SenseBERT model: {model_name}")
+        print("Note: For full SenseBERT functionality, use 'sensebert-large-uncased'")
+        print("      if you have the SenseBERT weights installed")
+        
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name)
         self.model.eval()
@@ -79,7 +224,14 @@ class DeBERTaWSDSystem:
         print(f"Model loaded on: {self.device}")
 
         self.train_relevance_head = train_relevance_head
-        self.relevance_head = RelevanceMLP()
+        self.model_type = model_type
+        
+        # Create improved relevance head with 7 features now
+        if model_type == "ordinal":
+            self.relevance_head = OrdinalRelevanceMLP(input_dim=7, hidden_dims=[64, 32])
+        else:
+            self.relevance_head = ImprovedRelevanceMLP(input_dim=7, hidden_dims=[64, 32, 16])
+        
         if mlp_path is not None and os.path.exists(mlp_path):
             print(f"Loading trained relevance head from {mlp_path}")
             self.relevance_head.load_state_dict(torch.load(mlp_path, map_location=self.device))
@@ -251,9 +403,8 @@ class DeBERTaWSDSystem:
     def compute_sense_match(self, wsd_input: WSDInput, 
                            threshold: float = 0.8) -> Tuple[bool, Dict]:
         full_context = ' '.join(wsd_input.precontext) + ' ' + wsd_input.sentence + ' ' + wsd_input.ending
-        penalty_weight = 1.0
-        if wsd_input.ending == "":
-            penalty_weight = 0.8
+        
+        # No penalty - we now use ending information properly
         context_emb = self.get_contextual_embedding(full_context, wsd_input.homonym)
         example_emb = self.get_contextual_embedding(
             wsd_input.example_sentence, 
@@ -262,8 +413,7 @@ class DeBERTaWSDSystem:
         gloss_emb = self.get_gloss_embedding(wsd_input.homonym, wsd_input.judged_meaning)
         context_example_sim = self.compute_similarity(context_emb, example_emb)
         context_gloss_sim = self.compute_similarity(context_emb, gloss_emb)
-        combined_sim = penalty_weight * (0.3 * context_example_sim + 
-                       0.7 * context_gloss_sim )
+        combined_sim = 0.3 * context_example_sim + 0.7 * context_gloss_sim
         sense_match = combined_sim >= threshold
         
         details = {
@@ -276,7 +426,11 @@ class DeBERTaWSDSystem:
         return sense_match, details
 
     def extract_relevance_features(self, wsd_input: WSDInput) -> np.ndarray:
-        # This is the "feature" vector for regression
+        """
+        Extract features for relevance scoring with explicit ending integration
+        Now returns 7 features instead of 5:
+        [relevance, coherence, confidence, wn_sim, ending_coherence, ending_gloss_sim, has_ending]
+        """
         full_context = ' '.join(wsd_input.precontext) + ' ' + wsd_input.sentence + ' ' + wsd_input.ending
         context_emb = self.get_contextual_embedding(full_context, wsd_input.homonym)
         example_emb = self.get_contextual_embedding(
@@ -284,27 +438,50 @@ class DeBERTaWSDSystem:
             wsd_input.homonym
         )
         gloss_emb = self.get_gloss_embedding(wsd_input.homonym, wsd_input.judged_meaning)
-        penalty_weight = 1.0 if wsd_input.ending != "" else 0.95
+        
+        # Core features
         relevance = self.compute_similarity(context_emb, gloss_emb)
         coherence = self.compute_similarity(context_emb, example_emb)
         example_gloss_sim = self.compute_similarity(example_emb, gloss_emb)
         wn_sim = self.get_wordnet_similarity(wsd_input.homonym, wsd_input.judged_meaning)
+        
+        # NEW: Ending-specific features
+        has_ending = 1.0 if wsd_input.ending.strip() else 0.0
+        
+        if has_ending:
+            # Get embedding for ending sentence specifically
+            ending_emb = self.get_contextual_embedding(wsd_input.ending, wsd_input.homonym)
+            
+            # How well does ending cohere with the main context?
+            context_without_ending = ' '.join(wsd_input.precontext) + ' ' + wsd_input.sentence
+            context_no_ending_emb = self.get_contextual_embedding(context_without_ending, wsd_input.homonym)
+            ending_coherence = self.compute_similarity(ending_emb, context_no_ending_emb)
+            
+            # How well does ending match the intended sense?
+            ending_gloss_sim = self.compute_similarity(ending_emb, gloss_emb)
+        else:
+            ending_coherence = 0.0
+            ending_gloss_sim = 0.0
+        
         similarities = [relevance, coherence, example_gloss_sim, wn_sim]
         variance = np.var(similarities)
         confidence_score = max(0, 1 - variance)
-        # NOTE: Order: [relevance, coherence, confidence, wn_sim, penalty_weight]
+        
+        # Feature vector: [relevance, coherence, confidence, wn_sim, ending_coherence, ending_gloss_sim, has_ending]
         feats = np.array([
             float(relevance),
             float(coherence),
             float(confidence_score),
             float(wn_sim),
-            float(penalty_weight)
+            float(ending_coherence),
+            float(ending_gloss_sim),
+            float(has_ending)
         ], dtype=np.float32)
-        return feats  # shape (5,)
+        return feats  # shape (7,)
 
     def compute_relevance_score(self, wsd_input: WSDInput) -> Tuple[float, Dict]:
-        # Extract features
-        feats = self.extract_relevance_features(wsd_input)  # [5]
+        # Extract features (now 7 features)
+        feats = self.extract_relevance_features(wsd_input)  # [7]
         feats_tensor = torch.tensor(feats, dtype=torch.float32, device=self.device).unsqueeze(0)
         with torch.no_grad():
             self.relevance_head.eval()
@@ -313,7 +490,9 @@ class DeBERTaWSDSystem:
         # For debugging, also include raw features
         details = {
             'input_features': feats.tolist(),
-            'model_output': float(relevance_score)
+            'model_output': float(relevance_score),
+            'feature_names': ['relevance', 'coherence', 'confidence', 'wn_sim', 
+                            'ending_coherence', 'ending_gloss_sim', 'has_ending']
         }
         return relevance_score, details
 
@@ -337,7 +516,8 @@ class DeBERTaWSDSystem:
             details=all_details
         )
 
-def process_dataset(wsd_system: DeBERTaWSDSystem, data: Dict) -> List[Dict]:
+
+def process_dataset(wsd_system: SenseBERTWSDSystem, data: Dict) -> List[Dict]:
     results = []
     num_examples = len(data['homonym_word'])
     for i in range(num_examples):
@@ -365,8 +545,9 @@ def process_dataset(wsd_system: DeBERTaWSDSystem, data: Dict) -> List[Dict]:
         results.append(result_dict)
     return results
 
-def collect_training_examples(wsd_system: DeBERTaWSDSystem, data: Dict):
-    """Extracts feature matrix X and target y from dataset using provided DeBERTa model."""
+
+def collect_training_examples(wsd_system: SenseBERTWSDSystem, data: Dict):
+    """Extracts feature matrix X and target y from dataset using provided SenseBERT model."""
     X_feats = []
     y = []
     num_examples = len(data['homonym_word'])
@@ -389,32 +570,110 @@ def collect_training_examples(wsd_system: DeBERTaWSDSystem, data: Dict):
     y = np.array(y, dtype=np.float32)
     return X_feats, y
 
-def train_relevance_head(wsd_system: DeBERTaWSDSystem, train_data: Dict, save_path: str = "relevance_head.pt", epochs: int = 60, lr: float = 1e-2):
+
+def train_relevance_head_improved(
+    wsd_system,
+    train_data: Dict,
+    save_path: str = "relevance_head_improved.pt",
+    epochs: int = 100,
+    lr: float = 5e-3
+):
+    """
+    Improved training procedure with better optimization and regularization
+    """
+    # Extract features
     X_feats, y_targets = collect_training_examples(wsd_system, train_data)
     device = wsd_system.device
+    
+    # Use the model already created in wsd_system
     mlp = wsd_system.relevance_head
+    mlp.to(device)
     mlp.train()
+    
+    # Prepare data
     X_tensor = torch.tensor(X_feats, dtype=torch.float32, device=device)
     y_tensor = torch.tensor(y_targets, dtype=torch.float32, device=device)
-    optimizer = optim.Adam(mlp.parameters(), lr=lr)
-    loss_fn = nn.MSELoss()
-    N = len(X_feats)
+    
+    # Optimizer with weight decay for regularization
+    optimizer = optim.AdamW(mlp.parameters(), lr=lr, weight_decay=1e-4)
+    
+    # Learning rate scheduler
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer, mode='min', factor=0.5, patience=10, verbose=True
+    )
+    
+    # Loss function: Use Huber for robustness
+    loss_fn = nn.HuberLoss(delta=1.0)
+    
     best_loss = float("inf")
+    patience_counter = 0
+    early_stop_patience = 20
+    
     for epoch in range(epochs):
         mlp.train()
         optimizer.zero_grad()
+        
         preds = mlp(X_tensor)
         loss = loss_fn(preds, y_tensor)
-        loss.backward()
+        
+        # Add variance penalty to encourage spread in predictions
+        pred_var = preds.var()
+        target_var = y_tensor.var()
+        variance_loss = (pred_var - target_var).abs()
+        
+        # Combined loss
+        total_loss = loss + 0.1 * variance_loss
+        
+        total_loss.backward()
+        
+        # Gradient clipping for stability
+        torch.nn.utils.clip_grad_norm_(mlp.parameters(), max_norm=1.0)
+        
         optimizer.step()
+        
         with torch.no_grad():
-            l = loss.item()
+            l = total_loss.item()
+            pred_std = preds.std().item()
+            target_std = y_tensor.std().item()
+        
+        # Update learning rate
+        scheduler.step(l)
+        
         if (epoch + 1) % 10 == 0 or epoch == 0:
-            print(f"Epoch {epoch+1}/{epochs} - Loss: {l:.4f}")
+            print(f"Epoch {epoch+1}/{epochs} - Loss: {l:.4f} - "
+                  f"Pred std: {pred_std:.3f} - Target std: {target_std:.3f}")
+            
+            # Show distribution of predictions
+            with torch.no_grad():
+                pred_min = preds.min().item()
+                pred_max = preds.max().item()
+                pred_mean = preds.mean().item()
+                print(f"  Predictions: min={pred_min:.2f}, max={pred_max:.2f}, mean={pred_mean:.2f}")
+        
+        # Early stopping
         if l < best_loss:
             best_loss = l
+            patience_counter = 0
             torch.save(mlp.state_dict(), save_path)
+        else:
+            patience_counter += 1
+            if patience_counter >= early_stop_patience:
+                print(f"Early stopping at epoch {epoch+1}")
+                break
+    
     print(f"Best loss: {best_loss:.4f}. Model saved to {save_path}")
+    
+    # Load best model and return final predictions
+    mlp.load_state_dict(torch.load(save_path))
+    mlp.eval()
+    with torch.no_grad():
+        final_preds = mlp(X_tensor)
+        print("\n=== Final Training Set Predictions ===")
+        print(f"Predictions - Min: {final_preds.min():.2f}, Max: {final_preds.max():.2f}, "
+              f"Mean: {final_preds.mean():.2f}, Std: {final_preds.std():.2f}")
+        print(f"Targets - Min: {y_tensor.min():.2f}, Max: {y_tensor.max():.2f}, "
+              f"Mean: {y_tensor.mean():.2f}, Std: {y_tensor.std():.2f}")
+
 
 def load_json_data(json_file: str):
     with open(json_file, 'r', encoding='utf8') as f:
@@ -440,46 +699,108 @@ def load_json_data(json_file: str):
 
     return data, file_dict
 
-def run(train_file, mlp_weights_path=None):
+
+def run(train_file, mlp_weights_path=None, model_type="softmax"):
     data, _ = load_json_data(train_file)
-    wsd_system = DeBERTaWSDSystem(mlp_path=mlp_weights_path)
+    wsd_system = SenseBERTWSDSystem(mlp_path=mlp_weights_path, model_type=model_type)
     results = process_dataset(wsd_system, data)
     return results
 
-def train_main():
+
+def train_main(model_type="softmax"):
+    """
+    Train the relevance head using improved architecture with SenseBERT
+    Args:
+        model_type: "softmax" or "ordinal" - determines which MLP architecture to use
+    """
     train_file = 'data/train.json'
     # 1. Load training data
     train_data, _ = load_json_data(train_file)
-    # 2. Build DeBERTa model system with untrained RelevanceMLP
-    wsd_system = DeBERTaWSDSystem()
-    # 3. Train relevance head
-    train_relevance_head(wsd_system, train_data, save_path="relevance_head.pt", epochs=60, lr=1e-2)
+    # 2. Build SenseBERT model system with untrained RelevanceMLP
+    wsd_system = SenseBERTWSDSystem(model_type=model_type)
+    # 3. Train relevance head with improved training procedure
+    save_path = f"relevance_head_sensebert_{model_type}.pt"
+    train_relevance_head_improved(
+        wsd_system, 
+        train_data, 
+        save_path=save_path, 
+        epochs=100, 
+        lr=5e-3
+    )
+    print(f"\nTraining complete! Model saved to {save_path}")
 
-def inference_main():
+
+def inference_main(model_type="softmax"):
+    """
+    Run inference using trained model with SenseBERT
+    Args:
+        model_type: "softmax" or "ordinal" - must match the training model type
+    """
     dev_file = 'data/dev.json'
     dev_data, file_dict = load_json_data(dev_file)
     # Load trained mlp weights for inference
-    mlp_weights_path = "relevance_head.pt"
-    wsd_system = DeBERTaWSDSystem(mlp_path=mlp_weights_path)
+    mlp_weights_path = f"relevance_head_sensebert_{model_type}.pt"
+    
+    if not os.path.exists(mlp_weights_path):
+        print(f"Error: Model file '{mlp_weights_path}' not found!")
+        print(f"Please run training first with --mode train --model_type {model_type}")
+        return
+    
+    wsd_system = SenseBERTWSDSystem(mlp_path=mlp_weights_path, model_type=model_type)
     # Run inference
     results = process_dataset(wsd_system, dev_data)
     predictions = [result['predicted_relevance_score'] for result in results]
-    with open(f"predictions/wsd_predictions.JSONL", "w", encoding='utf8') as outfile:
+    
+    # Create predictions directory if it doesn't exist
+    os.makedirs("predictions", exist_ok=True)
+    
+    output_file = f"predictions/wsd_predictions_sensebert_{model_type}.JSONL"
+    with open(output_file, "w", encoding='utf8') as outfile:
         idx = 0
         for id in file_dict.keys():
             entry = {"id": id, "prediction": int(predictions[idx])}
             idx += 1
             outfile.write(json.dumps(entry) + "\n")
+    
+    print(f"\nInference complete! Predictions saved to {output_file}")
+    print(f"\nPrediction Statistics:")
+    print(f"  Min: {min(predictions):.2f}")
+    print(f"  Max: {max(predictions):.2f}")
+    print(f"  Mean: {np.mean(predictions):.2f}")
+    print(f"  Std: {np.std(predictions):.2f}")
+    
+    # Show distribution
+    from collections import Counter
+    rounded_preds = [round(p) for p in predictions]
+    dist = Counter(rounded_preds)
+    print(f"\nPrediction Distribution:")
+    for score in sorted(dist.keys()):
+        print(f"  Score {score}: {dist[score]} samples ({100*dist[score]/len(predictions):.1f}%)")
+
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='WSD System with SenseBERT and Improved Relevance Scoring')
     parser.add_argument(
-        "--mode", choices=["train", "infer"], default="infer",
+        "--mode", 
+        choices=["train", "infer"], 
+        default="infer",
         help="Choose 'train' to train the weights, or 'infer' to run prediction (after training)."
     )
+    parser.add_argument(
+        "--model_type",
+        choices=["softmax", "ordinal"],
+        default="softmax",
+        help="Choose MLP architecture: 'softmax' (default) or 'ordinal' regression"
+    )
     args = parser.parse_args()
+    
+    print(f"\n{'='*60}")
+    print(f"Running SenseBERT WSD System in {args.mode.upper()} mode")
+    print(f"Model Type: {args.model_type}")
+    print(f"{'='*60}\n")
+    
     if args.mode == "train":
-        train_main()
+        train_main(model_type=args.model_type)
     else:
-        inference_main()
+        inference_main(model_type=args.model_type)
