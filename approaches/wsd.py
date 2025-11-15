@@ -52,7 +52,7 @@ class ImprovedRelevanceMLP(nn.Module):
     and direct output in [1, 5] range without post-hoc scaling.
     Now uses 7 features including ending-specific metrics.
     """
-    def __init__(self, input_dim=7, hidden_dims=[64, 32, 16]):
+    def __init__(self, input_dim=7, hidden_dims=[512, 256, 128]):
         super().__init__()
         
         # Input normalization layer (learnable)
@@ -112,79 +112,6 @@ class ImprovedRelevanceMLP(nn.Module):
         return scores
 
 
-class OrdinalRelevanceMLP(nn.Module):
-    """
-    Alternative: Use ordinal regression with cumulative link model
-    Often better for ordered scores like 1-5 ratings.
-    Now uses 7 features including ending-specific metrics.
-    """
-    def __init__(self, input_dim=7, hidden_dims=[64, 32]):
-        super().__init__()
-        
-        self.input_norm = nn.BatchNorm1d(input_dim, affine=True)
-        
-        layers = []
-        prev_dim = input_dim
-        for h in hidden_dims:
-            layers.append(nn.Linear(prev_dim, h))
-            layers.append(nn.LayerNorm(h))
-            layers.append(nn.ReLU())
-            layers.append(nn.Dropout(0.3))
-            prev_dim = h
-        
-        self.hidden_layers = nn.Sequential(*layers)
-        
-        # For ordinal regression: learn thresholds
-        # We need 4 thresholds to separate 5 classes
-        self.output_layer = nn.Linear(prev_dim, 1)
-        self.thresholds = nn.Parameter(torch.tensor([0.5, 1.5, 2.5, 3.5]))
-        
-        self._initialize_weights()
-    
-    def _initialize_weights(self):
-        for m in self.modules():
-            if isinstance(m, nn.Linear):
-                nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='relu')
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
-    
-    def forward(self, features):
-        """
-        Args:
-            features: [batch, 7]
-        Returns:
-            [batch] scores in range [1, 5]
-        """
-        x = self.input_norm(features)
-        x = self.hidden_layers(x)
-        logit = self.output_layer(x).squeeze(-1)  # [batch]
-        
-        # Compute probabilities for each class using cumulative model
-        # P(Y > k) = sigmoid(logit - threshold_k)
-        batch_size = logit.size(0)
-        thresholds = self.thresholds.unsqueeze(0).expand(batch_size, -1)  # [batch, 4]
-        logit_expanded = logit.unsqueeze(1).expand(-1, 4)  # [batch, 4]
-        
-        # Cumulative probabilities
-        cum_probs = torch.sigmoid(logit_expanded - thresholds)  # [batch, 4]
-        
-        # Convert to class probabilities
-        # P(Y=1) = 1 - P(Y>1)
-        # P(Y=k) = P(Y>k-1) - P(Y>k) for k=2,3,4
-        # P(Y=5) = P(Y>4)
-        zeros = torch.zeros(batch_size, 1, device=features.device)
-        ones = torch.ones(batch_size, 1, device=features.device)
-        
-        cum_probs_padded = torch.cat([ones, cum_probs, zeros], dim=1)  # [batch, 6]
-        class_probs = cum_probs_padded[:, :-1] - cum_probs_padded[:, 1:]  # [batch, 5]
-        
-        # Expected value
-        class_values = torch.arange(1, 6, dtype=torch.float32, device=features.device)
-        scores = torch.sum(class_probs * class_values, dim=-1)
-        
-        return scores
-
-
 class FocalMSELoss(nn.Module):
     """
     Focal loss variant for MSE to focus on hard examples
@@ -226,11 +153,8 @@ class SenseBERTWSDSystem:
         self.train_relevance_head = train_relevance_head
         self.model_type = model_type
         
-        # Create improved relevance head with 7 features now
-        if model_type == "ordinal":
-            self.relevance_head = OrdinalRelevanceMLP(input_dim=7, hidden_dims=[64, 32])
-        else:
-            self.relevance_head = ImprovedRelevanceMLP(input_dim=7, hidden_dims=[64, 32, 16])
+        # Always use ImprovedRelevanceMLP with 7 features
+        self.relevance_head = ImprovedRelevanceMLP(input_dim=7, hidden_dims=[512, 256, 128])
         
         if mlp_path is not None and os.path.exists(mlp_path):
             print(f"Loading trained relevance head from {mlp_path}")
@@ -575,7 +499,7 @@ def train_relevance_head_improved(
     wsd_system,
     train_data: Dict,
     save_path: str = "relevance_head_improved.pt",
-    epochs: int = 100,
+    epochs: int = 300,
     lr: float = 5e-3
 ):
     """
@@ -710,21 +634,19 @@ def run(train_file, mlp_weights_path=None, model_type="softmax"):
 def train_main(model_type="softmax"):
     """
     Train the relevance head using improved architecture with SenseBERT
-    Args:
-        model_type: "softmax" or "ordinal" - determines which MLP architecture to use
     """
     train_file = 'data/train.json'
     # 1. Load training data
     train_data, _ = load_json_data(train_file)
     # 2. Build SenseBERT model system with untrained RelevanceMLP
-    wsd_system = SenseBERTWSDSystem(model_type=model_type)
+    wsd_system = SenseBERTWSDSystem(model_type="softmax")
     # 3. Train relevance head with improved training procedure
-    save_path = f"relevance_head_sensebert_{model_type}.pt"
+    save_path = f"relevance_head_sensebert_softmax.pt"
     train_relevance_head_improved(
         wsd_system, 
         train_data, 
         save_path=save_path, 
-        epochs=100, 
+        epochs=300, 
         lr=5e-3
     )
     print(f"\nTraining complete! Model saved to {save_path}")
@@ -733,20 +655,18 @@ def train_main(model_type="softmax"):
 def inference_main(model_type="softmax"):
     """
     Run inference using trained model with SenseBERT
-    Args:
-        model_type: "softmax" or "ordinal" - must match the training model type
     """
     dev_file = 'data/dev.json'
     dev_data, file_dict = load_json_data(dev_file)
     # Load trained mlp weights for inference
-    mlp_weights_path = f"relevance_head_sensebert_{model_type}.pt"
+    mlp_weights_path = f"relevance_head_sensebert_softmax.pt"
     
     if not os.path.exists(mlp_weights_path):
         print(f"Error: Model file '{mlp_weights_path}' not found!")
-        print(f"Please run training first with --mode train --model_type {model_type}")
+        print(f"Please run training first with --mode train")
         return
     
-    wsd_system = SenseBERTWSDSystem(mlp_path=mlp_weights_path, model_type=model_type)
+    wsd_system = SenseBERTWSDSystem(mlp_path=mlp_weights_path, model_type="softmax")
     # Run inference
     results = process_dataset(wsd_system, dev_data)
     predictions = [result['predicted_relevance_score'] for result in results]
@@ -754,7 +674,7 @@ def inference_main(model_type="softmax"):
     # Create predictions directory if it doesn't exist
     os.makedirs("predictions", exist_ok=True)
     
-    output_file = f"predictions/wsd_predictions_sensebert_{model_type}.JSONL"
+    output_file = f"predictions/wsd_predictions_sensebert_softmax.JSONL"
     with open(output_file, "w", encoding='utf8') as outfile:
         idx = 0
         for id in file_dict.keys():
@@ -787,20 +707,13 @@ if __name__ == "__main__":
         default="infer",
         help="Choose 'train' to train the weights, or 'infer' to run prediction (after training)."
     )
-    parser.add_argument(
-        "--model_type",
-        choices=["softmax", "ordinal"],
-        default="softmax",
-        help="Choose MLP architecture: 'softmax' (default) or 'ordinal' regression"
-    )
     args = parser.parse_args()
     
     print(f"\n{'='*60}")
     print(f"Running SenseBERT WSD System in {args.mode.upper()} mode")
-    print(f"Model Type: {args.model_type}")
     print(f"{'='*60}\n")
     
     if args.mode == "train":
-        train_main(model_type=args.model_type)
+        train_main()
     else:
-        inference_main(model_type=args.model_type)
+        inference_main()
