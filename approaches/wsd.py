@@ -127,21 +127,13 @@ class FocalMSELoss(nn.Module):
         return (weights * mse).mean()
 
 
-class SenseBERTWSDSystem:
+class BERTWSDSystem:
     def __init__(self, model_name: str = "bert-large-uncased-whole-word-masking", 
                  mlp_path: str = None, 
                  train_relevance_head: bool = False, 
                  model_type: str = "softmax"):
-        """
-        Initialize SenseBERT-based WSD System
-        Note: SenseBERT is based on BERT-large-wwm and uses supersenses.
-        For simplicity, we'll use the base BERT-large-wwm model.
-        To use actual SenseBERT, download weights from:
-        https://github.com/AI21Labs/sense-bert
-        """
-        print(f"Loading SenseBERT model: {model_name}")
-        print("Note: For full SenseBERT functionality, use 'sensebert-large-uncased'")
-        print("      if you have the SenseBERT weights installed")
+
+        print(f"Loading BERT model: {model_name}")
         
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name)
@@ -441,7 +433,7 @@ class SenseBERTWSDSystem:
         )
 
 
-def process_dataset(wsd_system: SenseBERTWSDSystem, data: Dict) -> List[Dict]:
+def process_dataset(wsd_system: BERTWSDSystem, data: Dict) -> List[Dict]:
     results = []
     num_examples = len(data['homonym_word'])
     for i in range(num_examples):
@@ -470,7 +462,7 @@ def process_dataset(wsd_system: SenseBERTWSDSystem, data: Dict) -> List[Dict]:
     return results
 
 
-def collect_training_examples(wsd_system: SenseBERTWSDSystem, data: Dict):
+def collect_training_examples(wsd_system: BERTWSDSystem, data: Dict):
     """Extracts feature matrix X and target y from dataset using provided SenseBERT model."""
     X_feats = []
     y = []
@@ -626,7 +618,7 @@ def load_json_data(json_file: str):
 
 def run(train_file, mlp_weights_path=None, model_type="softmax"):
     data, _ = load_json_data(train_file)
-    wsd_system = SenseBERTWSDSystem(mlp_path=mlp_weights_path, model_type=model_type)
+    wsd_system = BERTWSDSystem(mlp_path=mlp_weights_path, model_type=model_type)
     results = process_dataset(wsd_system, data)
     return results
 
@@ -639,7 +631,7 @@ def train_main(model_type="softmax"):
     # 1. Load training data
     train_data, _ = load_json_data(train_file)
     # 2. Build SenseBERT model system with untrained RelevanceMLP
-    wsd_system = SenseBERTWSDSystem(model_type="softmax")
+    wsd_system = BERTWSDSystem(model_type="softmax")
     # 3. Train relevance head with improved training procedure
     save_path = f"relevance_head_sensebert_softmax.pt"
     train_relevance_head_improved(
@@ -666,7 +658,7 @@ def inference_main(model_type="softmax"):
         print(f"Please run training first with --mode train")
         return
     
-    wsd_system = SenseBERTWSDSystem(mlp_path=mlp_weights_path, model_type="softmax")
+    wsd_system = BERTWSDSystem(mlp_path=mlp_weights_path, model_type="softmax")
     # Run inference
     results = process_dataset(wsd_system, dev_data)
     predictions = [result['predicted_relevance_score'] for result in results]
