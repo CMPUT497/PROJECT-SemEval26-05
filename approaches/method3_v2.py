@@ -16,15 +16,15 @@ from tqdm import tqdm
 # Model configuration
 BERT_MODEL = "bert-large-uncased-whole-word-masking"
 MAX_LEN = 256
-BATCH_SIZE = 32
-LR_BACKBONE = 2e-5
-LR_HEAD = 2e-4
+BATCH_SIZE = 16
+LR_BACKBONE = 2e-4
+LR_HEAD = 2e-3
 WEIGHT_DECAY = 0.01
-EPOCHS = 50
+EPOCHS = 150
 DEVICE = "cuda:3" if torch.cuda.is_available() else "cpu"
 CONTRASTIVE_TEMPERATURE = 0.07
-LAMBDA_CONTRAST = 1.0
-GRAD_CLIP = 1.0
+LAMBDA_CONTRAST = 0.80
+GRAD_CLIP = 0.80
 
 def score_to_bin(t: float) -> int:
     """Map normalized t in [0,1] to bin 1..5 according to your mapping."""
@@ -271,11 +271,11 @@ def run_training(train_data: List[Dict[str, Any]], dev_data: List[Dict[str, Any]
         print("Dev MSE (1..5):", dev_res["mse_1_5"])
         if dev_res["mse_1_5"] < best_dev_mse:
             best_dev_mse = dev_res["mse_1_5"]
-            torch.save(model.state_dict(), "best_model.pt")
+            torch.save(model.state_dict(), "best_model_v2.pt")
             # optionally save tokenizer
 
     # After training, load best model
-    model.load_state_dict(torch.load("best_model.pt"))
+    model.load_state_dict(torch.load("best_model_v2.pt"))
     print("Loaded best model.")
 
     # collect dev logits/targets for optional Platt calibration
