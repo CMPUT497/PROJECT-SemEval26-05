@@ -11,7 +11,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
-from transformers import AutoTokenizer, AutoModel, get_linear_schedule_with_warmup
+from transformers import get_linear_schedule_with_warmup
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import mean_squared_error
 from tqdm import tqdm
