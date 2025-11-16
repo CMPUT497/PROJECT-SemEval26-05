@@ -1,4 +1,7 @@
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+import warnings
+warnings.filterwarnings('ignore')
 import sys
 import json
 import math
@@ -15,14 +18,14 @@ import tensorflow as tf
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from senseBert.sensebert import SenseBert
 
-SENSEBERT_MODEL = SenseBert("../senseBert/sensebert-large-uncased")
+SENSEBERT_MODEL = SenseBert("senseBert/sensebert-large-uncased")
 MAX_LEN = 256
 BATCH_SIZE = 32
 LR_BACKBONE = 2e-5
 LR_HEAD = 2e-4
 WEIGHT_DECAY = 0.01
 EPOCHS = 50
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda:2" if torch.cuda.is_available() else "cpu"
 CONTRASTIVE_TEMPERATURE = 0.07
 LAMBDA_CONTRAST = 1.0
 GRAD_CLIP = 1.0
@@ -44,7 +47,7 @@ class EndingDataset(Dataset):
     Expects data_list: list of dicts with keys:
       'precontext' (C), 'sentence' (S), 'sense' (M), 'homonym' (H), 'ending' (E), 'avg_score' (1..5)
     """
-    def __init__(self, data_list: List[Dict[str, Any]], tokenizer: AutoTokenizer, max_len=MAX_LEN):
+    def __init__(self, data_list: List[Dict[str, Any]], tokenizer: SENSEBERT_MODEL.tokenizer, max_len=MAX_LEN):
         self.data = data_list
         self.tokenizer = tokenizer
         self.max_len = max_len
@@ -69,18 +72,28 @@ class EndingDataset(Dataset):
         E = item["ending"]
 
         text = f"{sense_token} {C} {S} [HOM] {hom} [/HOM] [SEP] {E}"
-        enc = self.tokenizer(
-            text,
-            truncation=True,
-            max_length=self.max_len,
-            padding="max_length",
-            return_tensors="pt",
-        )
-        # squeeze tensors
-        enc = {k: v.squeeze(0) for k, v in enc.items()}
+        # Use SenseBert's tokenize method
+        input_ids, input_mask = SENSEBERT_MODEL.tokenize(text)
+        
+        # Truncate or pad to max_len
+        input_ids = input_ids[0]  # Get first element (batch size 1)
+        input_mask = input_mask[0]
+        
+        # Truncate if too long
+        if len(input_ids) > self.max_len:
+            input_ids = input_ids[:self.max_len]
+            input_mask = input_mask[:self.max_len]
+        
+        # Pad if too short
+        pad_len = self.max_len - len(input_ids)
+        if pad_len > 0:
+            pad_id = self.tokenizer.convert_tokens_to_ids([self.tokenizer.pad_sym])[0]
+            input_ids = input_ids + [pad_id] * pad_len
+            input_mask = input_mask + [0] * pad_len
+        
         return {
-            "input_ids": enc["input_ids"],
-            "attention_mask": enc["attention_mask"],
+            "input_ids": torch.tensor(input_ids, dtype=torch.long),
+            "attention_mask": torch.tensor(input_mask, dtype=torch.long),
             "t": torch.tensor(item["t"], dtype=torch.float32),
             "bin": item["bin"],
             "meta": item,  # keep original for debugging/inference
@@ -88,9 +101,9 @@ class EndingDataset(Dataset):
 
 
 class SenseBertScorer(nn.Module):
-    def __init__(self, backbone_name=SENSEBERT_MODEL, hidden_dim=256, freeze_backbone=False):
+    def __init__(self, backbone_name=SENSEBERT_MODEL, hidden_dim=256):
         super().__init__()
-        self.backbone = AutoModel.from_pretrained(backbone_name)
+        self.backbone = backbone_name
         # pooling dim:
         hidden_size = self.backbone.config.hidden_size
         # small projection to embedding space (optional)
@@ -102,19 +115,18 @@ class SenseBertScorer(nn.Module):
             nn.Dropout(0.1),
             nn.Linear(hidden_dim, 1),
         )
-        if freeze_backbone:
-            for p in self.backbone.parameters():
-                p.requires_grad = False
 
     def forward(self, input_ids, attention_mask):
-        # backbone forward
-        out = self.backbone(input_ids=input_ids, attention_mask=attention_mask, return_dict=True)
-        # use pooled output (or take homonym token embedding if you have token indices)
-        pooled = out.pooler_output  # [batch, hidden_size]
-        # optional proj + normalization happens outside for clarity
+        # Get embeddings from TensorFlow SenseBert
+        contextualized_embeddings = self.backbone.run(input_ids, attention_mask)
+        # Convert to PyTorch tensor
+        contextualized_embeddings = torch.from_numpy(contextualized_embeddings).to(input_ids.device).float()
+        # Use [CLS] token embedding (first token) as pooled output
+        pooled = contextualized_embeddings[:, 0, :]  # [batch, hidden_size]
         emb = self.proj(pooled)     # [batch, hidden_size]
         logit = self.head(emb).squeeze(-1)  # [batch]
         return emb, logit
+
 
 def compute_contrastive_loss(embeddings: torch.Tensor, bins: List[int], temperature=0.07, device="cpu"):
     """
@@ -245,8 +257,8 @@ def run_training(train_data: List[Dict[str, Any]], dev_data: List[Dict[str, Any]
     model = SenseBertScorer(backbone_name=SENSEBERT_MODEL).to(DEVICE)
 
     # separate parameter groups
-    backbone_params = list(model.backbone.parameters()) + list(model.proj.parameters())
-    head_params = [p for n,p in model.named_parameters() if ("backbone" not in n and "proj" not in n)]
+    backbone_params = list(model.proj.parameters())
+    head_params = list(model.head.parameters())
 
     optimizer = torch.optim.AdamW([
         {"params": backbone_params, "lr": LR_BACKBONE, "weight_decay": WEIGHT_DECAY},
@@ -326,9 +338,9 @@ def load_json_data(json_file: str):
 
 def main():
     # Example toy data format (replace with your real data)
-    train_path = '../data/train.json'
+    train_path = 'data/train.json'
     train_data = load_json_data(train_path)
-    dev_path = '../data/dev.json'
+    dev_path = 'data/dev.json'
     dev_data = load_json_data(dev_path)
     
     model, tokenizer, platt_params = run_training(train_data, dev_data)
