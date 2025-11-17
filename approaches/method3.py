@@ -25,7 +25,7 @@ BATCH_SIZE = 32
 LR_BACKBONE = 2e-5
 LR_HEAD = 2e-4
 WEIGHT_DECAY = 0.01
-EPOCHS = 50
+EPOCHS = 10
 DEVICE = "cuda:2" if torch.cuda.is_available() else "cpu"
 CONTRASTIVE_TEMPERATURE = 0.07
 LAMBDA_CONTRAST = 1.0
@@ -306,10 +306,30 @@ def predict_single(model, tokenizer, item: Dict[str, Any], device=DEVICE, platt_
     item: dict with keys 'precontext','sentence','sense','homonym','ending'
     returns q (calibrated) and integer score 1..5
     """
-    text = f"[SENSE={item['sense']}] {item['precontext']} {item['sentence']} [HOM] {item['homonym']} [/HOM] [SEP] {item['ending']}"
-    enc = tokenizer(text, truncation=True, max_length=MAX_LEN, padding="max_length", return_tensors="pt")
-    input_ids = enc["input_ids"].to(device)
-    attention_mask = enc["attention_mask"].to(device)
+    # Updated to accomodate new senseBert API and expected preprocessing
+    # Build input text in new format and use SENSEBERT_MODEL.tokenize for proper handling
+    sense_token = f"[SENSE={item['sense']}]"
+    hom = item["homonym"]
+    C = item["precontext"]
+    S = item["sentence"]
+    E = item["ending"]
+    text = f"{sense_token} {C} {S} [HOM] {hom} [/HOM] [SEP] {E}"
+    # Use SENSEBERT_MODEL's updated tokenizer interface
+    input_ids, input_mask = SENSEBERT_MODEL.tokenize(text)
+    # Both are returned as batch size 1 lists; get 1D arrays
+    input_ids = input_ids[0]
+    input_mask = input_mask[0]
+    # Truncate or pad to MAX_LEN as per SenseBert's updated internals
+    if len(input_ids) > MAX_LEN:
+        input_ids = input_ids[:MAX_LEN]
+        input_mask = input_mask[:MAX_LEN]
+    pad_len = MAX_LEN - len(input_ids)
+    if pad_len > 0:
+        pad_id = tokenizer.convert_tokens_to_ids([tokenizer.pad_sym])[0]
+        input_ids = input_ids + [pad_id] * pad_len
+        input_mask = input_mask + [0] * pad_len
+    input_ids = torch.tensor(input_ids, dtype=torch.long).unsqueeze(0).to(device)
+    attention_mask = torch.tensor(input_mask, dtype=torch.long).unsqueeze(0).to(device)
     emb, logit = model(input_ids=input_ids, attention_mask=attention_mask)
     logit = logit.detach().cpu().numpy().item()
     prob = 1.0 / (1.0 + math.exp(-logit))

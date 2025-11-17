@@ -16,15 +16,15 @@ from tqdm import tqdm
 # Model configuration
 BERT_MODEL = "bert-large-uncased-whole-word-masking"
 MAX_LEN = 256
-BATCH_SIZE = 16
-LR_BACKBONE = 2e-4
-LR_HEAD = 2e-3
+BATCH_SIZE = 32
+LR_BACKBONE = 2e-5
+LR_HEAD = 2e-4
 WEIGHT_DECAY = 0.01
-EPOCHS = 150
+EPOCHS = 50
 DEVICE = "cuda:3" if torch.cuda.is_available() else "cpu"
 CONTRASTIVE_TEMPERATURE = 0.07
-LAMBDA_CONTRAST = 0.80
-GRAD_CLIP = 0.80
+LAMBDA_CONTRAST = 1.0
+GRAD_CLIP = 1.0
 
 def score_to_bin(t: float) -> int:
     """Map normalized t in [0,1] to bin 1..5 according to your mapping."""
