@@ -16,13 +16,13 @@ from tqdm import tqdm
 # Model configuration
 BERT_MODEL = "bert-large-uncased-whole-word-masking"
 MAX_LEN = 256
-BATCH_SIZE = 32
-LR_BACKBONE = 2e-5
-LR_HEAD = 2e-4
-WEIGHT_DECAY = 0.01
+BATCH_SIZE = 16
+LR_BACKBONE = 9e-6
+LR_HEAD = 3e-4
+WEIGHT_DECAY = 0.001
 EPOCHS = 50
-DEVICE = "cuda:3" if torch.cuda.is_available() else "cpu"
-CONTRASTIVE_TEMPERATURE = 0.07
+DEVICE = "cuda:1" if torch.cuda.is_available() else "cpu"
+CONTRASTIVE_TEMPERATURE = 0.09
 LAMBDA_CONTRAST = 1.0
 GRAD_CLIP = 1.0
 
