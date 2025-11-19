@@ -1,33 +1,28 @@
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = ''
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-import warnings
-warnings.filterwarnings('ignore')
 import sys
 import json
 import math
 from typing import List, Dict, Any, Optional
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
-from transformers import get_linear_schedule_with_warmup
+from transformers import AutoTokenizer, AutoModel, get_linear_schedule_with_warmup
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import mean_squared_error
 from tqdm import tqdm
-import tensorflow as tf
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from senseBert.sensebert import SenseBert
 
-SENSEBERT_MODEL = SenseBert("senseBert/sensebert-large-uncased")
+# Model configuration
+BERT_MODEL = "bert-large-uncased-whole-word-masking"
 MAX_LEN = 256
 BATCH_SIZE = 16
-LR_BACKBONE = 4e-4
-LR_HEAD = 4e-4
+LR_BACKBONE = 9e-6
+LR_HEAD = 3e-4
 WEIGHT_DECAY = 0.001
 EPOCHS = 50
-DEVICE = "cuda:2" if torch.cuda.is_available() else "cpu"
-CONTRASTIVE_TEMPERATURE = 0.2
+DEVICE = "cuda:1" if torch.cuda.is_available() else "cpu"
+CONTRASTIVE_TEMPERATURE = 0.09
 LAMBDA_CONTRAST = 1.0
 GRAD_CLIP = 1.0
 
@@ -48,7 +43,7 @@ class EndingDataset(Dataset):
     Expects data_list: list of dicts with keys:
       'precontext' (C), 'sentence' (S), 'sense' (M), 'homonym' (H), 'ending' (E), 'avg_score' (1..5)
     """
-    def __init__(self, data_list: List[Dict[str, Any]], tokenizer: SENSEBERT_MODEL.tokenizer, max_len=MAX_LEN):
+    def __init__(self, data_list: List[Dict[str, Any]], tokenizer, max_len=MAX_LEN):
         self.data = data_list
         self.tokenizer = tokenizer
         self.max_len = max_len
@@ -66,45 +61,41 @@ class EndingDataset(Dataset):
     def __getitem__(self, idx):
         item = self.data[idx]
         # Build input text: [SENSE:M] C S [HOM] H [/HOM] [SEP] E
-        sense_token = f"[SENSE={item['sense']}]"
+        # Note: BERT doesn't have custom sense tokens, so we'll use regular text
+        sense_text = f"Sense: {item['sense']}"
         hom = item["homonym"]
         C = item["precontext"]
         S = item["sentence"]
         E = item["ending"]
 
-        text = f"{sense_token} {C} {S} [HOM] {hom} [/HOM] [SEP] {E}"
-        # Use SenseBert's tokenize method
-        input_ids, input_mask = SENSEBERT_MODEL.tokenize(text)
+        # Format: Sense: <sense> <precontext> <sentence> Homonym: <homonym> [SEP] <ending>
+        text = f"{sense_text} {C} {S} Homonym: {hom}"
+        ending_text = E
         
-        # Truncate or pad to max_len
-        input_ids = input_ids[0]  # Get first element (batch size 1)
-        input_mask = input_mask[0]
-        
-        # Truncate if too long
-        if len(input_ids) > self.max_len:
-            input_ids = input_ids[:self.max_len]
-            input_mask = input_mask[:self.max_len]
-        
-        # Pad if too short
-        pad_len = self.max_len - len(input_ids)
-        if pad_len > 0:
-            pad_id = self.tokenizer.convert_tokens_to_ids([self.tokenizer.pad_sym])[0]
-            input_ids = input_ids + [pad_id] * pad_len
-            input_mask = input_mask + [0] * pad_len
+        # Use BERT tokenizer with proper segment handling
+        encoding = self.tokenizer(
+            text,
+            ending_text,
+            truncation=True,
+            max_length=self.max_len,
+            padding="max_length",
+            return_tensors="pt"
+        )
         
         return {
-            "input_ids": torch.tensor(input_ids, dtype=torch.long),
-            "attention_mask": torch.tensor(input_mask, dtype=torch.long),
+            "input_ids": encoding["input_ids"].squeeze(0),
+            "attention_mask": encoding["attention_mask"].squeeze(0),
+            "token_type_ids": encoding["token_type_ids"].squeeze(0),
             "t": torch.tensor(item["t"], dtype=torch.float32),
             "bin": item["bin"],
             "meta": item,  # keep original for debugging/inference
         }
 
 
-class SenseBertScorer(nn.Module):
-    def __init__(self, backbone_name=SENSEBERT_MODEL, hidden_dim=256):
+class BertScorer(nn.Module):
+    def __init__(self, backbone_name=BERT_MODEL, hidden_dim=256):
         super().__init__()
-        self.backbone = backbone_name
+        self.backbone = AutoModel.from_pretrained(backbone_name)
         # pooling dim:
         hidden_size = self.backbone.config.hidden_size
         # small projection to embedding space (optional)
@@ -117,13 +108,15 @@ class SenseBertScorer(nn.Module):
             nn.Linear(hidden_dim, 1),
         )
 
-    def forward(self, input_ids, attention_mask):
-        # Get embeddings from TensorFlow SenseBert
-        contextualized_embeddings = self.backbone.run(input_ids, attention_mask)
-        # Convert to PyTorch tensor
-        contextualized_embeddings = torch.from_numpy(contextualized_embeddings).to(input_ids.device).float()
+    def forward(self, input_ids, attention_mask, token_type_ids):
+        # Get embeddings from BERT
+        outputs = self.backbone(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            token_type_ids=token_type_ids
+        )
         # Use [CLS] token embedding (first token) as pooled output
-        pooled = contextualized_embeddings[:, 0, :]  # [batch, hidden_size]
+        pooled = outputs.last_hidden_state[:, 0, :]  # [batch, hidden_size]
         emb = self.proj(pooled)     # [batch, hidden_size]
         logit = self.head(emb).squeeze(-1)  # [batch]
         return emb, logit
@@ -176,11 +169,12 @@ def train_epoch(model, dataloader, optimizer, scheduler, device, lambda_contrast
     for batch in pbar:
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
+        token_type_ids = batch["token_type_ids"].to(device)
         t_targets = batch["t"].to(device)
         bins = batch["bin"]  # list of ints
         optimizer.zero_grad()
 
-        emb, logits = model(input_ids=input_ids, attention_mask=attention_mask)
+        emb, logits = model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
         # normalize embeddings for contrastive loss usage
         emb_norm = F.normalize(emb, dim=1)
 
@@ -215,8 +209,9 @@ def evaluate(model, dataloader, device):
     for batch in pbar:
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
+        token_type_ids = batch["token_type_ids"].to(device)
         t_targets = batch["t"].to(device)
-        emb, logits = model(input_ids=input_ids, attention_mask=attention_mask)
+        emb, logits = model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
         probs = torch.sigmoid(logits)
 
         preds.append(probs.detach().cpu())
@@ -248,17 +243,16 @@ def apply_platt(logits, a, b):
 
 def run_training(train_data: List[Dict[str, Any]], dev_data: List[Dict[str, Any]]):
     # tokenizer + dataset + dataloader
-    # tokenizer = AutoTokenizer.from_pretrained(SENSEBERT_MODEL, use_fast=True)
-    tokenizer = SENSEBERT_MODEL.tokenizer
+    tokenizer = AutoTokenizer.from_pretrained(BERT_MODEL, use_fast=True)
     train_ds = EndingDataset(train_data, tokenizer)
     dev_ds = EndingDataset(dev_data, tokenizer)
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
     dev_loader = DataLoader(dev_ds, batch_size=BATCH_SIZE, shuffle=False)
 
-    model = SenseBertScorer(backbone_name=SENSEBERT_MODEL).to(DEVICE)
+    model = BertScorer(backbone_name=BERT_MODEL).to(DEVICE)
 
     # separate parameter groups
-    backbone_params = list(model.proj.parameters())
+    backbone_params = list(model.backbone.parameters()) + list(model.proj.parameters())
     head_params = list(model.head.parameters())
 
     optimizer = torch.optim.AdamW([
@@ -277,11 +271,11 @@ def run_training(train_data: List[Dict[str, Any]], dev_data: List[Dict[str, Any]
         print("Dev MSE (1..5):", dev_res["mse_1_5"])
         if dev_res["mse_1_5"] < best_dev_mse:
             best_dev_mse = dev_res["mse_1_5"]
-            torch.save(model.state_dict(), "best_model.pt")
+            torch.save(model.state_dict(), "best_model_v2.pt")
             # optionally save tokenizer
 
     # After training, load best model
-    model.load_state_dict(torch.load("best_model.pt"))
+    model.load_state_dict(torch.load("best_model_v2.pt"))
     print("Loaded best model.")
 
     # collect dev logits/targets for optional Platt calibration
@@ -291,7 +285,6 @@ def run_training(train_data: List[Dict[str, Any]], dev_data: List[Dict[str, Any]
     targets = final_dev["targets"]
     # Fit Platt scaling (optional, simplistic)
     try:
-        import numpy as np
         a, b = fit_platt(logits, targets)
         print("Platt params:", a, b)
     except Exception as e:
@@ -306,31 +299,28 @@ def predict_single(model, tokenizer, item: Dict[str, Any], device=DEVICE, platt_
     item: dict with keys 'precontext','sentence','sense','homonym','ending'
     returns q (calibrated) and integer score 1..5
     """
-    # Updated to accomodate new senseBert API and expected preprocessing
-    # Build input text in new format and use SENSEBERT_MODEL.tokenize for proper handling
-    sense_token = f"[SENSE={item['sense']}]"
+    sense_text = f"Sense: {item['sense']}"
     hom = item["homonym"]
     C = item["precontext"]
     S = item["sentence"]
     E = item["ending"]
-    text = f"{sense_token} {C} {S} [HOM] {hom} [/HOM] [SEP] {E}"
-    # Use SENSEBERT_MODEL's updated tokenizer interface
-    input_ids, input_mask = SENSEBERT_MODEL.tokenize(text)
-    # Both are returned as batch size 1 lists; get 1D arrays
-    input_ids = input_ids[0]
-    input_mask = input_mask[0]
-    # Truncate or pad to MAX_LEN as per SenseBert's updated internals
-    if len(input_ids) > MAX_LEN:
-        input_ids = input_ids[:MAX_LEN]
-        input_mask = input_mask[:MAX_LEN]
-    pad_len = MAX_LEN - len(input_ids)
-    if pad_len > 0:
-        pad_id = tokenizer.convert_tokens_to_ids([tokenizer.pad_sym])[0]
-        input_ids = input_ids + [pad_id] * pad_len
-        input_mask = input_mask + [0] * pad_len
-    input_ids = torch.tensor(input_ids, dtype=torch.long).unsqueeze(0).to(device)
-    attention_mask = torch.tensor(input_mask, dtype=torch.long).unsqueeze(0).to(device)
-    emb, logit = model(input_ids=input_ids, attention_mask=attention_mask)
+    
+    text = f"{sense_text} {C} {S} Homonym: {hom}"
+    ending_text = E
+    
+    enc = tokenizer(
+        text,
+        ending_text,
+        truncation=True,
+        max_length=MAX_LEN,
+        padding="max_length",
+        return_tensors="pt"
+    )
+    input_ids = enc["input_ids"].to(device)
+    attention_mask = enc["attention_mask"].to(device)
+    token_type_ids = enc["token_type_ids"].to(device)
+    
+    emb, logit = model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
     logit = logit.detach().cpu().numpy().item()
     prob = 1.0 / (1.0 + math.exp(-logit))
     if platt_params is not None:
@@ -372,7 +362,7 @@ def main():
         pred = predict_single(model, tokenizer, item, DEVICE, platt_params=platt_params)
         predictions.append(pred)
     
-    output_path = "predictions/method3_predictions.JSONL"
+    output_path = "predictions/method3_v2_predictions.JSONL"
     with open(output_path, "w", encoding="utf8") as outfile:
         for item, pred in zip(dev_data, predictions):
             entry = {"id": item["id"], "prediction": pred["pred_int"]}
