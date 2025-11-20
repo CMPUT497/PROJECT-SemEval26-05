@@ -30,7 +30,7 @@ CONTRASTIVE_TEMPERATURE = 0.07
 LAMBDA_CONTRAST = 0.5
 GRAD_CLIP = 1.0
 SAVE_PATH = "best_deberta_model.pt"
-PREDICTIONS_PATH = "predictions/method3_v2_predictions.jsonl"
+PREDICTIONS_PATH = "predictions/method3_v2_predictions.JSONL"
 SPECIAL_TOKENS = {"additional_special_tokens": ["[HOM]", "[/HOM]", "[SENSE]", "[/SENSE]"]}
 SEED = 42
 random.seed(SEED)
@@ -283,7 +283,32 @@ def evaluate_and_save_preds(model, dataloader, device, tokenizer, platt_params=N
         preds.append(probs_np)
         t_list.append(t_targets.detach().cpu().numpy())
         logits_list.append(raw_np)
-        metas.extend(batch["meta"])
+        
+        # === Normalize/collect meta items robustly ===
+        batch_meta = batch.get("meta", None)
+        if batch_meta is None:
+            # nothing to add
+            continue
+
+        # batch_meta can be a list of dicts, list of strings, single dict, or single string.
+        # Convert everything into dicts with "id" key and append to metas list in order.
+        if isinstance(batch_meta, (list, tuple)):
+            for m in batch_meta:
+                if isinstance(m, dict):
+                    metas.append(m)
+                else:
+                    # m might be an id string/int
+                    metas.append({"id": str(m)})
+        else:
+            # single element
+            m = batch_meta
+            if isinstance(m, dict):
+                metas.append(m)
+            else:
+                metas.append({"id": str(m)})
+
+    if len(preds) == 0:
+        return {"mse_1_5": float("nan"), "preds": np.array([]), "targets": np.array([]), "logits": np.array([]), "metas": metas, "predictions_filepath": out_path}
 
     preds = np.concatenate(preds, axis=0)
     t_list = np.concatenate(t_list, axis=0)
@@ -302,7 +327,6 @@ def evaluate_and_save_preds(model, dataloader, device, tokenizer, platt_params=N
 
     # write predictions JSONL in the format expected by evaluation script:
     # each line: {"id": item_id (string?), "prediction": integer}
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf8") as fout:
         for meta, p in zip(metas, preds_cal):
             pred_float = float(p * 5.0)
@@ -338,7 +362,7 @@ def spearman_evaluation_score(predictions_filepath: str, gold_data: dict):
 
     for line in pred_lines:
         line = json.loads(line)
-        gold_list[int(line["id"])] = get_average(gold_data[str(line["id"])]["choices"])
+        gold_list[int(line["id"])] = gold_data[str(line["id"])]["average"]
         pred_list[int(line["id"])] = line["prediction"]
 
     corr, value = spearmanr(pred_list, gold_list)
@@ -418,10 +442,13 @@ def run_training(train_json="data/train.json", dev_json="data/dev.json"):
         # Run your supplied evaluation script's Spearman and Accuracy checks on predictions file
         # (It expects the gold JSON in data/dev.json with "choices" key per item)
         try:
+            print("In here")
             with open(dev_json, "r", encoding="utf8") as f:
                 gold_data = json.load(f)
+                print("opened fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
             print("Running Spearman & Accuracy evaluation using", PREDICTIONS_PATH)
             spearman_evaluation_score(PREDICTIONS_PATH, gold_data)
+            print("RANNNNNNNNNNNNNNNNNNNN SPEARMANS")
             accuracy_within_standard_deviation_score(PREDICTIONS_PATH, gold_data)
         except Exception as e:
             print("Evaluation script failed:", e)
