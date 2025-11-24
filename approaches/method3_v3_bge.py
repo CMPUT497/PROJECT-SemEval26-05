@@ -23,7 +23,7 @@ LR_BACKBONE = 9e-6
 LR_HEAD = 3e-4
 WEIGHT_DECAY = 0.001
 EPOCHS = 50
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda:3" if torch.cuda.is_available() else "cpu"
 CONTRASTIVE_TEMPERATURE = 0.09
 LAMBDA_CONTRAST = 1.0
 GRAD_CLIP = 1.0
@@ -383,9 +383,9 @@ def load_json_data(json_file: str):
     return data
 
 def main():
-    train_path = '../data/train.json'
+    train_path = 'data/train.json'
     train_data = load_json_data(train_path)
-    dev_path = '../data/dev.json'
+    dev_path = 'data/dev.json'
     dev_data = load_json_data(dev_path)
     
     # --- NEW: Inject BGE Features ---
