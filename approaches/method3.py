@@ -14,13 +14,13 @@ from sklearn.metrics import mean_squared_error
 from tqdm import tqdm
 
 # Model configuration
-BERT_MODEL = "bert-large-uncased-whole-word-masking"
+BERT_MODEL = "microsoft/deberta-v3-large"
 MAX_LEN = 256
 BATCH_SIZE = 16
 LR_BACKBONE = 9e-6
 LR_HEAD = 3e-4
 WEIGHT_DECAY = 0.001
-EPOCHS = 50
+EPOCHS = 80
 DEVICE = "cuda:1" if torch.cuda.is_available() else "cpu"
 CONTRASTIVE_TEMPERATURE = 0.09
 LAMBDA_CONTRAST = 1.0
@@ -271,11 +271,11 @@ def run_training(train_data: List[Dict[str, Any]], dev_data: List[Dict[str, Any]
         print("Dev MSE (1..5):", dev_res["mse_1_5"])
         if dev_res["mse_1_5"] < best_dev_mse:
             best_dev_mse = dev_res["mse_1_5"]
-            torch.save(model.state_dict(), "best_model_v2.pt")
+            torch.save(model.state_dict(), "best_model_3.pt")
             # optionally save tokenizer
 
     # After training, load best model
-    model.load_state_dict(torch.load("best_model_v2.pt"))
+    model.load_state_dict(torch.load("best_model_3.pt"))
     print("Loaded best model.")
 
     # collect dev logits/targets for optional Platt calibration
@@ -362,12 +362,12 @@ def main():
         pred = predict_single(model, tokenizer, item, DEVICE, platt_params=platt_params)
         predictions.append(pred)
     
-    output_path = "predictions/method3_v2_predictions.JSONL"
+    output_path = "predictions/method3_predictions.JSONL"
     with open(output_path, "w", encoding="utf8") as outfile:
         for item, pred in zip(dev_data, predictions):
             entry = {"id": item["id"], "prediction": pred["pred_int"]}
             outfile.write(json.dumps(entry) + "\n")
-
+  
 
 if __name__ == "__main__":
     main()

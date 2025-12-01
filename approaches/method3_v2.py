@@ -25,11 +25,11 @@ LR_BACKBONE = 5e-6
 LR_HEAD = 3e-4
 WEIGHT_DECAY = 0.01
 EPOCHS = 50
-DEVICE = "cuda:2" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda:1" if torch.cuda.is_available() else "cpu"
 CONTRASTIVE_TEMPERATURE = 0.07
 LAMBDA_CONTRAST = 0.5
 GRAD_CLIP = 1.0
-SAVE_PATH = "best_deberta_model.pt"
+SAVE_PATH = "best_model_3v2.pt"
 PREDICTIONS_PATH = "predictions/method3_v2_predictions.JSONL"
 SPECIAL_TOKENS = {"additional_special_tokens": ["[HOM]", "[/HOM]", "[SENSE]", "[/SENSE]"]}
 SEED = 42
@@ -442,13 +442,26 @@ def run_training(train_json="data/train.json", dev_json="data/dev.json"):
         # Run your supplied evaluation script's Spearman and Accuracy checks on predictions file
         # (It expects the gold JSON in data/dev.json with "choices" key per item)
         try:
-            print("In here")
+            input_path = dev_json
+            results = []
+            with open(input_path, "r", encoding="utf8") as f:
+                data = f.readlines()
+                for line in data:
+                    line = json.loads(line)
+                    ids = line["id"]
+                    pred = line["prediction"]
+                    for id in ids:
+                        output = {"id": id, "prediction": pred}
+                        results.append(output)
+
+            output_path = dev_json
+            with open(output_path, "w", encoding="utf8") as fout:
+                for item in results:
+                    fout.write(json.dumps(item) + "\n")
             with open(dev_json, "r", encoding="utf8") as f:
                 gold_data = json.load(f)
-                print("opened fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
             print("Running Spearman & Accuracy evaluation using", PREDICTIONS_PATH)
             spearman_evaluation_score(PREDICTIONS_PATH, gold_data)
-            print("RANNNNNNNNNNNNNNNNNNNN SPEARMANS")
             accuracy_within_standard_deviation_score(PREDICTIONS_PATH, gold_data)
         except Exception as e:
             print("Evaluation script failed:", e)
@@ -524,6 +537,24 @@ if __name__ == "__main__":
         dev_file = sys.argv[2]
     print("Train file:", train_file, "Dev file:", dev_file)
     model, tokenizer, cal_params = run_training(train_file, dev_file)
+    
+    input_path = PREDICTIONS_PATH
+    results = []
+    with open(input_path, "r", encoding="utf8") as f:
+        data = f.readlines()
+        for line in data:
+            line = json.loads(line)
+            ids = line["id"]
+            pred = line["prediction"]
+            for id in ids:
+                output = {"id": id, "prediction": pred}
+                results.append(output)
+
+    output_path = PREDICTIONS_PATH
+    with open(output_path, "w", encoding="utf8") as fout:
+        for item in results:
+            fout.write(json.dumps(item) + "\n")
+
     print("Done. Best model saved to:", SAVE_PATH)
     print("Best calibration params:", cal_params)
     print("Final predictions saved to:", PREDICTIONS_PATH)

@@ -9,22 +9,45 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer, AutoModel, get_linear_schedule_with_warmup
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import LogisticRegression
 from tqdm import tqdm
 
 # Model configuration
 BERT_MODEL = "microsoft/deberta-v3-large"
 MAX_LEN = 256
-BATCH_SIZE = 16
+BATCH_SIZE = 4
 LR_BACKBONE = 9e-6
 LR_HEAD = 3e-4
 WEIGHT_DECAY = 0.001
-EPOCHS = 50
-DEVICE = "cuda:2" if torch.cuda.is_available() else "cpu"
+EPOCHS = 80
+DEVICE = "cuda:3" if torch.cuda.is_available() else "cpu"
 CONTRASTIVE_TEMPERATURE = 0.09
 LAMBDA_CONTRAST = 1.0
 GRAD_CLIP = 1.0
+GLOSS_MODEL_NAME = "kanishka/GlossBERT"
+GLOSS_TOKENIZER = AutoTokenizer.from_pretrained(GLOSS_MODEL_NAME)
+GLOSS_MODEL = AutoModel.from_pretrained(GLOSS_MODEL_NAME).eval()
+LAMBDA_SENSE = 1.0
+LAMBDA_VIEW = 1.0
+
+@torch.no_grad()
+def get_sense_embedding(gloss: str):
+    """
+    Encode a gloss/definition using GlossBERT.
+    We use the [CLS] token as the gloss embedding.
+    """
+    inputs = GLOSS_TOKENIZER(
+        gloss,
+        return_tensors="pt",
+        truncation=True,
+        max_length=64
+    )
+
+    outputs = GLOSS_MODEL(**inputs)
+    emb = outputs.last_hidden_state[:, 0]   # CLS
+
+    return emb.squeeze(0).cpu()
 
 def score_to_bin(t: float) -> int:
     """Map normalized t in [0,1] to bin 1..5 according to your mapping."""
@@ -93,14 +116,13 @@ class EndingDataset(Dataset):
 
 
 class BertScorer(nn.Module):
-    def __init__(self, backbone_name=BERT_MODEL, hidden_dim=256):
+    def __init__(self, backbone_name="microsoft/deberta-v3-large", hidden_dim=256):
         super().__init__()
         self.backbone = AutoModel.from_pretrained(backbone_name)
-        # pooling dim:
+        self.sense_proj = nn.Linear(768, self.backbone.config.hidden_size)
+
         hidden_size = self.backbone.config.hidden_size
-        # small projection to embedding space (optional)
         self.proj = nn.Linear(hidden_size, hidden_size)
-        # final head (linear from embedding to logit)
         self.head = nn.Sequential(
             nn.Linear(hidden_size, hidden_dim),
             nn.GELU(),
@@ -108,19 +130,56 @@ class BertScorer(nn.Module):
             nn.Linear(hidden_dim, 1),
         )
 
-    def forward(self, input_ids, attention_mask, token_type_ids):
-        # Get embeddings from BERT
-        outputs = self.backbone(
+    def forward(self, input_ids, attention_mask, token_type_ids, dropout_view=False):
+        """
+        dropout_view=True → enables Consec-style random masking
+        """
+        if dropout_view:
+            self.train()
+        else:
+            self.eval()
+
+        out = self.backbone(
             input_ids=input_ids,
             attention_mask=attention_mask,
             token_type_ids=token_type_ids
         )
-        # Use [CLS] token embedding (first token) as pooled output
-        pooled = outputs.last_hidden_state[:, 0, :]  # [batch, hidden_size]
-        emb = self.proj(pooled)     # [batch, hidden_size]
-        logit = self.head(emb).squeeze(-1)  # [batch]
+        pooled = out.last_hidden_state[:, 0, :]
+        emb = self.proj(pooled)
+        logit = self.head(emb).squeeze(-1)
         return emb, logit
 
+
+def compute_sense_contrastive_loss(batch_embs, sense_embs, temperature=0.07):
+    """
+    batch_embs : [B, D]
+    sense_embs : [B, D]   for correct sense
+    """
+    batch_embs = F.normalize(batch_embs, dim=1)
+    sense_embs = F.normalize(sense_embs, dim=1)
+
+    # similarity matrix
+    sim = torch.matmul(batch_embs, sense_embs.t()) / temperature
+    labels = torch.arange(len(batch_embs), device=batch_embs.device)
+    loss = F.cross_entropy(sim, labels)
+    return loss
+
+def contrastive_two_view_loss(z1, z2, temperature=0.07):
+    """
+    z1, z2: embeddings from two dropout-views (B,D)
+    """
+    z1 = F.normalize(z1, dim=1)
+    z2 = F.normalize(z2, dim=1)
+
+    B = z1.size(0)
+
+    sim_matrix = torch.matmul(z1, z2.t()) / temperature
+    labels = torch.arange(B, device=z1.device)
+
+    loss_a = F.cross_entropy(sim_matrix, labels)
+    loss_b = F.cross_entropy(sim_matrix.t(), labels)
+
+    return (loss_a + loss_b) / 2.0
 
 def compute_contrastive_loss(embeddings: torch.Tensor, bins: List[int], temperature=0.07, device="cpu"):
     """
@@ -161,42 +220,60 @@ def compute_contrastive_loss(embeddings: torch.Tensor, bins: List[int], temperat
         return torch.tensor(0.0, device=device)
     return loss / count
 
-def train_epoch(model, dataloader, optimizer, scheduler, device, lambda_contrast=LAMBDA_CONTRAST):
+def train_epoch(model, dataloader, optimizer, scheduler, device,
+                lambda_bin=1.0, lambda_sense=1.0, lambda_view=1.0):
+
     model.train()
-    total_loss = 0.0
+    total_loss = 0
     bce_loss_fn = nn.BCEWithLogitsLoss()
-    pbar = tqdm(dataloader, desc="train", leave=False)
-    for batch in pbar:
-        input_ids = batch["input_ids"].to(device)
-        attention_mask = batch["attention_mask"].to(device)
-        token_type_ids = batch["token_type_ids"].to(device)
+
+    for batch in tqdm(dataloader, desc="train", leave=False):
+
+        ids = batch["input_ids"].to(device)
+        mask = batch["attention_mask"].to(device)
+        tok = batch["token_type_ids"].to(device)
         t_targets = batch["t"].to(device)
-        bins = batch["bin"]  # list of ints
+        bins = batch["bin"]
+
+        emb_main, logits_main = model(ids, mask, tok, dropout_view=False)
+
+        loss_bce = bce_loss_fn(logits_main, t_targets)
+
+        loss_bin = compute_contrastive_loss(emb_main, bins, temperature=0.09, device=device)
+
+        batch_meta = [dict(zip(batch["meta"].keys(), vals)) 
+              for vals in zip(*batch["meta"].values())]
+
+        sense_embs = torch.stack([
+            get_sense_embedding(m["sense"]) for m in batch_meta
+        ]).to(device)
+
+        sense_embs = model.sense_proj(sense_embs)
+        loss_sense = compute_sense_contrastive_loss(emb_main, sense_embs)
+
+        emb_view1, _ = model(ids, mask, tok, dropout_view=True)
+        with torch.no_grad():
+            emb_view2, _ = model(ids, mask, tok, dropout_view=True)
+
+        loss_view = contrastive_two_view_loss(emb_view1, emb_view2)
+
+        loss = (
+            loss_bce
+            + lambda_bin * loss_bin
+            + lambda_sense * loss_sense
+            + lambda_view * loss_view
+        )
+
         optimizer.zero_grad()
-
-        emb, logits = model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
-        # normalize embeddings for contrastive loss usage
-        emb_norm = F.normalize(emb, dim=1)
-
-        # BCE loss (logits -> sigmoid)
-        loss_bce = bce_loss_fn(logits, t_targets)
-
-        # contrastive loss
-        loss_contrast = compute_contrastive_loss(emb, bins, temperature=CONTRASTIVE_TEMPERATURE, device=device)
-
-        loss = loss_bce + lambda_contrast * loss_contrast
-
         loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), GRAD_CLIP)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         optimizer.step()
-        if scheduler is not None:
+        if scheduler:
             scheduler.step()
 
-        total_loss += loss.item() * input_ids.size(0)
-        pbar.set_postfix({"loss": loss.item(), "bce": loss_bce.item(), "con": loss_contrast.item() if isinstance(loss_contrast, torch.Tensor) else 0.0})
-
-    avg_loss = total_loss / len(dataloader.dataset)
-    return avg_loss
+        total_loss += loss.item() * ids.size(0)
+        
+    return total_loss / len(dataloader.dataset)
 
 @torch.no_grad()
 def evaluate(model, dataloader, device):
@@ -265,17 +342,27 @@ def run_training(train_data: List[Dict[str, Any]], dev_data: List[Dict[str, Any]
     best_dev_mse = float("inf")
     for epoch in range(EPOCHS):
         print(f"Epoch {epoch+1}/{EPOCHS}")
-        train_loss = train_epoch(model, train_loader, optimizer, scheduler, DEVICE, lambda_contrast=LAMBDA_CONTRAST)
+        train_loss = train_loss = train_epoch(
+            model,
+            train_loader,
+            optimizer,
+            scheduler,
+            DEVICE,
+            lambda_bin=LAMBDA_CONTRAST,
+            lambda_sense=LAMBDA_SENSE,
+            lambda_view=LAMBDA_VIEW
+        )
+
         print("Train loss:", train_loss)
         dev_res = evaluate(model, dev_loader, DEVICE)
         print("Dev MSE (1..5):", dev_res["mse_1_5"])
         if dev_res["mse_1_5"] < best_dev_mse:
             best_dev_mse = dev_res["mse_1_5"]
-            torch.save(model.state_dict(), "best_model_v3.pt")
+            torch.save(model.state_dict(), "best_model_4.pt")
             # optionally save tokenizer
 
     # After training, load best model
-    model.load_state_dict(torch.load("best_model_v3.pt"))
+    model.load_state_dict(torch.load("best_model_4.pt"))
     print("Loaded best model.")
 
     # collect dev logits/targets for optional Platt calibration
@@ -362,12 +449,12 @@ def main():
         pred = predict_single(model, tokenizer, item, DEVICE, platt_params=platt_params)
         predictions.append(pred)
     
-    output_path = "predictions/method3_v3_predictions.JSONL"
+    output_path = "predictions/method4_predictions.JSONL"
     with open(output_path, "w", encoding="utf8") as outfile:
         for item, pred in zip(dev_data, predictions):
             entry = {"id": item["id"], "prediction": pred["pred_int"]}
             outfile.write(json.dumps(entry) + "\n")
-
+  
 
 if __name__ == "__main__":
     main()
