@@ -1,0 +1,298 @@
+[
+  {
+    "context": "The detectives arrived at the abandoned train station. They were looking for signs of the missing artifact. A faint trail caught their attention. They followed the <d> track </d>. They began to run along the abandoned railway line, hopping from wooden sleeper to sleeper to avoid twisting an ankle.",
+    "glosses": [
+      "a pair of parallel rails providing a runway for wheels",
+      "evidence pointing to a possible solution"
+    ],
+    "labels": [
+      0.5,
+      0.5
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "The train glided smoothly along the <d> track </d>.",
+    "glosses": [
+      "a pair of parallel rails providing a runway for wheels",
+      "evidence pointing to a possible solution"
+    ],
+    "labels": [
+      1,
+      0
+    ],
+    "label_type": "hard"
+  },
+  {
+    "context": "The detective found a crucial <d> track </d>.",
+    "glosses": [
+      "a pair of parallel rails providing a runway for wheels",
+      "evidence pointing to a possible solution"
+    ],
+    "labels": [
+      0,
+      1
+    ],
+    "label_type": "hard"
+  },
+  {
+    "context": "The detectives arrived at the abandoned train station. They were looking for signs of the missing artifact. A faint trail caught their attention. They followed the <d> track </d>. They found interesting clues that helped them solve the problem.",
+    "glosses": [
+      "a pair of parallel rails providing a runway for wheels",
+      "evidence pointing to a possible solution"
+    ],
+    "labels": [
+      0.475,
+      0.525
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "The detectives arrived at the abandoned train station. They were looking for signs of the missing artifact. A faint trail caught their attention. They followed the <d> track </d>.",
+    "glosses": [
+      "a pair of parallel rails providing a runway for wheels",
+      "evidence pointing to a possible solution"
+    ],
+    "labels": [
+      0.5,
+      0.5
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "Tommy was excited as he headed to the park with his dad. He carried his soccer ball tightly under his arm. They found a spot near the benches and prepared for some fun. He had been <d> dribbling </d> constantly. Tommy looked forward to showing off his ability to maneuver the ball with his feet.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      0.7752808988764045,
+      0.22471910112359553
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "He likes to <d> dribbling </d>he basketball.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      1,
+      0
+    ],
+    "label_type": "hard"
+  },
+  {
+    "context": "The baby began to <d> dribbling </d>ith joy.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      0,
+      1
+    ],
+    "label_type": "hard"
+  },
+  {
+    "context": "Tommy was excited as he headed to the park with his dad. He carried his soccer ball tightly under his arm. They found a spot near the benches and prepared for some fun. He had been <d> dribbling </d> constantly. A small trail of wetness appeared on his chin as he watched the playful puppies chase each other.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      0.3666666666666667,
+      0.6333333333333333
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "Tommy was excited as he headed to the park with his dad. He carried his soccer ball tightly under his arm. They found a spot near the benches and prepared for some fun. He had been <d> dribbling </d> constantly.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      0.5925925925925926,
+      0.40740740740740744
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "Jake loved football more than anything. He hadn't eaten much since breakfast and his stomach growled. As the game continued, he couldn't help but lose focus. The hungry child <d> dribbled </d> all over the football pitch. He was looking to play the best pass so he would impress the coach, but he just couldn't concentrate over his rumbling stomach.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      0.5714285714285714,
+      0.42857142857142855
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "He likes to <d> dribbled </d>the basketball.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      1,
+      0
+    ],
+    "label_type": "hard"
+  },
+  {
+    "context": "The baby began to <d> dribbled </d>with joy.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      0,
+      1
+    ],
+    "label_type": "hard"
+  },
+  {
+    "context": "Jake loved football more than anything. He hadn't eaten much since breakfast and his stomach growled. As the game continued, he couldn't help but lose focus. The hungry child <d> dribbled </d> all over the football pitch. All eyes were then on the toddler.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      0.47826086956521746,
+      0.5217391304347826
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "Jake loved football more than anything. He hadn't eaten much since breakfast and his stomach growled. As the game continued, he couldn't help but lose focus. The hungry child <d> dribbled </d> all over the football pitch.",
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "labels": [
+      0.6296296296296295,
+      0.37037037037037035
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "    Emily was about to perform her first solo operation. She felt a mix of excitement and apprehension as she prepared for the procedure. Her mentor assured her that she was ready for the challenge ahead. The surgeon said the patient had <d> guts </d> like she'd never seen before. She was really brave.",
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "labels": [
+      0.793103448275862,
+      0.20689655172413793
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "She didn't have the <d> guts </d> to stand up.",
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "labels": [
+      1,
+      0
+    ],
+    "label_type": "hard"
+  },
+  {
+    "context": "The doctor examined his <d> guts </d>for issues.",
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "labels": [
+      0,
+      1
+    ],
+    "label_type": "hard"
+  },
+  {
+    "context": "    Emily was about to perform her first solo operation. She felt a mix of excitement and apprehension as she prepared for the procedure. Her mentor assured her that she was ready for the challenge ahead. The surgeon said the patient had <d> guts </d> like she'd never seen before. They looked to be all tied up in knots.",
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "labels": [
+      0.31428571428571433,
+      0.6857142857142857
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "    Emily was about to perform her first solo operation. She felt a mix of excitement and apprehension as she prepared for the procedure. Her mentor assured her that she was ready for the challenge ahead. The surgeon said the patient had <d> guts </d> like she'd never seen before.",
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "labels": [
+      0.5161290322580645,
+      0.48387096774193544
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "Tom stood outside the arena, his palms sweaty and heart racing. The crowd's roar was deafening, echoing through every corner. He took a deep breath, knowing that the next few moments were critical. He wasn't sure if his <d> guts </d> could handle the pressure of the situation. He really hadn't been feeling well lately and thought they could literally explode.",
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "labels": [
+      0.48,
+      0.52
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "Tom stood outside the arena, his palms sweaty and heart racing. The crowd's roar was deafening, echoing through every corner. He took a deep breath, knowing that the next few moments were critical. He wasn't sure if his <d> guts </d> could handle the pressure of the situation. He took a deep breath to calm himself and tried his best to succeed.",
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "labels": [
+      0.6785714285714286,
+      0.32142857142857145
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "Tom stood outside the arena, his palms sweaty and heart racing. The crowd's roar was deafening, echoing through every corner. He took a deep breath, knowing that the next few moments were critical. He wasn't sure if his <d> guts </d> could handle the pressure of the situation.",
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "labels": [
+      0.5172413793103449,
+      0.48275862068965514
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "Tom had always loved sports and vintage vehicles. When the team asked for his help, he couldn't refuse. He saw this as an opportunity to combine his two passions. He <d> coached </d> the team all the way to the championship. And after winning, he received an award for the Best Coach.",
+    "glosses": [
+      "teach and supervise (someone); act as a trainer or coach (to), as in sports"
+    ],
+    "labels": [
+      1.0
+    ],
+    "label_type": "soft"
+  },
+  {
+    "context": "The <d> coached </d>rains the players daily.",
+    "glosses": [
+      "teach and supervise (someone); act as a trainer or coach (to), as in sports"
+    ],
+    "labels": [
+      1
+    ],
+    "label_type": "hard"
+  }
+]

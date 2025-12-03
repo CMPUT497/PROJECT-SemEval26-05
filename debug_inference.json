@@ -1,0 +1,222 @@
+{
+  "track": {
+    "contexts": [
+      "The detectives arrived at the abandoned train station. They were looking for signs of the missing artifact. A faint trail caught their attention. They followed the <d> track </d>. They began to run along the abandoned railway line, hopping from wooden sleeper to sleeper to avoid twisting an ankle.",
+      "The detectives arrived at the abandoned train station. They were looking for signs of the missing artifact. A faint trail caught their attention. They followed the <d> track </d>. They found interesting clues that helped them solve the problem.",
+      "The detectives arrived at the abandoned train station. They were looking for signs of the missing artifact. A faint trail caught their attention. They followed the <d> track </d>."
+    ],
+    "glosses": [
+      "a pair of parallel rails providing a runway for wheels",
+      "evidence pointing to a possible solution"
+    ],
+    "instances": [
+      {
+        "id": "0",
+        "context_idx": 0,
+        "gloss_idx": 0
+      },
+      {
+        "id": "1",
+        "context_idx": 0,
+        "gloss_idx": 1
+      },
+      {
+        "id": "2",
+        "context_idx": 1,
+        "gloss_idx": 0
+      },
+      {
+        "id": "3",
+        "context_idx": 1,
+        "gloss_idx": 1
+      },
+      {
+        "id": "4",
+        "context_idx": 2,
+        "gloss_idx": 0
+      },
+      {
+        "id": "5",
+        "context_idx": 2,
+        "gloss_idx": 1
+      }
+    ]
+  },
+  "dribbling": {
+    "contexts": [
+      "Tommy was excited as he headed to the park with his dad. He carried his soccer ball tightly under his arm. They found a spot near the benches and prepared for some fun. He had been <d> dribbling </d> constantly. Tommy looked forward to showing off his ability to maneuver the ball with his feet.",
+      "Tommy was excited as he headed to the park with his dad. He carried his soccer ball tightly under his arm. They found a spot near the benches and prepared for some fun. He had been <d> dribbling </d> constantly. A small trail of wetness appeared on his chin as he watched the playful puppies chase each other.",
+      "Tommy was excited as he headed to the park with his dad. He carried his soccer ball tightly under his arm. They found a spot near the benches and prepared for some fun. He had been <d> dribbling </d> constantly."
+    ],
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "instances": [
+      {
+        "id": "6",
+        "context_idx": 0,
+        "gloss_idx": 0
+      },
+      {
+        "id": "7",
+        "context_idx": 0,
+        "gloss_idx": 1
+      },
+      {
+        "id": "8",
+        "context_idx": 1,
+        "gloss_idx": 0
+      },
+      {
+        "id": "9",
+        "context_idx": 1,
+        "gloss_idx": 1
+      },
+      {
+        "id": "10",
+        "context_idx": 2,
+        "gloss_idx": 0
+      },
+      {
+        "id": "11",
+        "context_idx": 2,
+        "gloss_idx": 1
+      }
+    ]
+  },
+  "dribbled": {
+    "contexts": [
+      "Jake loved football more than anything. He hadn't eaten much since breakfast and his stomach growled. As the game continued, he couldn't help but lose focus. The hungry child <d> dribbled </d> all over the football pitch. He was looking to play the best pass so he would impress the coach, but he just couldn't concentrate over his rumbling stomach.",
+      "Jake loved football more than anything. He hadn't eaten much since breakfast and his stomach growled. As the game continued, he couldn't help but lose focus. The hungry child <d> dribbled </d> all over the football pitch. All eyes were then on the toddler.",
+      "Jake loved football more than anything. He hadn't eaten much since breakfast and his stomach growled. As the game continued, he couldn't help but lose focus. The hungry child <d> dribbled </d> all over the football pitch."
+    ],
+    "glosses": [
+      "propel,",
+      "let saliva drivel from the mouth"
+    ],
+    "instances": [
+      {
+        "id": "12",
+        "context_idx": 0,
+        "gloss_idx": 0
+      },
+      {
+        "id": "13",
+        "context_idx": 0,
+        "gloss_idx": 1
+      },
+      {
+        "id": "14",
+        "context_idx": 1,
+        "gloss_idx": 0
+      },
+      {
+        "id": "15",
+        "context_idx": 1,
+        "gloss_idx": 1
+      },
+      {
+        "id": "16",
+        "context_idx": 2,
+        "gloss_idx": 0
+      },
+      {
+        "id": "17",
+        "context_idx": 2,
+        "gloss_idx": 1
+      }
+    ]
+  },
+  "guts": {
+    "contexts": [
+      "    Emily was about to perform her first solo operation. She felt a mix of excitement and apprehension as she prepared for the procedure. Her mentor assured her that she was ready for the challenge ahead. The surgeon said the patient had <d> guts </d> like she'd never seen before. She was really brave.",
+      "    Emily was about to perform her first solo operation. She felt a mix of excitement and apprehension as she prepared for the procedure. Her mentor assured her that she was ready for the challenge ahead. The surgeon said the patient had <d> guts </d> like she'd never seen before. They looked to be all tied up in knots.",
+      "    Emily was about to perform her first solo operation. She felt a mix of excitement and apprehension as she prepared for the procedure. Her mentor assured her that she was ready for the challenge ahead. The surgeon said the patient had <d> guts </d> like she'd never seen before.",
+      "Tom stood outside the arena, his palms sweaty and heart racing. The crowd's roar was deafening, echoing through every corner. He took a deep breath, knowing that the next few moments were critical. He wasn't sure if his <d> guts </d> could handle the pressure of the situation. He really hadn't been feeling well lately and thought they could literally explode.",
+      "Tom stood outside the arena, his palms sweaty and heart racing. The crowd's roar was deafening, echoing through every corner. He took a deep breath, knowing that the next few moments were critical. He wasn't sure if his <d> guts </d> could handle the pressure of the situation. He took a deep breath to calm himself and tried his best to succeed.",
+      "Tom stood outside the arena, his palms sweaty and heart racing. The crowd's roar was deafening, echoing through every corner. He took a deep breath, knowing that the next few moments were critical. He wasn't sure if his <d> guts </d> could handle the pressure of the situation."
+    ],
+    "glosses": [
+      "fortitude and determination",
+      "the part of the alimentary canal between the stomach and the anus"
+    ],
+    "instances": [
+      {
+        "id": "18",
+        "context_idx": 0,
+        "gloss_idx": 0
+      },
+      {
+        "id": "19",
+        "context_idx": 0,
+        "gloss_idx": 1
+      },
+      {
+        "id": "20",
+        "context_idx": 1,
+        "gloss_idx": 0
+      },
+      {
+        "id": "21",
+        "context_idx": 1,
+        "gloss_idx": 1
+      },
+      {
+        "id": "22",
+        "context_idx": 2,
+        "gloss_idx": 0
+      },
+      {
+        "id": "23",
+        "context_idx": 2,
+        "gloss_idx": 1
+      },
+      {
+        "id": "24",
+        "context_idx": 3,
+        "gloss_idx": 0
+      },
+      {
+        "id": "25",
+        "context_idx": 3,
+        "gloss_idx": 1
+      },
+      {
+        "id": "26",
+        "context_idx": 4,
+        "gloss_idx": 0
+      },
+      {
+        "id": "27",
+        "context_idx": 4,
+        "gloss_idx": 1
+      },
+      {
+        "id": "28",
+        "context_idx": 5,
+        "gloss_idx": 0
+      },
+      {
+        "id": "29",
+        "context_idx": 5,
+        "gloss_idx": 1
+      }
+    ]
+  },
+  "coached": {
+    "contexts": [
+      "Tom had always loved sports and vintage vehicles. When the team asked for his help, he couldn't refuse. He saw this as an opportunity to combine his two passions. He <d> coached </d> the team all the way to the championship. And after winning, he received an award for the Best Coach."
+    ],
+    "glosses": [
+      "teach and supervise (someone); act as a trainer or coach (to), as in sports"
+    ],
+    "instances": [
+      {
+        "id": "30",
+        "context_idx": 0,
+        "gloss_idx": 0
+      }
+    ]
+  }
+}
