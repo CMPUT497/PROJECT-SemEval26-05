@@ -118,7 +118,16 @@ def train_consec(model, dataloader, optimizer, device, epochs=3, save_path="best
             # Process examples one-by-one
             for context, glosses, labels, kind in zip(contexts, glosses_batch, labels_batch, kinds):
                 labels = labels.to(device)
-
+                # print()
+                # print(context)
+                # print("------------------")
+                # print(labels)
+                # print("------------------")
+                # print(glosses)
+                # print("------------------")
+                # print(kind)
+                # print("------------------")
+                
                 optimizer.zero_grad()
 
                 logits = model(context, glosses)
@@ -280,6 +289,7 @@ def prepare_training_dataset(path):
                 "contexts": [],
                 "glosses": [],
                 "soft_labels": {},
+                "soft_labels_val": {},
                 "hard_labels": {},
                 "label_type": {}
             }
@@ -310,9 +320,11 @@ def prepare_training_dataset(path):
         if soft_context not in all_homonym_instances[homonym]["contexts"]:
             all_homonym_instances[homonym]["contexts"].append(soft_context)
             all_homonym_instances[homonym]["soft_labels"][soft_context] = []
+            all_homonym_instances[homonym]["soft_labels_val"][soft_context] = {}
             all_homonym_instances[homonym]["label_type"][soft_context] = "soft"
 
         all_homonym_instances[homonym]["soft_labels"][soft_context].append(gloss)
+        all_homonym_instances[homonym]["soft_labels_val"][soft_context][gloss] = item['average']
         
         ex_sent = item["example_sentence"]
         if homonym in ex_sent:
@@ -339,17 +351,22 @@ def prepare_training_dataset(path):
 
             if ltype == "soft":
                 gloss_hist = [0] * len(glosses)
-
-                for g in data["soft_labels"][ctx]:
+                for p, g in enumerate(data["soft_labels"][ctx]):
                     gloss_idx = glosses.index(g)
-                    gloss_hist[gloss_idx] += 1
-
+                    gloss_hist[gloss_idx] += data["soft_labels_val"][ctx][g]
                 total = sum(gloss_hist)
                 if total == 0:
                     label_vec = [1/len(glosses)] * len(glosses)
                 else:
                     label_vec = [x / total for x in gloss_hist]
-
+                # print("################")
+                # print(ctx)
+                # print("################")
+                # print(glosses)
+                # print("################")
+                # print(label_vec)
+                # print("################")
+                # print()
                 dataset.append({
                     "context": ctx,
                     "glosses": glosses.copy(),
@@ -378,14 +395,14 @@ def main():
     dev_path = "data/dev.json"
     output_path = "predictions/consec_wsd_predictions.JSONL"
 
-    # train_dataset = prepare_training_dataset(train_path)
-    # train_dataset = WSDSimpleDataset(train_dataset)
-    # dataloader = DataLoader(train_dataset, batch_size=16, shuffle=True, collate_fn=wsd_collate_fn)
+    train_dataset = prepare_training_dataset(train_path)
+    train_dataset = WSDSimpleDataset(train_dataset)
+    dataloader = DataLoader(train_dataset, batch_size=16, shuffle=True, collate_fn=wsd_collate_fn)
 
     model = ConSeCModel("microsoft/deberta-v3-large")
     optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
 
-    # train_consec(model, dataloader, optimizer, device, epochs=50)
+    train_consec(model, dataloader, optimizer, device, epochs=50)
     
     run_inference(model, dev_path, output_path, device)
 
