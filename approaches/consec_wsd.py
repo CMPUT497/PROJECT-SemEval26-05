@@ -55,24 +55,24 @@ class ConSeCModel(nn.Module):
         context: string with <d> markers
         glosses: list of gloss strings
         """
-        logits = []
+        combined = context
         for g in glosses:
-            context += f" <def> {g}"
+            combined += f" <def> {g}"
 
-            enc = self.tokenizer(
-                context,
-                return_tensors="pt",
-                truncation=True,
-                padding=True
-            ).to(self.encoder.device)
+        enc = self.tokenizer(
+            combined,
+            return_tensors="pt",
+            truncation=True,
+            padding=True
+        ).to(self.encoder.device)
 
-            outputs = self.encoder(**enc)
-            cls = outputs.last_hidden_state[:, 0, :]
-        
-            logit = self.classifier(cls)
-            logits.append(logit)
+        outputs = self.encoder(**enc)
+        cls = outputs.last_hidden_state[:, 0, :]
+    
+        logits = self.classifier(cls)
+        logits = logits.repeat(1, len(glosses))
 
-        return torch.cat(logits, dim=1).squeeze(0)
+        return logits.squeeze(0)
 
 
 def wsd_collate_fn(batch):
@@ -89,18 +89,12 @@ def wsd_collate_fn(batch):
     }
 
 def soft_label_loss(pred_logits, soft_targets):
-    # pred_logits: (num_glosses,)
-    # soft_targets: (num_glosses,)
-    pred_probs = nn.functional.softmax(pred_logits, dim=-1)
-    # print("SOFT prediction probabilites: ", pred_probs)
-    return nn.KLDivLoss(reduction="batchmean")(pred_probs, soft_targets)
+    log_probs = F.log_softmax(pred_logits, dim=-1)
+    return F.kl_div(log_probs, soft_targets, reduction="batchmean")
 
 def hard_label_loss(pred_logits, hard_targets):
-    # hard_targets is one-hot → convert to index
-    pred_probs = nn.functional.softmax(pred_logits, dim=-1)
-    index = torch.argmax(pred_probs).unsqueeze(0)
-    # print("HARD prediction probabilites: ", index, pred_probs)
-    return nn.CrossEntropyLoss()(pred_probs.unsqueeze(0), index)
+    target_index = hard_targets.argmax().unsqueeze(0)
+    return nn.CrossEntropyLoss()(pred_logits.unsqueeze(0), target_index)
 
 def train_consec(model, dataloader, optimizer, device, epochs=3, save_path="best_consec_model.pt"):
     model.train()
@@ -272,7 +266,7 @@ def run_inference(model, path, output_file, device):
                 prediction = instance['predictions']
                 flat_results.append({
                     "id": str(instance["id"]),
-                    "prediction": int(prediction)
+                    "prediction": int(prediction*5)
                 })
         for item in flat_results:
             outf.write(json.dumps(item) + "\n")
