@@ -91,13 +91,16 @@ def wsd_collate_fn(batch):
 def soft_label_loss(pred_logits, soft_targets):
     # pred_logits: (num_glosses,)
     # soft_targets: (num_glosses,)
-    pred_log_probs = nn.functional.log_softmax(pred_logits, dim=-1)
-    return nn.KLDivLoss(reduction="batchmean")(pred_log_probs, soft_targets)
+    pred_probs = nn.functional.softmax(pred_logits, dim=-1)
+    # print("SOFT prediction probabilites: ", pred_probs)
+    return nn.KLDivLoss(reduction="batchmean")(pred_probs, soft_targets)
 
 def hard_label_loss(pred_logits, hard_targets):
     # hard_targets is one-hot → convert to index
-    index = torch.argmax(hard_targets).unsqueeze(0)
-    return nn.CrossEntropyLoss()(pred_logits.unsqueeze(0), index)
+    pred_probs = nn.functional.softmax(pred_logits, dim=-1)
+    index = torch.argmax(pred_probs).unsqueeze(0)
+    # print("HARD prediction probabilites: ", index, pred_probs)
+    return nn.CrossEntropyLoss()(pred_probs.unsqueeze(0), index)
 
 def train_consec(model, dataloader, optimizer, device, epochs=3, save_path="best_consec_model.pt"):
     model.train()
