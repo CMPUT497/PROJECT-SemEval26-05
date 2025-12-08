@@ -285,7 +285,7 @@ def compute_score(gold_id, en_id, urdu_id, example_id):
     score = 5.0
     if not gold_id: return 3.0
     
-    if en_id != gold_id: score -= 1
+    if en_id != gold_id: score -= 2
     if urdu_id != gold_id: score -= 1
     if example_id is not None and example_id != gold_id: score -= 1
     if (en_id != gold_id) and (urdu_id != gold_id) and (en_id is not None) and (en_id == urdu_id):

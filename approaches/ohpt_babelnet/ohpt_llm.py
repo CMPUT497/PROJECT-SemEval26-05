@@ -4,7 +4,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 INPUT_FILE = "../../data/dev.json"
-CACHE_FILE = "processing_cache.json" 
+# CACHE_FILE = "processing_cache.json" 
+CACHE_FILE = "updated_processing_cache.json"
 OUTPUT_FOLDER = "../../predictions"
 OUTPUT_FILE = os.path.join(OUTPUT_FOLDER, "ohpt_llm_judge.jsonl")
 

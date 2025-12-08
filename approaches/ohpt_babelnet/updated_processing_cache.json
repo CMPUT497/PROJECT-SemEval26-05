@@ -1,0 +1,4466 @@
+{
+    "2371": {
+        "id": "2371",
+        "homonym": "track",
+        "gold_id": "bn:00016740n",
+        "en_id": "bn:00016740n",
+        "example_id": "bn:00016740n",
+        "urdu_id": null
+    },
+    "2372": {
+        "id": "2372",
+        "homonym": "track",
+        "gold_id": "bn:00050341n",
+        "en_id": "bn:00016740n",
+        "example_id": "bn:00050341n",
+        "urdu_id": null
+    },
+    "2373": {
+        "id": "2373",
+        "homonym": "track",
+        "gold_id": "bn:00016740n",
+        "en_id": "bn:00050341n",
+        "example_id": "bn:00016740n",
+        "urdu_id": null
+    },
+    "2374": {
+        "id": "2374",
+        "homonym": "track",
+        "gold_id": "bn:00050341n",
+        "en_id": "bn:00050341n",
+        "example_id": "bn:00050341n",
+        "urdu_id": null
+    },
+    "2375": {
+        "id": "2375",
+        "homonym": "track",
+        "gold_id": "bn:00016740n",
+        "en_id": "bn:04839596n",
+        "example_id": "bn:00016740n",
+        "urdu_id": null
+    },
+    "2376": {
+        "id": "2376",
+        "homonym": "track",
+        "gold_id": "bn:00050341n",
+        "en_id": "bn:04839596n",
+        "example_id": "bn:00050341n",
+        "urdu_id": null
+    },
+    "145": {
+        "id": "145",
+        "homonym": "dribbling",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "146": {
+        "id": "146",
+        "homonym": "dribbling",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "147": {
+        "id": "147",
+        "homonym": "dribbling",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:05361745n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "148": {
+        "id": "148",
+        "homonym": "dribbling",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:05361745n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "149": {
+        "id": "149",
+        "homonym": "dribbling",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "150": {
+        "id": "150",
+        "homonym": "dribbling",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "3391": {
+        "id": "3391",
+        "homonym": "dribbled",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "3392": {
+        "id": "3392",
+        "homonym": "dribbled",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "3393": {
+        "id": "3393",
+        "homonym": "dribbled",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "3394": {
+        "id": "3394",
+        "homonym": "dribbled",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "3395": {
+        "id": "3395",
+        "homonym": "dribbled",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "3396": {
+        "id": "3396",
+        "homonym": "dribbled",
+        "gold_id": "bn:00028712n",
+        "en_id": "bn:00028712n",
+        "example_id": "bn:00028712n",
+        "urdu_id": null
+    },
+    "3109": {
+        "id": "3109",
+        "homonym": "guts",
+        "gold_id": "bn:27154347v",
+        "en_id": "bn:27154347v",
+        "example_id": "bn:27154347v",
+        "urdu_id": "bn:13091742n"
+    },
+    "3110": {
+        "id": "3110",
+        "homonym": "guts",
+        "gold_id": "bn:00031043n",
+        "en_id": "bn:27154347v",
+        "example_id": "bn:00031043n",
+        "urdu_id": "bn:13091742n"
+    },
+    "3111": {
+        "id": "3111",
+        "homonym": "guts",
+        "gold_id": "bn:27154347v",
+        "en_id": "bn:27154347v",
+        "example_id": "bn:27154347v",
+        "urdu_id": null
+    },
+    "3112": {
+        "id": "3112",
+        "homonym": "guts",
+        "gold_id": "bn:00031043n",
+        "en_id": "bn:27154347v",
+        "example_id": "bn:00031043n",
+        "urdu_id": null
+    },
+    "3113": {
+        "id": "3113",
+        "homonym": "guts",
+        "gold_id": "bn:27154347v",
+        "en_id": "bn:27154347v",
+        "example_id": "bn:27154347v",
+        "urdu_id": "bn:13091742n"
+    },
+    "3114": {
+        "id": "3114",
+        "homonym": "guts",
+        "gold_id": "bn:00031043n",
+        "en_id": "bn:27154347v",
+        "example_id": "bn:00031043n",
+        "urdu_id": "bn:13091742n"
+    },
+    "3572": {
+        "id": "3572",
+        "homonym": "guts",
+        "gold_id": "bn:27154347v",
+        "en_id": "bn:00012839n",
+        "example_id": "bn:27154347v",
+        "urdu_id": "bn:00042759n"
+    },
+    "3573": {
+        "id": "3573",
+        "homonym": "guts",
+        "gold_id": "bn:00031043n",
+        "en_id": "bn:00012839n",
+        "example_id": "bn:00031043n",
+        "urdu_id": "bn:00042759n"
+    },
+    "3574": {
+        "id": "3574",
+        "homonym": "guts",
+        "gold_id": "bn:27154347v",
+        "en_id": "bn:00012839n",
+        "example_id": "bn:27154347v",
+        "urdu_id": "bn:00042759n"
+    },
+    "3575": {
+        "id": "3575",
+        "homonym": "guts",
+        "gold_id": "bn:00031043n",
+        "en_id": "bn:00012839n",
+        "example_id": "bn:00031043n",
+        "urdu_id": "bn:00042759n"
+    },
+    "3576": {
+        "id": "3576",
+        "homonym": "guts",
+        "gold_id": "bn:27154347v",
+        "en_id": "bn:27154347v",
+        "example_id": "bn:27154347v",
+        "urdu_id": null
+    },
+    "3577": {
+        "id": "3577",
+        "homonym": "guts",
+        "gold_id": "bn:00031043n",
+        "en_id": "bn:27154347v",
+        "example_id": "bn:00031043n",
+        "urdu_id": null
+    },
+    "1561": {
+        "id": "1561",
+        "homonym": "mean",
+        "gold_id": "bn:00097854a",
+        "en_id": "bn:00098196a",
+        "example_id": "bn:00097854a",
+        "urdu_id": "bn:00007449n"
+    },
+    "1562": {
+        "id": "1562",
+        "homonym": "mean",
+        "gold_id": "bn:00098196a",
+        "en_id": "bn:00098196a",
+        "example_id": "bn:00098196a",
+        "urdu_id": "bn:00007449n"
+    },
+    "1563": {
+        "id": "1563",
+        "homonym": "mean",
+        "gold_id": "bn:00097854a",
+        "en_id": "bn:00102496a",
+        "example_id": "bn:00097854a",
+        "urdu_id": "bn:00007449n"
+    },
+    "1564": {
+        "id": "1564",
+        "homonym": "mean",
+        "gold_id": "bn:00098196a",
+        "en_id": "bn:00102496a",
+        "example_id": "bn:00098196a",
+        "urdu_id": "bn:00007449n"
+    },
+    "1565": {
+        "id": "1565",
+        "homonym": "mean",
+        "gold_id": "bn:00097854a",
+        "en_id": "bn:00097854a",
+        "example_id": "bn:00097854a",
+        "urdu_id": "bn:00007449n"
+    },
+    "1566": {
+        "id": "1566",
+        "homonym": "mean",
+        "gold_id": "bn:00098196a",
+        "en_id": "bn:00097854a",
+        "example_id": "bn:00098196a",
+        "urdu_id": "bn:00007449n"
+    },
+    "433": {
+        "id": "433",
+        "homonym": "sage",
+        "gold_id": "bn:00068820n",
+        "en_id": "bn:21706336n",
+        "example_id": "bn:00068820n",
+        "urdu_id": null
+    },
+    "434": {
+        "id": "434",
+        "homonym": "sage",
+        "gold_id": "bn:00068824n",
+        "en_id": "bn:21706336n",
+        "example_id": "bn:00068824n",
+        "urdu_id": null
+    },
+    "435": {
+        "id": "435",
+        "homonym": "sage",
+        "gold_id": "bn:00068820n",
+        "en_id": "bn:00110053a",
+        "example_id": "bn:00068820n",
+        "urdu_id": null
+    },
+    "436": {
+        "id": "436",
+        "homonym": "sage",
+        "gold_id": "bn:00068824n",
+        "en_id": "bn:00110053a",
+        "example_id": "bn:00068824n",
+        "urdu_id": null
+    },
+    "437": {
+        "id": "437",
+        "homonym": "sage",
+        "gold_id": "bn:00068820n",
+        "en_id": "bn:21706336n",
+        "example_id": "bn:00068820n",
+        "urdu_id": null
+    },
+    "438": {
+        "id": "438",
+        "homonym": "sage",
+        "gold_id": "bn:00068824n",
+        "en_id": "bn:21706336n",
+        "example_id": "bn:00068824n",
+        "urdu_id": null
+    },
+    "187": {
+        "id": "187",
+        "homonym": "suit",
+        "gold_id": "bn:01189599n",
+        "en_id": "bn:01189599n",
+        "example_id": "bn:01189599n",
+        "urdu_id": "bn:00075103n"
+    },
+    "188": {
+        "id": "188",
+        "homonym": "suit",
+        "gold_id": "bn:00016403n",
+        "en_id": "bn:01189599n",
+        "example_id": "bn:00016403n",
+        "urdu_id": "bn:00075103n"
+    },
+    "189": {
+        "id": "189",
+        "homonym": "suit",
+        "gold_id": "bn:01189599n",
+        "en_id": "bn:01189599n",
+        "example_id": "bn:01189599n",
+        "urdu_id": "bn:00006558n"
+    },
+    "190": {
+        "id": "190",
+        "homonym": "suit",
+        "gold_id": "bn:00016403n",
+        "en_id": "bn:01189599n",
+        "example_id": "bn:00016403n",
+        "urdu_id": "bn:00006558n"
+    },
+    "191": {
+        "id": "191",
+        "homonym": "suit",
+        "gold_id": "bn:01189599n",
+        "en_id": "bn:01189599n",
+        "example_id": "bn:01189599n",
+        "urdu_id": "bn:00075103n"
+    },
+    "192": {
+        "id": "192",
+        "homonym": "suit",
+        "gold_id": "bn:00016403n",
+        "en_id": "bn:01189599n",
+        "example_id": "bn:00016403n",
+        "urdu_id": "bn:00075103n"
+    },
+    "559": {
+        "id": "559",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00075103n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "560": {
+        "id": "560",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00075103n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "561": {
+        "id": "561",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "562": {
+        "id": "562",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "563": {
+        "id": "563",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "564": {
+        "id": "564",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "1315": {
+        "id": "1315",
+        "homonym": "suit",
+        "gold_id": "bn:01189599n",
+        "en_id": "bn:01189599n",
+        "example_id": "bn:01189599n",
+        "urdu_id": "bn:00006125n"
+    },
+    "1316": {
+        "id": "1316",
+        "homonym": "suit",
+        "gold_id": "bn:00016403n",
+        "en_id": "bn:01189599n",
+        "example_id": "bn:00016403n",
+        "urdu_id": "bn:00006125n"
+    },
+    "1317": {
+        "id": "1317",
+        "homonym": "suit",
+        "gold_id": "bn:01189599n",
+        "en_id": "bn:00088240v",
+        "example_id": "bn:01189599n",
+        "urdu_id": "bn:00006125n"
+    },
+    "1318": {
+        "id": "1318",
+        "homonym": "suit",
+        "gold_id": "bn:00016403n",
+        "en_id": "bn:00088240v",
+        "example_id": "bn:00016403n",
+        "urdu_id": "bn:00006125n"
+    },
+    "1319": {
+        "id": "1319",
+        "homonym": "suit",
+        "gold_id": "bn:01189599n",
+        "en_id": "bn:00094581v",
+        "example_id": "bn:01189599n",
+        "urdu_id": "bn:00006125n"
+    },
+    "1320": {
+        "id": "1320",
+        "homonym": "suit",
+        "gold_id": "bn:00016403n",
+        "en_id": "bn:00094581v",
+        "example_id": "bn:00016403n",
+        "urdu_id": "bn:00006125n"
+    },
+    "2161": {
+        "id": "2161",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00075103n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "2162": {
+        "id": "2162",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00075103n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "2163": {
+        "id": "2163",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "2164": {
+        "id": "2164",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "2165": {
+        "id": "2165",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "2166": {
+        "id": "2166",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "2803": {
+        "id": "2803",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00075103n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "2804": {
+        "id": "2804",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00075103n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "2805": {
+        "id": "2805",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00075103n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "2806": {
+        "id": "2806",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00075103n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "2807": {
+        "id": "2807",
+        "homonym": "suits",
+        "gold_id": "bn:00075103n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00075103n",
+        "urdu_id": null
+    },
+    "2808": {
+        "id": "2808",
+        "homonym": "suits",
+        "gold_id": "bn:00804711n",
+        "en_id": "bn:00804711n",
+        "example_id": "bn:00804711n",
+        "urdu_id": null
+    },
+    "2131": {
+        "id": "2131",
+        "homonym": "stars",
+        "gold_id": "bn:00304645n",
+        "en_id": "bn:15082377n",
+        "example_id": "bn:00304645n",
+        "urdu_id": null
+    },
+    "2132": {
+        "id": "2132",
+        "homonym": "stars",
+        "gold_id": "bn:27630664n",
+        "en_id": "bn:15082377n",
+        "example_id": "bn:27630664n",
+        "urdu_id": null
+    },
+    "2133": {
+        "id": "2133",
+        "homonym": "stars",
+        "gold_id": "bn:00304645n",
+        "en_id": "bn:15082377n",
+        "example_id": "bn:00304645n",
+        "urdu_id": null
+    },
+    "2134": {
+        "id": "2134",
+        "homonym": "stars",
+        "gold_id": "bn:27630664n",
+        "en_id": "bn:15082377n",
+        "example_id": "bn:27630664n",
+        "urdu_id": null
+    },
+    "2135": {
+        "id": "2135",
+        "homonym": "stars",
+        "gold_id": "bn:00304645n",
+        "en_id": "bn:00304645n",
+        "example_id": "bn:00304645n",
+        "urdu_id": null
+    },
+    "2136": {
+        "id": "2136",
+        "homonym": "stars",
+        "gold_id": "bn:27630664n",
+        "en_id": "bn:00304645n",
+        "example_id": "bn:27630664n",
+        "urdu_id": null
+    },
+    "2809": {
+        "id": "2809",
+        "homonym": "star",
+        "gold_id": "bn:00073965n",
+        "en_id": "bn:00000790n",
+        "example_id": "bn:00073965n",
+        "urdu_id": null
+    },
+    "2810": {
+        "id": "2810",
+        "homonym": "star",
+        "gold_id": "bn:00094295v",
+        "en_id": "bn:00000790n",
+        "example_id": "bn:00094295v",
+        "urdu_id": null
+    },
+    "2811": {
+        "id": "2811",
+        "homonym": "star",
+        "gold_id": "bn:00073965n",
+        "en_id": "bn:17228150n",
+        "example_id": "bn:00073965n",
+        "urdu_id": null
+    },
+    "2812": {
+        "id": "2812",
+        "homonym": "star",
+        "gold_id": "bn:00094295v",
+        "en_id": "bn:17228150n",
+        "example_id": "bn:00094295v",
+        "urdu_id": null
+    },
+    "2813": {
+        "id": "2813",
+        "homonym": "star",
+        "gold_id": "bn:00073965n",
+        "en_id": "bn:00094295v",
+        "example_id": "bn:00073965n",
+        "urdu_id": null
+    },
+    "2814": {
+        "id": "2814",
+        "homonym": "star",
+        "gold_id": "bn:00094295v",
+        "en_id": "bn:00094295v",
+        "example_id": "bn:00094295v",
+        "urdu_id": null
+    },
+    "379": {
+        "id": "379",
+        "homonym": "reservation",
+        "gold_id": "bn:00067291n",
+        "en_id": "bn:00067293n",
+        "example_id": "bn:00067291n",
+        "urdu_id": null
+    },
+    "380": {
+        "id": "380",
+        "homonym": "reservation",
+        "gold_id": "bn:02024423n",
+        "en_id": "bn:00067293n",
+        "example_id": "bn:02024423n",
+        "urdu_id": null
+    },
+    "381": {
+        "id": "381",
+        "homonym": "reservation",
+        "gold_id": "bn:00067291n",
+        "en_id": "bn:00067293n",
+        "example_id": "bn:00067291n",
+        "urdu_id": null
+    },
+    "382": {
+        "id": "382",
+        "homonym": "reservation",
+        "gold_id": "bn:02024423n",
+        "en_id": "bn:00067293n",
+        "example_id": "bn:02024423n",
+        "urdu_id": null
+    },
+    "383": {
+        "id": "383",
+        "homonym": "reservation",
+        "gold_id": "bn:00067291n",
+        "en_id": "bn:02024423n",
+        "example_id": "bn:00067291n",
+        "urdu_id": null
+    },
+    "384": {
+        "id": "384",
+        "homonym": "reservation",
+        "gold_id": "bn:02024423n",
+        "en_id": "bn:02024423n",
+        "example_id": "bn:02024423n",
+        "urdu_id": null
+    },
+    "1951": {
+        "id": "1951",
+        "homonym": "reservation",
+        "gold_id": "bn:02024423n",
+        "en_id": "bn:02024423n",
+        "example_id": "bn:02024423n",
+        "urdu_id": null
+    },
+    "1952": {
+        "id": "1952",
+        "homonym": "reservation",
+        "gold_id": "bn:00005884n",
+        "en_id": "bn:02024423n",
+        "example_id": "bn:00005884n",
+        "urdu_id": null
+    },
+    "1953": {
+        "id": "1953",
+        "homonym": "reservation",
+        "gold_id": "bn:02024423n",
+        "en_id": "bn:02024423n",
+        "example_id": "bn:02024423n",
+        "urdu_id": null
+    },
+    "1954": {
+        "id": "1954",
+        "homonym": "reservation",
+        "gold_id": "bn:00005884n",
+        "en_id": "bn:02024423n",
+        "example_id": "bn:00005884n",
+        "urdu_id": null
+    },
+    "1955": {
+        "id": "1955",
+        "homonym": "reservation",
+        "gold_id": "bn:02024423n",
+        "en_id": "bn:02024423n",
+        "example_id": "bn:02024423n",
+        "urdu_id": null
+    },
+    "1956": {
+        "id": "1956",
+        "homonym": "reservation",
+        "gold_id": "bn:00005884n",
+        "en_id": "bn:02024423n",
+        "example_id": "bn:00005884n",
+        "urdu_id": null
+    },
+    "787": {
+        "id": "787",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "788": {
+        "id": "788",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "789": {
+        "id": "789",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "790": {
+        "id": "790",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "791": {
+        "id": "791",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "792": {
+        "id": "792",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "1549": {
+        "id": "1549",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "1550": {
+        "id": "1550",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "1551": {
+        "id": "1551",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:15085550n",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "1552": {
+        "id": "1552",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:15085550n",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "1553": {
+        "id": "1553",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "1554": {
+        "id": "1554",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "2329": {
+        "id": "2329",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:15085550n",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "2330": {
+        "id": "2330",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:15085550n",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "2331": {
+        "id": "2331",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:15085550n",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "2332": {
+        "id": "2332",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:15085550n",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "2333": {
+        "id": "2333",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00115117r",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "2334": {
+        "id": "2334",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00115117r",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "2599": {
+        "id": "2599",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00115117r",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "2600": {
+        "id": "2600",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00115117r",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "2601": {
+        "id": "2601",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "2602": {
+        "id": "2602",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "2603": {
+        "id": "2603",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "2604": {
+        "id": "2604",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "3710": {
+        "id": "3710",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "3711": {
+        "id": "3711",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "3712": {
+        "id": "3712",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:15085550n",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "3713": {
+        "id": "3713",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:15085550n",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "3714": {
+        "id": "3714",
+        "homonym": "downhill",
+        "gold_id": "bn:00101023a",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00101023a",
+        "urdu_id": null
+    },
+    "3715": {
+        "id": "3715",
+        "homonym": "downhill",
+        "gold_id": "bn:00028487n",
+        "en_id": "bn:00101023a",
+        "example_id": "bn:00028487n",
+        "urdu_id": null
+    },
+    "751": {
+        "id": "751",
+        "homonym": "fallout",
+        "gold_id": "bn:00032825n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032825n",
+        "urdu_id": null
+    },
+    "752": {
+        "id": "752",
+        "homonym": "fallout",
+        "gold_id": "bn:00032826n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032826n",
+        "urdu_id": null
+    },
+    "753": {
+        "id": "753",
+        "homonym": "fallout",
+        "gold_id": "bn:00032825n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032825n",
+        "urdu_id": null
+    },
+    "754": {
+        "id": "754",
+        "homonym": "fallout",
+        "gold_id": "bn:00032826n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032826n",
+        "urdu_id": null
+    },
+    "755": {
+        "id": "755",
+        "homonym": "fallout",
+        "gold_id": "bn:00032825n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032825n",
+        "urdu_id": null
+    },
+    "756": {
+        "id": "756",
+        "homonym": "fallout",
+        "gold_id": "bn:00032826n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032826n",
+        "urdu_id": null
+    },
+    "2761": {
+        "id": "2761",
+        "homonym": "fallout",
+        "gold_id": "bn:00032825n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032825n",
+        "urdu_id": null
+    },
+    "2762": {
+        "id": "2762",
+        "homonym": "fallout",
+        "gold_id": "bn:00032826n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032826n",
+        "urdu_id": null
+    },
+    "2763": {
+        "id": "2763",
+        "homonym": "fallout",
+        "gold_id": "bn:00032825n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032825n",
+        "urdu_id": null
+    },
+    "2764": {
+        "id": "2764",
+        "homonym": "fallout",
+        "gold_id": "bn:00032826n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032826n",
+        "urdu_id": null
+    },
+    "2765": {
+        "id": "2765",
+        "homonym": "fallout",
+        "gold_id": "bn:00032825n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032825n",
+        "urdu_id": null
+    },
+    "2766": {
+        "id": "2766",
+        "homonym": "fallout",
+        "gold_id": "bn:00032826n",
+        "en_id": "bn:02371227n",
+        "example_id": "bn:00032826n",
+        "urdu_id": null
+    },
+    "721": {
+        "id": "721",
+        "homonym": "underground",
+        "gold_id": "bn:13636999v",
+        "en_id": "bn:00054667n",
+        "example_id": "bn:13636999v",
+        "urdu_id": "bn:27427361n"
+    },
+    "722": {
+        "id": "722",
+        "homonym": "underground",
+        "gold_id": "bn:03272063n",
+        "en_id": "bn:00054667n",
+        "example_id": "bn:03272063n",
+        "urdu_id": "bn:27427361n"
+    },
+    "723": {
+        "id": "723",
+        "homonym": "underground",
+        "gold_id": "bn:13636999v",
+        "en_id": "bn:21706001n",
+        "example_id": "bn:13636999v",
+        "urdu_id": "bn:04156532n"
+    },
+    "724": {
+        "id": "724",
+        "homonym": "underground",
+        "gold_id": "bn:03272063n",
+        "en_id": "bn:21706001n",
+        "example_id": "bn:03272063n",
+        "urdu_id": "bn:04156532n"
+    },
+    "725": {
+        "id": "725",
+        "homonym": "underground",
+        "gold_id": "bn:13636999v",
+        "en_id": "bn:00595127n",
+        "example_id": "bn:13636999v",
+        "urdu_id": "bn:27427361n"
+    },
+    "726": {
+        "id": "726",
+        "homonym": "underground",
+        "gold_id": "bn:03272063n",
+        "en_id": "bn:00595127n",
+        "example_id": "bn:03272063n",
+        "urdu_id": "bn:27427361n"
+    },
+    "2359": {
+        "id": "2359",
+        "homonym": "underground",
+        "gold_id": "bn:13636999v",
+        "en_id": "bn:21706001n",
+        "example_id": "bn:13636999v",
+        "urdu_id": null
+    },
+    "2360": {
+        "id": "2360",
+        "homonym": "underground",
+        "gold_id": "bn:03272063n",
+        "en_id": "bn:21706001n",
+        "example_id": "bn:03272063n",
+        "urdu_id": null
+    },
+    "2361": {
+        "id": "2361",
+        "homonym": "underground",
+        "gold_id": "bn:13636999v",
+        "en_id": "bn:21706001n",
+        "example_id": "bn:13636999v",
+        "urdu_id": "bn:27427361n"
+    },
+    "2362": {
+        "id": "2362",
+        "homonym": "underground",
+        "gold_id": "bn:03272063n",
+        "en_id": "bn:21706001n",
+        "example_id": "bn:03272063n",
+        "urdu_id": "bn:27427361n"
+    },
+    "2363": {
+        "id": "2363",
+        "homonym": "underground",
+        "gold_id": "bn:13636999v",
+        "en_id": "bn:00098226a",
+        "example_id": "bn:13636999v",
+        "urdu_id": "bn:27427361n"
+    },
+    "2364": {
+        "id": "2364",
+        "homonym": "underground",
+        "gold_id": "bn:03272063n",
+        "en_id": "bn:00098226a",
+        "example_id": "bn:03272063n",
+        "urdu_id": "bn:27427361n"
+    },
+    "1909": {
+        "id": "1909",
+        "homonym": "hops",
+        "gold_id": "bn:00044728n",
+        "en_id": "bn:00044728n",
+        "example_id": "bn:00044728n",
+        "urdu_id": null
+    },
+    "1910": {
+        "id": "1910",
+        "homonym": "hops",
+        "gold_id": "bn:00044728n",
+        "en_id": "bn:00044728n",
+        "example_id": "bn:00044728n",
+        "urdu_id": null
+    },
+    "1911": {
+        "id": "1911",
+        "homonym": "hops",
+        "gold_id": "bn:00044728n",
+        "en_id": "bn:00044728n",
+        "example_id": "bn:00044728n",
+        "urdu_id": null
+    },
+    "1912": {
+        "id": "1912",
+        "homonym": "hops",
+        "gold_id": "bn:00044728n",
+        "en_id": "bn:00044728n",
+        "example_id": "bn:00044728n",
+        "urdu_id": null
+    },
+    "1913": {
+        "id": "1913",
+        "homonym": "hops",
+        "gold_id": "bn:00044728n",
+        "en_id": "bn:00044728n",
+        "example_id": "bn:00044728n",
+        "urdu_id": null
+    },
+    "1914": {
+        "id": "1914",
+        "homonym": "hops",
+        "gold_id": "bn:00044728n",
+        "en_id": "bn:00044728n",
+        "example_id": "bn:00044728n",
+        "urdu_id": null
+    },
+    "2413": {
+        "id": "2413",
+        "homonym": "flop",
+        "gold_id": "bn:00115396r",
+        "en_id": "bn:16938190n",
+        "example_id": "bn:00115396r",
+        "urdu_id": null
+    },
+    "2414": {
+        "id": "2414",
+        "homonym": "flop",
+        "gold_id": "bn:03315803n",
+        "en_id": "bn:16938190n",
+        "example_id": "bn:03315803n",
+        "urdu_id": null
+    },
+    "2415": {
+        "id": "2415",
+        "homonym": "flop",
+        "gold_id": "bn:00115396r",
+        "en_id": "bn:00044414n",
+        "example_id": "bn:00115396r",
+        "urdu_id": null
+    },
+    "2416": {
+        "id": "2416",
+        "homonym": "flop",
+        "gold_id": "bn:03315803n",
+        "en_id": "bn:00044414n",
+        "example_id": "bn:03315803n",
+        "urdu_id": null
+    },
+    "2417": {
+        "id": "2417",
+        "homonym": "flop",
+        "gold_id": "bn:00115396r",
+        "en_id": "bn:00044414n",
+        "example_id": "bn:00115396r",
+        "urdu_id": null
+    },
+    "2418": {
+        "id": "2418",
+        "homonym": "flop",
+        "gold_id": "bn:03315803n",
+        "en_id": "bn:00044414n",
+        "example_id": "bn:03315803n",
+        "urdu_id": null
+    },
+    "3554": {
+        "id": "3554",
+        "homonym": "flop",
+        "gold_id": "bn:00115396r",
+        "en_id": "bn:16938190n",
+        "example_id": "bn:00115396r",
+        "urdu_id": null
+    },
+    "3555": {
+        "id": "3555",
+        "homonym": "flop",
+        "gold_id": "bn:03315803n",
+        "en_id": "bn:16938190n",
+        "example_id": "bn:03315803n",
+        "urdu_id": null
+    },
+    "3556": {
+        "id": "3556",
+        "homonym": "flop",
+        "gold_id": "bn:00115396r",
+        "en_id": "bn:00044414n",
+        "example_id": "bn:00115396r",
+        "urdu_id": null
+    },
+    "3557": {
+        "id": "3557",
+        "homonym": "flop",
+        "gold_id": "bn:03315803n",
+        "en_id": "bn:00044414n",
+        "example_id": "bn:03315803n",
+        "urdu_id": null
+    },
+    "3558": {
+        "id": "3558",
+        "homonym": "flop",
+        "gold_id": "bn:00115396r",
+        "en_id": "bn:16938190n",
+        "example_id": "bn:00115396r",
+        "urdu_id": null
+    },
+    "3559": {
+        "id": "3559",
+        "homonym": "flop",
+        "gold_id": "bn:03315803n",
+        "en_id": "bn:16938190n",
+        "example_id": "bn:03315803n",
+        "urdu_id": null
+    },
+    "949": {
+        "id": "949",
+        "homonym": "fledgling",
+        "gold_id": "bn:00031048n",
+        "en_id": "bn:00031048n",
+        "example_id": "bn:00031048n",
+        "urdu_id": null
+    },
+    "950": {
+        "id": "950",
+        "homonym": "fledgling",
+        "gold_id": "bn:00103086a",
+        "en_id": "bn:00031048n",
+        "example_id": "bn:00103086a",
+        "urdu_id": null
+    },
+    "951": {
+        "id": "951",
+        "homonym": "fledgling",
+        "gold_id": "bn:00031048n",
+        "en_id": "bn:00103086a",
+        "example_id": "bn:00031048n",
+        "urdu_id": null
+    },
+    "952": {
+        "id": "952",
+        "homonym": "fledgling",
+        "gold_id": "bn:00103086a",
+        "en_id": "bn:00103086a",
+        "example_id": "bn:00103086a",
+        "urdu_id": null
+    },
+    "953": {
+        "id": "953",
+        "homonym": "fledgling",
+        "gold_id": "bn:00031048n",
+        "en_id": "bn:00103086a",
+        "example_id": "bn:00031048n",
+        "urdu_id": null
+    },
+    "954": {
+        "id": "954",
+        "homonym": "fledgling",
+        "gold_id": "bn:00103086a",
+        "en_id": "bn:00103086a",
+        "example_id": "bn:00103086a",
+        "urdu_id": null
+    },
+    "1975": {
+        "id": "1975",
+        "homonym": "fledgling",
+        "gold_id": "bn:00031048n",
+        "en_id": "bn:01413652n",
+        "example_id": "bn:00031048n",
+        "urdu_id": null
+    },
+    "1976": {
+        "id": "1976",
+        "homonym": "fledgling",
+        "gold_id": "bn:00103086a",
+        "en_id": "bn:01413652n",
+        "example_id": "bn:00103086a",
+        "urdu_id": null
+    },
+    "1977": {
+        "id": "1977",
+        "homonym": "fledgling",
+        "gold_id": "bn:00031048n",
+        "en_id": "bn:01413652n",
+        "example_id": "bn:00031048n",
+        "urdu_id": null
+    },
+    "1978": {
+        "id": "1978",
+        "homonym": "fledgling",
+        "gold_id": "bn:00103086a",
+        "en_id": "bn:01413652n",
+        "example_id": "bn:00103086a",
+        "urdu_id": null
+    },
+    "1979": {
+        "id": "1979",
+        "homonym": "fledgling",
+        "gold_id": "bn:00031048n",
+        "en_id": "bn:00103086a",
+        "example_id": "bn:00031048n",
+        "urdu_id": null
+    },
+    "1980": {
+        "id": "1980",
+        "homonym": "fledgling",
+        "gold_id": "bn:00103086a",
+        "en_id": "bn:00103086a",
+        "example_id": "bn:00103086a",
+        "urdu_id": null
+    },
+    "19": {
+        "id": "19",
+        "homonym": "Drawing",
+        "gold_id": "bn:00028641n",
+        "en_id": "bn:00028641n",
+        "example_id": "bn:00028641n",
+        "urdu_id": null
+    },
+    "20": {
+        "id": "20",
+        "homonym": "Drawing",
+        "gold_id": "bn:00028641n",
+        "en_id": "bn:00028641n",
+        "example_id": "bn:00028641n",
+        "urdu_id": null
+    },
+    "21": {
+        "id": "21",
+        "homonym": "Drawing",
+        "gold_id": "bn:00028641n",
+        "en_id": "bn:00028641n",
+        "example_id": "bn:00028641n",
+        "urdu_id": null
+    },
+    "22": {
+        "id": "22",
+        "homonym": "Drawing",
+        "gold_id": "bn:00028641n",
+        "en_id": "bn:00028641n",
+        "example_id": "bn:00028641n",
+        "urdu_id": null
+    },
+    "23": {
+        "id": "23",
+        "homonym": "Drawing",
+        "gold_id": "bn:00028641n",
+        "en_id": "bn:00028641n",
+        "example_id": "bn:00028641n",
+        "urdu_id": "bn:00086525v"
+    },
+    "24": {
+        "id": "24",
+        "homonym": "Drawing",
+        "gold_id": "bn:00028641n",
+        "en_id": "bn:00028641n",
+        "example_id": "bn:00028641n",
+        "urdu_id": "bn:00086525v"
+    },
+    "625": {
+        "id": "625",
+        "homonym": "draw",
+        "gold_id": "bn:00087236v",
+        "en_id": "bn:00087238v",
+        "example_id": "bn:00087236v",
+        "urdu_id": null
+    },
+    "626": {
+        "id": "626",
+        "homonym": "draw",
+        "gold_id": "bn:00087216v",
+        "en_id": "bn:00087238v",
+        "example_id": "bn:00087216v",
+        "urdu_id": null
+    },
+    "627": {
+        "id": "627",
+        "homonym": "draw",
+        "gold_id": "bn:00087236v",
+        "en_id": "bn:00087252v",
+        "example_id": "bn:00087236v",
+        "urdu_id": null
+    },
+    "628": {
+        "id": "628",
+        "homonym": "draw",
+        "gold_id": "bn:00087216v",
+        "en_id": "bn:00087252v",
+        "example_id": "bn:00087216v",
+        "urdu_id": null
+    },
+    "629": {
+        "id": "629",
+        "homonym": "draw",
+        "gold_id": "bn:00087236v",
+        "en_id": "bn:00087216v",
+        "example_id": "bn:00087236v",
+        "urdu_id": null
+    },
+    "630": {
+        "id": "630",
+        "homonym": "draw",
+        "gold_id": "bn:00087216v",
+        "en_id": "bn:00087216v",
+        "example_id": "bn:00087216v",
+        "urdu_id": null
+    },
+    "2701": {
+        "id": "2701",
+        "homonym": "draw",
+        "gold_id": "bn:00087252v",
+        "en_id": "bn:00087252v",
+        "example_id": "bn:00087252v",
+        "urdu_id": null
+    },
+    "2702": {
+        "id": "2702",
+        "homonym": "draw",
+        "gold_id": "bn:00087236v",
+        "en_id": "bn:00087252v",
+        "example_id": "bn:00087236v",
+        "urdu_id": null
+    },
+    "2703": {
+        "id": "2703",
+        "homonym": "draw",
+        "gold_id": "bn:00087252v",
+        "en_id": "bn:00087238v",
+        "example_id": "bn:00087252v",
+        "urdu_id": null
+    },
+    "2704": {
+        "id": "2704",
+        "homonym": "draw",
+        "gold_id": "bn:00087236v",
+        "en_id": "bn:00087238v",
+        "example_id": "bn:00087236v",
+        "urdu_id": null
+    },
+    "2705": {
+        "id": "2705",
+        "homonym": "draw",
+        "gold_id": "bn:00087252v",
+        "en_id": "bn:00087236v",
+        "example_id": "bn:00087252v",
+        "urdu_id": null
+    },
+    "2706": {
+        "id": "2706",
+        "homonym": "draw",
+        "gold_id": "bn:00087236v",
+        "en_id": "bn:00087236v",
+        "example_id": "bn:00087236v",
+        "urdu_id": null
+    },
+    "3133": {
+        "id": "3133",
+        "homonym": "drawing",
+        "gold_id": "bn:00028562n",
+        "en_id": "bn:00028630n",
+        "example_id": "bn:00028562n",
+        "urdu_id": null
+    },
+    "3134": {
+        "id": "3134",
+        "homonym": "drawing",
+        "gold_id": "bn:00028640n",
+        "en_id": "bn:00028630n",
+        "example_id": "bn:00028640n",
+        "urdu_id": null
+    },
+    "3135": {
+        "id": "3135",
+        "homonym": "drawing",
+        "gold_id": "bn:00028562n",
+        "en_id": "bn:00045963n",
+        "example_id": "bn:00028562n",
+        "urdu_id": null
+    },
+    "3136": {
+        "id": "3136",
+        "homonym": "drawing",
+        "gold_id": "bn:00028640n",
+        "en_id": "bn:00045963n",
+        "example_id": "bn:00028640n",
+        "urdu_id": null
+    },
+    "3137": {
+        "id": "3137",
+        "homonym": "drawing",
+        "gold_id": "bn:00028562n",
+        "en_id": "bn:00028640n",
+        "example_id": "bn:00028562n",
+        "urdu_id": "bn:17170485n"
+    },
+    "3138": {
+        "id": "3138",
+        "homonym": "drawing",
+        "gold_id": "bn:00028640n",
+        "en_id": "bn:00028640n",
+        "example_id": "bn:00028640n",
+        "urdu_id": "bn:17170485n"
+    },
+    "3584": {
+        "id": "3584",
+        "homonym": "drawn",
+        "gold_id": "bn:00099276a",
+        "en_id": "bn:17515714n",
+        "example_id": "bn:00099276a",
+        "urdu_id": null
+    },
+    "3585": {
+        "id": "3585",
+        "homonym": "drawn",
+        "gold_id": "bn:17515714n",
+        "en_id": "bn:17515714n",
+        "example_id": "bn:17515714n",
+        "urdu_id": null
+    },
+    "3586": {
+        "id": "3586",
+        "homonym": "drawn",
+        "gold_id": "bn:00099276a",
+        "en_id": "bn:17515714n",
+        "example_id": "bn:00099276a",
+        "urdu_id": null
+    },
+    "3587": {
+        "id": "3587",
+        "homonym": "drawn",
+        "gold_id": "bn:17515714n",
+        "en_id": "bn:17515714n",
+        "example_id": "bn:17515714n",
+        "urdu_id": null
+    },
+    "3588": {
+        "id": "3588",
+        "homonym": "drawn",
+        "gold_id": "bn:00099276a",
+        "en_id": "bn:17515714n",
+        "example_id": "bn:00099276a",
+        "urdu_id": null
+    },
+    "3589": {
+        "id": "3589",
+        "homonym": "drawn",
+        "gold_id": "bn:17515714n",
+        "en_id": "bn:17515714n",
+        "example_id": "bn:17515714n",
+        "urdu_id": null
+    },
+    "3505": {
+        "id": "3505",
+        "homonym": "branch",
+        "gold_id": "bn:03318545n",
+        "en_id": "bn:03318545n",
+        "example_id": "bn:03318545n",
+        "urdu_id": null
+    },
+    "3506": {
+        "id": "3506",
+        "homonym": "branch",
+        "gold_id": "bn:00005706n",
+        "en_id": "bn:03318545n",
+        "example_id": "bn:00005706n",
+        "urdu_id": null
+    },
+    "3507": {
+        "id": "3507",
+        "homonym": "branch",
+        "gold_id": "bn:03318545n",
+        "en_id": "bn:01988157n",
+        "example_id": "bn:03318545n",
+        "urdu_id": null
+    },
+    "3508": {
+        "id": "3508",
+        "homonym": "branch",
+        "gold_id": "bn:00005706n",
+        "en_id": "bn:01988157n",
+        "example_id": "bn:00005706n",
+        "urdu_id": null
+    },
+    "3509": {
+        "id": "3509",
+        "homonym": "branch",
+        "gold_id": "bn:03318545n",
+        "en_id": "bn:00083879v",
+        "example_id": "bn:03318545n",
+        "urdu_id": null
+    },
+    "3510": {
+        "id": "3510",
+        "homonym": "branch",
+        "gold_id": "bn:00005706n",
+        "en_id": "bn:00083879v",
+        "example_id": "bn:00005706n",
+        "urdu_id": null
+    },
+    "73": {
+        "id": "73",
+        "homonym": "fiddle",
+        "gold_id": "bn:00088146v",
+        "en_id": "bn:00088147v",
+        "example_id": "bn:00088146v",
+        "urdu_id": null
+    },
+    "74": {
+        "id": "74",
+        "homonym": "fiddle",
+        "gold_id": "bn:00088149v",
+        "en_id": "bn:00088147v",
+        "example_id": "bn:00088149v",
+        "urdu_id": null
+    },
+    "75": {
+        "id": "75",
+        "homonym": "fiddle",
+        "gold_id": "bn:00088146v",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00088146v",
+        "urdu_id": null
+    },
+    "76": {
+        "id": "76",
+        "homonym": "fiddle",
+        "gold_id": "bn:00088149v",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00088149v",
+        "urdu_id": null
+    },
+    "77": {
+        "id": "77",
+        "homonym": "fiddle",
+        "gold_id": "bn:00088146v",
+        "en_id": "bn:00088149v",
+        "example_id": "bn:00088146v",
+        "urdu_id": null
+    },
+    "78": {
+        "id": "78",
+        "homonym": "fiddle",
+        "gold_id": "bn:00088149v",
+        "en_id": "bn:00088149v",
+        "example_id": "bn:00088149v",
+        "urdu_id": null
+    },
+    "1933": {
+        "id": "1933",
+        "homonym": "fiddling",
+        "gold_id": "bn:00102938a",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00102938a",
+        "urdu_id": null
+    },
+    "1934": {
+        "id": "1934",
+        "homonym": "fiddling",
+        "gold_id": "bn:00034250n",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00034250n",
+        "urdu_id": null
+    },
+    "1935": {
+        "id": "1935",
+        "homonym": "fiddling",
+        "gold_id": "bn:00102938a",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00102938a",
+        "urdu_id": null
+    },
+    "1936": {
+        "id": "1936",
+        "homonym": "fiddling",
+        "gold_id": "bn:00034250n",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00034250n",
+        "urdu_id": null
+    },
+    "1937": {
+        "id": "1937",
+        "homonym": "fiddling",
+        "gold_id": "bn:00102938a",
+        "en_id": "bn:00102938a",
+        "example_id": "bn:00102938a",
+        "urdu_id": null
+    },
+    "1938": {
+        "id": "1938",
+        "homonym": "fiddling",
+        "gold_id": "bn:00034250n",
+        "en_id": "bn:00102938a",
+        "example_id": "bn:00034250n",
+        "urdu_id": null
+    },
+    "2911": {
+        "id": "2911",
+        "homonym": "fiddling",
+        "gold_id": "bn:00102938a",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00102938a",
+        "urdu_id": null
+    },
+    "2912": {
+        "id": "2912",
+        "homonym": "fiddling",
+        "gold_id": "bn:00034250n",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00034250n",
+        "urdu_id": null
+    },
+    "2913": {
+        "id": "2913",
+        "homonym": "fiddling",
+        "gold_id": "bn:00102938a",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00102938a",
+        "urdu_id": null
+    },
+    "2914": {
+        "id": "2914",
+        "homonym": "fiddling",
+        "gold_id": "bn:00034250n",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00034250n",
+        "urdu_id": null
+    },
+    "2915": {
+        "id": "2915",
+        "homonym": "fiddling",
+        "gold_id": "bn:00102938a",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00102938a",
+        "urdu_id": null
+    },
+    "2916": {
+        "id": "2916",
+        "homonym": "fiddling",
+        "gold_id": "bn:00034250n",
+        "en_id": "bn:00034250n",
+        "example_id": "bn:00034250n",
+        "urdu_id": null
+    },
+    "877": {
+        "id": "877",
+        "homonym": "try",
+        "gold_id": "bn:00095207v",
+        "en_id": "bn:00095207v",
+        "example_id": "bn:00095207v",
+        "urdu_id": null
+    },
+    "878": {
+        "id": "878",
+        "homonym": "try",
+        "gold_id": "bn:00082353v",
+        "en_id": "bn:00095207v",
+        "example_id": "bn:00082353v",
+        "urdu_id": null
+    },
+    "879": {
+        "id": "879",
+        "homonym": "try",
+        "gold_id": "bn:00095207v",
+        "en_id": "bn:00087731v",
+        "example_id": "bn:00095207v",
+        "urdu_id": null
+    },
+    "880": {
+        "id": "880",
+        "homonym": "try",
+        "gold_id": "bn:00082353v",
+        "en_id": "bn:00087731v",
+        "example_id": "bn:00082353v",
+        "urdu_id": null
+    },
+    "881": {
+        "id": "881",
+        "homonym": "try",
+        "gold_id": "bn:00095207v",
+        "en_id": "bn:13716528a",
+        "example_id": "bn:00095207v",
+        "urdu_id": null
+    },
+    "882": {
+        "id": "882",
+        "homonym": "try",
+        "gold_id": "bn:00082353v",
+        "en_id": "bn:13716528a",
+        "example_id": "bn:00082353v",
+        "urdu_id": null
+    },
+    "2011": {
+        "id": "2011",
+        "homonym": "docked",
+        "gold_id": "bn:00027984n",
+        "en_id": "bn:00027984n",
+        "example_id": "bn:00027984n",
+        "urdu_id": null
+    },
+    "2012": {
+        "id": "2012",
+        "homonym": "docked",
+        "gold_id": "bn:00027984n",
+        "en_id": "bn:00027984n",
+        "example_id": "bn:00027984n",
+        "urdu_id": null
+    },
+    "2013": {
+        "id": "2013",
+        "homonym": "docked",
+        "gold_id": "bn:00027984n",
+        "en_id": "bn:00027984n",
+        "example_id": "bn:00027984n",
+        "urdu_id": null
+    },
+    "2014": {
+        "id": "2014",
+        "homonym": "docked",
+        "gold_id": "bn:00027984n",
+        "en_id": "bn:00027984n",
+        "example_id": "bn:00027984n",
+        "urdu_id": null
+    },
+    "2015": {
+        "id": "2015",
+        "homonym": "docked",
+        "gold_id": "bn:00027984n",
+        "en_id": "bn:00027984n",
+        "example_id": "bn:00027984n",
+        "urdu_id": null
+    },
+    "2016": {
+        "id": "2016",
+        "homonym": "docked",
+        "gold_id": "bn:00027984n",
+        "en_id": "bn:00027984n",
+        "example_id": "bn:00027984n",
+        "urdu_id": null
+    },
+    "415": {
+        "id": "415",
+        "homonym": "tipped",
+        "gold_id": "bn:00111948a",
+        "en_id": "bn:00111948a",
+        "example_id": "bn:00111948a",
+        "urdu_id": null
+    },
+    "416": {
+        "id": "416",
+        "homonym": "tipped",
+        "gold_id": "bn:00111948a",
+        "en_id": "bn:00111948a",
+        "example_id": "bn:00111948a",
+        "urdu_id": null
+    },
+    "417": {
+        "id": "417",
+        "homonym": "tipped",
+        "gold_id": "bn:00111948a",
+        "en_id": "bn:00111948a",
+        "example_id": "bn:00111948a",
+        "urdu_id": null
+    },
+    "418": {
+        "id": "418",
+        "homonym": "tipped",
+        "gold_id": "bn:00111948a",
+        "en_id": "bn:00111948a",
+        "example_id": "bn:00111948a",
+        "urdu_id": null
+    },
+    "419": {
+        "id": "419",
+        "homonym": "tipped",
+        "gold_id": "bn:00111948a",
+        "en_id": "bn:00111948a",
+        "example_id": "bn:00111948a",
+        "urdu_id": null
+    },
+    "420": {
+        "id": "420",
+        "homonym": "tipped",
+        "gold_id": "bn:00111948a",
+        "en_id": "bn:00111948a",
+        "example_id": "bn:00111948a",
+        "urdu_id": null
+    },
+    "853": {
+        "id": "853",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "854": {
+        "id": "854",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "855": {
+        "id": "855",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "856": {
+        "id": "856",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "857": {
+        "id": "857",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "858": {
+        "id": "858",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "3025": {
+        "id": "3025",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "3026": {
+        "id": "3026",
+        "homonym": "tips",
+        "gold_id": "bn:21749481n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:21749481n",
+        "urdu_id": null
+    },
+    "3027": {
+        "id": "3027",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:00077372n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "3028": {
+        "id": "3028",
+        "homonym": "tips",
+        "gold_id": "bn:21749481n",
+        "en_id": "bn:00077372n",
+        "example_id": "bn:21749481n",
+        "urdu_id": null
+    },
+    "3029": {
+        "id": "3029",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "3030": {
+        "id": "3030",
+        "homonym": "tips",
+        "gold_id": "bn:21749481n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:21749481n",
+        "urdu_id": null
+    },
+    "3325": {
+        "id": "3325",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "3326": {
+        "id": "3326",
+        "homonym": "tips",
+        "gold_id": "bn:21749481n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:21749481n",
+        "urdu_id": null
+    },
+    "3327": {
+        "id": "3327",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "3328": {
+        "id": "3328",
+        "homonym": "tips",
+        "gold_id": "bn:21749481n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:21749481n",
+        "urdu_id": null
+    },
+    "3329": {
+        "id": "3329",
+        "homonym": "tips",
+        "gold_id": "bn:00077372n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:00077372n",
+        "urdu_id": null
+    },
+    "3330": {
+        "id": "3330",
+        "homonym": "tips",
+        "gold_id": "bn:21749481n",
+        "en_id": "bn:21749481n",
+        "example_id": "bn:21749481n",
+        "urdu_id": null
+    },
+    "3331": {
+        "id": "3331",
+        "homonym": "tip",
+        "gold_id": "bn:00007817n",
+        "en_id": "bn:00084246v",
+        "example_id": "bn:00007817n",
+        "urdu_id": null
+    },
+    "3332": {
+        "id": "3332",
+        "homonym": "tip",
+        "gold_id": "bn:00094989v",
+        "en_id": "bn:00084246v",
+        "example_id": "bn:00094989v",
+        "urdu_id": null
+    },
+    "3333": {
+        "id": "3333",
+        "homonym": "tip",
+        "gold_id": "bn:00007817n",
+        "en_id": "bn:00077372n",
+        "example_id": "bn:00007817n",
+        "urdu_id": "bn:01229869n"
+    },
+    "3334": {
+        "id": "3334",
+        "homonym": "tip",
+        "gold_id": "bn:00094989v",
+        "en_id": "bn:00077372n",
+        "example_id": "bn:00094989v",
+        "urdu_id": "bn:01229869n"
+    },
+    "3335": {
+        "id": "3335",
+        "homonym": "tip",
+        "gold_id": "bn:00007817n",
+        "en_id": "bn:00084246v",
+        "example_id": "bn:00007817n",
+        "urdu_id": null
+    },
+    "3336": {
+        "id": "3336",
+        "homonym": "tip",
+        "gold_id": "bn:00094989v",
+        "en_id": "bn:00084246v",
+        "example_id": "bn:00094989v",
+        "urdu_id": null
+    },
+    "1207": {
+        "id": "1207",
+        "homonym": "comfortable",
+        "gold_id": "bn:00100067a",
+        "en_id": "bn:00100067a",
+        "example_id": "bn:00100067a",
+        "urdu_id": null
+    },
+    "1208": {
+        "id": "1208",
+        "homonym": "comfortable",
+        "gold_id": "bn:00100067a",
+        "en_id": "bn:00100067a",
+        "example_id": "bn:00100067a",
+        "urdu_id": null
+    },
+    "1209": {
+        "id": "1209",
+        "homonym": "comfortable",
+        "gold_id": "bn:00100067a",
+        "en_id": "bn:00100067a",
+        "example_id": "bn:00100067a",
+        "urdu_id": null
+    },
+    "1210": {
+        "id": "1210",
+        "homonym": "comfortable",
+        "gold_id": "bn:00100067a",
+        "en_id": "bn:00100067a",
+        "example_id": "bn:00100067a",
+        "urdu_id": null
+    },
+    "1211": {
+        "id": "1211",
+        "homonym": "comfortable",
+        "gold_id": "bn:00100067a",
+        "en_id": "bn:00100067a",
+        "example_id": "bn:00100067a",
+        "urdu_id": null
+    },
+    "1212": {
+        "id": "1212",
+        "homonym": "comfortable",
+        "gold_id": "bn:00100067a",
+        "en_id": "bn:00100067a",
+        "example_id": "bn:00100067a",
+        "urdu_id": null
+    },
+    "157": {
+        "id": "157",
+        "homonym": "blaze",
+        "gold_id": "bn:00011171n",
+        "en_id": "bn:00083575v",
+        "example_id": "bn:00011171n",
+        "urdu_id": null
+    },
+    "158": {
+        "id": "158",
+        "homonym": "blaze",
+        "gold_id": "bn:00021764n",
+        "en_id": "bn:00083575v",
+        "example_id": "bn:00021764n",
+        "urdu_id": null
+    },
+    "159": {
+        "id": "159",
+        "homonym": "blaze",
+        "gold_id": "bn:00011171n",
+        "en_id": "bn:00083575v",
+        "example_id": "bn:00011171n",
+        "urdu_id": null
+    },
+    "160": {
+        "id": "160",
+        "homonym": "blaze",
+        "gold_id": "bn:00021764n",
+        "en_id": "bn:00083575v",
+        "example_id": "bn:00021764n",
+        "urdu_id": null
+    },
+    "161": {
+        "id": "161",
+        "homonym": "blaze",
+        "gold_id": "bn:00011171n",
+        "en_id": "bn:00021764n",
+        "example_id": "bn:00011171n",
+        "urdu_id": "bn:00033854n"
+    },
+    "162": {
+        "id": "162",
+        "homonym": "blaze",
+        "gold_id": "bn:00021764n",
+        "en_id": "bn:00021764n",
+        "example_id": "bn:00021764n",
+        "urdu_id": "bn:00033854n"
+    },
+    "445": {
+        "id": "445",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "446": {
+        "id": "446",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "447": {
+        "id": "447",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "448": {
+        "id": "448",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "449": {
+        "id": "449",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "450": {
+        "id": "450",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "1447": {
+        "id": "1447",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "1448": {
+        "id": "1448",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "1449": {
+        "id": "1449",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "1450": {
+        "id": "1450",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "1451": {
+        "id": "1451",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "1452": {
+        "id": "1452",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "2317": {
+        "id": "2317",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "2318": {
+        "id": "2318",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "2319": {
+        "id": "2319",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "2320": {
+        "id": "2320",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "2321": {
+        "id": "2321",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "2322": {
+        "id": "2322",
+        "homonym": "snorted",
+        "gold_id": "bn:00046987n",
+        "en_id": "bn:00046987n",
+        "example_id": "bn:00046987n",
+        "urdu_id": null
+    },
+    "469": {
+        "id": "469",
+        "homonym": "bank",
+        "gold_id": "bn:05339972n",
+        "en_id": "bn:15346085n",
+        "example_id": "bn:05339972n",
+        "urdu_id": null
+    },
+    "470": {
+        "id": "470",
+        "homonym": "bank",
+        "gold_id": "bn:00008370n",
+        "en_id": "bn:15346085n",
+        "example_id": "bn:00008370n",
+        "urdu_id": null
+    },
+    "471": {
+        "id": "471",
+        "homonym": "bank",
+        "gold_id": "bn:05339972n",
+        "en_id": "bn:00083094v",
+        "example_id": "bn:05339972n",
+        "urdu_id": null
+    },
+    "472": {
+        "id": "472",
+        "homonym": "bank",
+        "gold_id": "bn:00008370n",
+        "en_id": "bn:00083094v",
+        "example_id": "bn:00008370n",
+        "urdu_id": null
+    },
+    "473": {
+        "id": "473",
+        "homonym": "bank",
+        "gold_id": "bn:05339972n",
+        "en_id": "bn:00083094v",
+        "example_id": "bn:05339972n",
+        "urdu_id": null
+    },
+    "474": {
+        "id": "474",
+        "homonym": "bank",
+        "gold_id": "bn:00008370n",
+        "en_id": "bn:00083094v",
+        "example_id": "bn:00008370n",
+        "urdu_id": null
+    },
+    "3253": {
+        "id": "3253",
+        "homonym": "bank",
+        "gold_id": "bn:05339972n",
+        "en_id": "bn:00083094v",
+        "example_id": "bn:05339972n",
+        "urdu_id": "bn:00008364n"
+    },
+    "3254": {
+        "id": "3254",
+        "homonym": "bank",
+        "gold_id": "bn:00008370n",
+        "en_id": "bn:00083094v",
+        "example_id": "bn:00008370n",
+        "urdu_id": "bn:00008364n"
+    },
+    "3255": {
+        "id": "3255",
+        "homonym": "bank",
+        "gold_id": "bn:05339972n",
+        "en_id": "bn:00008370n",
+        "example_id": "bn:05339972n",
+        "urdu_id": "bn:00008364n"
+    },
+    "3256": {
+        "id": "3256",
+        "homonym": "bank",
+        "gold_id": "bn:00008370n",
+        "en_id": "bn:00008370n",
+        "example_id": "bn:00008370n",
+        "urdu_id": "bn:00008364n"
+    },
+    "3257": {
+        "id": "3257",
+        "homonym": "bank",
+        "gold_id": "bn:05339972n",
+        "en_id": "bn:00008370n",
+        "example_id": "bn:05339972n",
+        "urdu_id": "bn:00008364n"
+    },
+    "3258": {
+        "id": "3258",
+        "homonym": "bank",
+        "gold_id": "bn:00008370n",
+        "en_id": "bn:00008370n",
+        "example_id": "bn:00008370n",
+        "urdu_id": "bn:00008364n"
+    },
+    "1": {
+        "id": "1",
+        "homonym": "pay",
+        "gold_id": "bn:00091494v",
+        "en_id": "bn:16198995n",
+        "example_id": "bn:00091494v",
+        "urdu_id": null
+    },
+    "2": {
+        "id": "2",
+        "homonym": "pay",
+        "gold_id": "bn:13734326a",
+        "en_id": "bn:16198995n",
+        "example_id": "bn:13734326a",
+        "urdu_id": null
+    },
+    "3": {
+        "id": "3",
+        "homonym": "pay",
+        "gold_id": "bn:00091494v",
+        "en_id": "bn:16198995n",
+        "example_id": "bn:00091494v",
+        "urdu_id": null
+    },
+    "4": {
+        "id": "4",
+        "homonym": "pay",
+        "gold_id": "bn:13734326a",
+        "en_id": "bn:16198995n",
+        "example_id": "bn:13734326a",
+        "urdu_id": null
+    },
+    "5": {
+        "id": "5",
+        "homonym": "pay",
+        "gold_id": "bn:00091494v",
+        "en_id": "bn:00029416n",
+        "example_id": "bn:00091494v",
+        "urdu_id": null
+    },
+    "6": {
+        "id": "6",
+        "homonym": "pay",
+        "gold_id": "bn:13734326a",
+        "en_id": "bn:00029416n",
+        "example_id": "bn:13734326a",
+        "urdu_id": null
+    },
+    "835": {
+        "id": "835",
+        "homonym": "peach",
+        "gold_id": "bn:13300761n",
+        "en_id": "bn:13300761n",
+        "example_id": "bn:13300761n",
+        "urdu_id": null
+    },
+    "836": {
+        "id": "836",
+        "homonym": "peach",
+        "gold_id": "bn:27581949n",
+        "en_id": "bn:13300761n",
+        "example_id": "bn:27581949n",
+        "urdu_id": null
+    },
+    "837": {
+        "id": "837",
+        "homonym": "peach",
+        "gold_id": "bn:13300761n",
+        "en_id": "bn:13300761n",
+        "example_id": "bn:13300761n",
+        "urdu_id": null
+    },
+    "838": {
+        "id": "838",
+        "homonym": "peach",
+        "gold_id": "bn:27581949n",
+        "en_id": "bn:13300761n",
+        "example_id": "bn:27581949n",
+        "urdu_id": null
+    },
+    "839": {
+        "id": "839",
+        "homonym": "peach",
+        "gold_id": "bn:13300761n",
+        "en_id": "bn:13300761n",
+        "example_id": "bn:13300761n",
+        "urdu_id": null
+    },
+    "840": {
+        "id": "840",
+        "homonym": "peach",
+        "gold_id": "bn:27581949n",
+        "en_id": "bn:13300761n",
+        "example_id": "bn:27581949n",
+        "urdu_id": null
+    },
+    "283": {
+        "id": "283",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "284": {
+        "id": "284",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "285": {
+        "id": "285",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "286": {
+        "id": "286",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "287": {
+        "id": "287",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "288": {
+        "id": "288",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "1573": {
+        "id": "1573",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "1574": {
+        "id": "1574",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "1575": {
+        "id": "1575",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "1576": {
+        "id": "1576",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "1577": {
+        "id": "1577",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "1578": {
+        "id": "1578",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "2101": {
+        "id": "2101",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "2102": {
+        "id": "2102",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "2103": {
+        "id": "2103",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "2104": {
+        "id": "2104",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "2105": {
+        "id": "2105",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "2106": {
+        "id": "2106",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "2377": {
+        "id": "2377",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "2378": {
+        "id": "2378",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "2379": {
+        "id": "2379",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "2380": {
+        "id": "2380",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "2381": {
+        "id": "2381",
+        "homonym": "flexible",
+        "gold_id": "bn:00102069a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00102069a",
+        "urdu_id": null
+    },
+    "2382": {
+        "id": "2382",
+        "homonym": "flexible",
+        "gold_id": "bn:00103099a",
+        "en_id": "bn:00102069a",
+        "example_id": "bn:00103099a",
+        "urdu_id": null
+    },
+    "307": {
+        "id": "307",
+        "homonym": "vision",
+        "gold_id": "bn:27247314v",
+        "en_id": "bn:08594134n",
+        "example_id": "bn:27247314v",
+        "urdu_id": null
+    },
+    "308": {
+        "id": "308",
+        "homonym": "vision",
+        "gold_id": "bn:17381871n",
+        "en_id": "bn:08594134n",
+        "example_id": "bn:17381871n",
+        "urdu_id": null
+    },
+    "309": {
+        "id": "309",
+        "homonym": "vision",
+        "gold_id": "bn:27247314v",
+        "en_id": "bn:08594134n",
+        "example_id": "bn:27247314v",
+        "urdu_id": null
+    },
+    "310": {
+        "id": "310",
+        "homonym": "vision",
+        "gold_id": "bn:17381871n",
+        "en_id": "bn:08594134n",
+        "example_id": "bn:17381871n",
+        "urdu_id": null
+    },
+    "311": {
+        "id": "311",
+        "homonym": "vision",
+        "gold_id": "bn:27247314v",
+        "en_id": "bn:27247314v",
+        "example_id": "bn:27247314v",
+        "urdu_id": null
+    },
+    "312": {
+        "id": "312",
+        "homonym": "vision",
+        "gold_id": "bn:17381871n",
+        "en_id": "bn:27247314v",
+        "example_id": "bn:17381871n",
+        "urdu_id": null
+    },
+    "2707": {
+        "id": "2707",
+        "homonym": "vision",
+        "gold_id": "bn:27247314v",
+        "en_id": "bn:08594134n",
+        "example_id": "bn:27247314v",
+        "urdu_id": null
+    },
+    "2708": {
+        "id": "2708",
+        "homonym": "vision",
+        "gold_id": "bn:17381871n",
+        "en_id": "bn:08594134n",
+        "example_id": "bn:17381871n",
+        "urdu_id": null
+    },
+    "2709": {
+        "id": "2709",
+        "homonym": "vision",
+        "gold_id": "bn:27247314v",
+        "en_id": "bn:27247314v",
+        "example_id": "bn:27247314v",
+        "urdu_id": null
+    },
+    "2710": {
+        "id": "2710",
+        "homonym": "vision",
+        "gold_id": "bn:17381871n",
+        "en_id": "bn:27247314v",
+        "example_id": "bn:17381871n",
+        "urdu_id": null
+    },
+    "2711": {
+        "id": "2711",
+        "homonym": "vision",
+        "gold_id": "bn:27247314v",
+        "en_id": "bn:27247314v",
+        "example_id": "bn:27247314v",
+        "urdu_id": null
+    },
+    "2712": {
+        "id": "2712",
+        "homonym": "vision",
+        "gold_id": "bn:17381871n",
+        "en_id": "bn:27247314v",
+        "example_id": "bn:17381871n",
+        "urdu_id": null
+    },
+    "217": {
+        "id": "217",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00634631n",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "218": {
+        "id": "218",
+        "homonym": "pick",
+        "gold_id": "bn:00083546v",
+        "en_id": "bn:00634631n",
+        "example_id": "bn:00083546v",
+        "urdu_id": null
+    },
+    "219": {
+        "id": "219",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00062230n",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "220": {
+        "id": "220",
+        "homonym": "pick",
+        "gold_id": "bn:00083546v",
+        "en_id": "bn:00062230n",
+        "example_id": "bn:00083546v",
+        "urdu_id": null
+    },
+    "221": {
+        "id": "221",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00091594v",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "222": {
+        "id": "222",
+        "homonym": "pick",
+        "gold_id": "bn:00083546v",
+        "en_id": "bn:00091594v",
+        "example_id": "bn:00083546v",
+        "urdu_id": null
+    },
+    "805": {
+        "id": "805",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00091594v",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "806": {
+        "id": "806",
+        "homonym": "pick",
+        "gold_id": "bn:00091594v",
+        "en_id": "bn:00091594v",
+        "example_id": "bn:00091594v",
+        "urdu_id": null
+    },
+    "807": {
+        "id": "807",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00003132n",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "808": {
+        "id": "808",
+        "homonym": "pick",
+        "gold_id": "bn:00091594v",
+        "en_id": "bn:00003132n",
+        "example_id": "bn:00091594v",
+        "urdu_id": null
+    },
+    "809": {
+        "id": "809",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00091594v",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "810": {
+        "id": "810",
+        "homonym": "pick",
+        "gold_id": "bn:00091594v",
+        "en_id": "bn:00091594v",
+        "example_id": "bn:00091594v",
+        "urdu_id": null
+    },
+    "3223": {
+        "id": "3223",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00634631n",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "3224": {
+        "id": "3224",
+        "homonym": "pick",
+        "gold_id": "bn:00091594v",
+        "en_id": "bn:00634631n",
+        "example_id": "bn:00091594v",
+        "urdu_id": null
+    },
+    "3225": {
+        "id": "3225",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00091594v",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "3226": {
+        "id": "3226",
+        "homonym": "pick",
+        "gold_id": "bn:00091594v",
+        "en_id": "bn:00091594v",
+        "example_id": "bn:00091594v",
+        "urdu_id": null
+    },
+    "3227": {
+        "id": "3227",
+        "homonym": "pick",
+        "gold_id": "bn:00091590v",
+        "en_id": "bn:00634631n",
+        "example_id": "bn:00091590v",
+        "urdu_id": null
+    },
+    "3228": {
+        "id": "3228",
+        "homonym": "pick",
+        "gold_id": "bn:00091594v",
+        "en_id": "bn:00634631n",
+        "example_id": "bn:00091594v",
+        "urdu_id": null
+    },
+    "757": {
+        "id": "757",
+        "homonym": "croak",
+        "gold_id": "bn:00086049v",
+        "en_id": "bn:00086049v",
+        "example_id": "bn:00086049v",
+        "urdu_id": null
+    },
+    "758": {
+        "id": "758",
+        "homonym": "croak",
+        "gold_id": "bn:00086049v",
+        "en_id": "bn:00086049v",
+        "example_id": "bn:00086049v",
+        "urdu_id": null
+    },
+    "759": {
+        "id": "759",
+        "homonym": "croak",
+        "gold_id": "bn:00086049v",
+        "en_id": "bn:00086049v",
+        "example_id": "bn:00086049v",
+        "urdu_id": null
+    },
+    "760": {
+        "id": "760",
+        "homonym": "croak",
+        "gold_id": "bn:00086049v",
+        "en_id": "bn:00086049v",
+        "example_id": "bn:00086049v",
+        "urdu_id": null
+    },
+    "761": {
+        "id": "761",
+        "homonym": "croak",
+        "gold_id": "bn:00086049v",
+        "en_id": "bn:00023876n",
+        "example_id": "bn:00086049v",
+        "urdu_id": null
+    },
+    "762": {
+        "id": "762",
+        "homonym": "croak",
+        "gold_id": "bn:00086049v",
+        "en_id": "bn:00023876n",
+        "example_id": "bn:00086049v",
+        "urdu_id": null
+    },
+    "637": {
+        "id": "637",
+        "homonym": "pile",
+        "gold_id": "bn:00056813n",
+        "en_id": "bn:00091631v",
+        "example_id": "bn:00056813n",
+        "urdu_id": null
+    },
+    "638": {
+        "id": "638",
+        "homonym": "pile",
+        "gold_id": "bn:00010307n",
+        "en_id": "bn:00091631v",
+        "example_id": "bn:00010307n",
+        "urdu_id": null
+    },
+    "639": {
+        "id": "639",
+        "homonym": "pile",
+        "gold_id": "bn:00056813n",
+        "en_id": "bn:00010307n",
+        "example_id": "bn:00056813n",
+        "urdu_id": null
+    },
+    "640": {
+        "id": "640",
+        "homonym": "pile",
+        "gold_id": "bn:00010307n",
+        "en_id": "bn:00010307n",
+        "example_id": "bn:00010307n",
+        "urdu_id": null
+    },
+    "641": {
+        "id": "641",
+        "homonym": "pile",
+        "gold_id": "bn:00056813n",
+        "en_id": "bn:00091631v",
+        "example_id": "bn:00056813n",
+        "urdu_id": null
+    },
+    "642": {
+        "id": "642",
+        "homonym": "pile",
+        "gold_id": "bn:00010307n",
+        "en_id": "bn:00091631v",
+        "example_id": "bn:00010307n",
+        "urdu_id": null
+    },
+    "1609": {
+        "id": "1609",
+        "homonym": "pile",
+        "gold_id": "bn:00056813n",
+        "en_id": "bn:00091631v",
+        "example_id": "bn:00056813n",
+        "urdu_id": null
+    },
+    "1610": {
+        "id": "1610",
+        "homonym": "pile",
+        "gold_id": "bn:00010307n",
+        "en_id": "bn:00091631v",
+        "example_id": "bn:00010307n",
+        "urdu_id": null
+    },
+    "1611": {
+        "id": "1611",
+        "homonym": "pile",
+        "gold_id": "bn:00056813n",
+        "en_id": "bn:08715716n",
+        "example_id": "bn:00056813n",
+        "urdu_id": null
+    },
+    "1612": {
+        "id": "1612",
+        "homonym": "pile",
+        "gold_id": "bn:00010307n",
+        "en_id": "bn:08715716n",
+        "example_id": "bn:00010307n",
+        "urdu_id": null
+    },
+    "1613": {
+        "id": "1613",
+        "homonym": "pile",
+        "gold_id": "bn:00056813n",
+        "en_id": "bn:00074381n",
+        "example_id": "bn:00056813n",
+        "urdu_id": null
+    },
+    "1614": {
+        "id": "1614",
+        "homonym": "pile",
+        "gold_id": "bn:00010307n",
+        "en_id": "bn:00074381n",
+        "example_id": "bn:00010307n",
+        "urdu_id": null
+    },
+    "1921": {
+        "id": "1921",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:03013227n",
+        "example_id": "bn:00109445a",
+        "urdu_id": null
+    },
+    "1922": {
+        "id": "1922",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:03013227n",
+        "example_id": "bn:00109443a",
+        "urdu_id": null
+    },
+    "1923": {
+        "id": "1923",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:03013227n",
+        "example_id": "bn:00109445a",
+        "urdu_id": null
+    },
+    "1924": {
+        "id": "1924",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:03013227n",
+        "example_id": "bn:00109443a",
+        "urdu_id": null
+    },
+    "1925": {
+        "id": "1925",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:00109445a",
+        "example_id": "bn:00109445a",
+        "urdu_id": null
+    },
+    "1926": {
+        "id": "1926",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:00109445a",
+        "example_id": "bn:00109443a",
+        "urdu_id": null
+    },
+    "2311": {
+        "id": "2311",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:03013227n",
+        "example_id": "bn:00109445a",
+        "urdu_id": null
+    },
+    "2312": {
+        "id": "2312",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:03013227n",
+        "example_id": "bn:00109443a",
+        "urdu_id": null
+    },
+    "2313": {
+        "id": "2313",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:03013227n",
+        "example_id": "bn:00109445a",
+        "urdu_id": null
+    },
+    "2314": {
+        "id": "2314",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:03013227n",
+        "example_id": "bn:00109443a",
+        "urdu_id": null
+    },
+    "2315": {
+        "id": "2315",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:00109440a",
+        "example_id": "bn:00109445a",
+        "urdu_id": null
+    },
+    "2316": {
+        "id": "2316",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:00109440a",
+        "example_id": "bn:00109443a",
+        "urdu_id": null
+    },
+    "3722": {
+        "id": "3722",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:00109445a",
+        "example_id": "bn:00109445a",
+        "urdu_id": "bn:05711104n"
+    },
+    "3723": {
+        "id": "3723",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:00109445a",
+        "example_id": "bn:00109443a",
+        "urdu_id": "bn:05711104n"
+    },
+    "3724": {
+        "id": "3724",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:00109445a",
+        "example_id": "bn:00109445a",
+        "urdu_id": null
+    },
+    "3725": {
+        "id": "3725",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:00109445a",
+        "example_id": "bn:00109443a",
+        "urdu_id": null
+    },
+    "3726": {
+        "id": "3726",
+        "homonym": "rare",
+        "gold_id": "bn:00109445a",
+        "en_id": "bn:00109445a",
+        "example_id": "bn:00109445a",
+        "urdu_id": null
+    },
+    "3727": {
+        "id": "3727",
+        "homonym": "rare",
+        "gold_id": "bn:00109443a",
+        "en_id": "bn:00109445a",
+        "example_id": "bn:00109443a",
+        "urdu_id": null
+    },
+    "1213": {
+        "id": "1213",
+        "homonym": "bill",
+        "gold_id": "bn:17656699n",
+        "en_id": "bn:17656699n",
+        "example_id": "bn:17656699n",
+        "urdu_id": null
+    },
+    "1214": {
+        "id": "1214",
+        "homonym": "bill",
+        "gold_id": "bn:15349970n",
+        "en_id": "bn:17656699n",
+        "example_id": "bn:15349970n",
+        "urdu_id": null
+    },
+    "1215": {
+        "id": "1215",
+        "homonym": "bill",
+        "gold_id": "bn:17656699n",
+        "en_id": "bn:17656699n",
+        "example_id": "bn:17656699n",
+        "urdu_id": null
+    },
+    "1216": {
+        "id": "1216",
+        "homonym": "bill",
+        "gold_id": "bn:15349970n",
+        "en_id": "bn:17656699n",
+        "example_id": "bn:15349970n",
+        "urdu_id": null
+    },
+    "1217": {
+        "id": "1217",
+        "homonym": "bill",
+        "gold_id": "bn:17656699n",
+        "en_id": "bn:17656699n",
+        "example_id": "bn:17656699n",
+        "urdu_id": "bn:14964019n"
+    },
+    "1218": {
+        "id": "1218",
+        "homonym": "bill",
+        "gold_id": "bn:15349970n",
+        "en_id": "bn:17656699n",
+        "example_id": "bn:15349970n",
+        "urdu_id": "bn:14964019n"
+    },
+    "523": {
+        "id": "523",
+        "homonym": "up",
+        "gold_id": "bn:00104714a",
+        "en_id": "bn:14703155n",
+        "example_id": "bn:00104714a",
+        "urdu_id": null
+    },
+    "524": {
+        "id": "524",
+        "homonym": "up",
+        "gold_id": "bn:00097643a",
+        "en_id": "bn:14703155n",
+        "example_id": "bn:00097643a",
+        "urdu_id": null
+    },
+    "525": {
+        "id": "525",
+        "homonym": "up",
+        "gold_id": "bn:00104714a",
+        "en_id": "bn:14703155n",
+        "example_id": "bn:00104714a",
+        "urdu_id": null
+    },
+    "526": {
+        "id": "526",
+        "homonym": "up",
+        "gold_id": "bn:00097643a",
+        "en_id": "bn:14703155n",
+        "example_id": "bn:00097643a",
+        "urdu_id": null
+    },
+    "527": {
+        "id": "527",
+        "homonym": "up",
+        "gold_id": "bn:00104714a",
+        "en_id": "bn:00104714a",
+        "example_id": "bn:00104714a",
+        "urdu_id": "bn:00000133n"
+    },
+    "528": {
+        "id": "528",
+        "homonym": "up",
+        "gold_id": "bn:00097643a",
+        "en_id": "bn:00104714a",
+        "example_id": "bn:00097643a",
+        "urdu_id": "bn:00000133n"
+    },
+    "2107": {
+        "id": "2107",
+        "homonym": "up",
+        "gold_id": "bn:00104714a",
+        "en_id": "bn:14703155n",
+        "example_id": "bn:00104714a",
+        "urdu_id": "bn:15575505n"
+    },
+    "2108": {
+        "id": "2108",
+        "homonym": "up",
+        "gold_id": "bn:00097643a",
+        "en_id": "bn:14703155n",
+        "example_id": "bn:00097643a",
+        "urdu_id": "bn:15575505n"
+    },
+    "2109": {
+        "id": "2109",
+        "homonym": "up",
+        "gold_id": "bn:00104714a",
+        "en_id": "bn:14703155n",
+        "example_id": "bn:00104714a",
+        "urdu_id": null
+    },
+    "2110": {
+        "id": "2110",
+        "homonym": "up",
+        "gold_id": "bn:00097643a",
+        "en_id": "bn:14703155n",
+        "example_id": "bn:00097643a",
+        "urdu_id": null
+    },
+    "2111": {
+        "id": "2111",
+        "homonym": "up",
+        "gold_id": "bn:00104714a",
+        "en_id": "bn:00104714a",
+        "example_id": "bn:00104714a",
+        "urdu_id": null
+    },
+    "2112": {
+        "id": "2112",
+        "homonym": "up",
+        "gold_id": "bn:00097643a",
+        "en_id": "bn:00104714a",
+        "example_id": "bn:00097643a",
+        "urdu_id": null
+    },
+    "67": {
+        "id": "67",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "68": {
+        "id": "68",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "69": {
+        "id": "69",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "70": {
+        "id": "70",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "71": {
+        "id": "71",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00091797v",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "72": {
+        "id": "72",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00091797v",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "583": {
+        "id": "583",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00063225n",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "584": {
+        "id": "584",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00063225n",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "585": {
+        "id": "585",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00026622n",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "586": {
+        "id": "586",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00026622n",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "587": {
+        "id": "587",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "588": {
+        "id": "588",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "2497": {
+        "id": "2497",
+        "homonym": "point",
+        "gold_id": "bn:00063217n",
+        "en_id": "bn:00597122n",
+        "example_id": "bn:00063217n",
+        "urdu_id": null
+    },
+    "2498": {
+        "id": "2498",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00597122n",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "2499": {
+        "id": "2499",
+        "homonym": "point",
+        "gold_id": "bn:00063217n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00063217n",
+        "urdu_id": null
+    },
+    "2500": {
+        "id": "2500",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "2501": {
+        "id": "2501",
+        "homonym": "point",
+        "gold_id": "bn:00063217n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00063217n",
+        "urdu_id": null
+    },
+    "2502": {
+        "id": "2502",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00091796v",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "3770": {
+        "id": "3770",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00597122n",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "3771": {
+        "id": "3771",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00597122n",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "3772": {
+        "id": "3772",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00026622n",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "3773": {
+        "id": "3773",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00026622n",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "3774": {
+        "id": "3774",
+        "homonym": "point",
+        "gold_id": "bn:00043266n",
+        "en_id": "bn:00026622n",
+        "example_id": "bn:00043266n",
+        "urdu_id": null
+    },
+    "3775": {
+        "id": "3775",
+        "homonym": "point",
+        "gold_id": "bn:00063220n",
+        "en_id": "bn:00026622n",
+        "example_id": "bn:00063220n",
+        "urdu_id": null
+    },
+    "385": {
+        "id": "385",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "386": {
+        "id": "386",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "387": {
+        "id": "387",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "388": {
+        "id": "388",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "389": {
+        "id": "389",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "390": {
+        "id": "390",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "1633": {
+        "id": "1633",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "1634": {
+        "id": "1634",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "1635": {
+        "id": "1635",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "1636": {
+        "id": "1636",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "1637": {
+        "id": "1637",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "1638": {
+        "id": "1638",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "3415": {
+        "id": "3415",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "3416": {
+        "id": "3416",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "3417": {
+        "id": "3417",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "3418": {
+        "id": "3418",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062800n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "3419": {
+        "id": "3419",
+        "homonym": "plant",
+        "gold_id": "bn:00062800n",
+        "en_id": "bn:00062801n",
+        "example_id": "bn:00062800n",
+        "urdu_id": null
+    },
+    "3420": {
+        "id": "3420",
+        "homonym": "plant",
+        "gold_id": "bn:00062801n",
+        "en_id": "bn:00062801n",
+        "example_id": "bn:00062801n",
+        "urdu_id": null
+    },
+    "517": {
+        "id": "517",
+        "homonym": "picture",
+        "gold_id": "bn:00046169n",
+        "en_id": "bn:00045963n",
+        "example_id": "bn:00046169n",
+        "urdu_id": null
+    },
+    "518": {
+        "id": "518",
+        "homonym": "picture",
+        "gold_id": "bn:03354382n",
+        "en_id": "bn:00045963n",
+        "example_id": "bn:03354382n",
+        "urdu_id": null
+    },
+    "519": {
+        "id": "519",
+        "homonym": "picture",
+        "gold_id": "bn:00046169n",
+        "en_id": "bn:00045963n",
+        "example_id": "bn:00046169n",
+        "urdu_id": null
+    },
+    "520": {
+        "id": "520",
+        "homonym": "picture",
+        "gold_id": "bn:03354382n",
+        "en_id": "bn:00045963n",
+        "example_id": "bn:03354382n",
+        "urdu_id": null
+    },
+    "521": {
+        "id": "521",
+        "homonym": "picture",
+        "gold_id": "bn:00046169n",
+        "en_id": "bn:00046169n",
+        "example_id": "bn:00046169n",
+        "urdu_id": null
+    },
+    "522": {
+        "id": "522",
+        "homonym": "picture",
+        "gold_id": "bn:03354382n",
+        "en_id": "bn:00046169n",
+        "example_id": "bn:03354382n",
+        "urdu_id": null
+    },
+    "1435": {
+        "id": "1435",
+        "homonym": "pictured",
+        "gold_id": "bn:00102293a",
+        "en_id": "bn:00102293a",
+        "example_id": "bn:00102293a",
+        "urdu_id": null
+    },
+    "1436": {
+        "id": "1436",
+        "homonym": "pictured",
+        "gold_id": "bn:00101196a",
+        "en_id": "bn:00102293a",
+        "example_id": "bn:00101196a",
+        "urdu_id": null
+    },
+    "1437": {
+        "id": "1437",
+        "homonym": "pictured",
+        "gold_id": "bn:00102293a",
+        "en_id": "bn:00102293a",
+        "example_id": "bn:00102293a",
+        "urdu_id": null
+    },
+    "1438": {
+        "id": "1438",
+        "homonym": "pictured",
+        "gold_id": "bn:00101196a",
+        "en_id": "bn:00102293a",
+        "example_id": "bn:00101196a",
+        "urdu_id": null
+    },
+    "1439": {
+        "id": "1439",
+        "homonym": "pictured",
+        "gold_id": "bn:00102293a",
+        "en_id": "bn:00101196a",
+        "example_id": "bn:00102293a",
+        "urdu_id": null
+    },
+    "1440": {
+        "id": "1440",
+        "homonym": "pictured",
+        "gold_id": "bn:00101196a",
+        "en_id": "bn:00101196a",
+        "example_id": "bn:00101196a",
+        "urdu_id": null
+    },
+    "1615": {
+        "id": "1615",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:00030721n",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "1616": {
+        "id": "1616",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:00030721n",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "1617": {
+        "id": "1617",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:21117877n",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "1618": {
+        "id": "1618",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:21117877n",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "1619": {
+        "id": "1619",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:21117877n",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "1620": {
+        "id": "1620",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:21117877n",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "2449": {
+        "id": "2449",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:00040846n",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "2450": {
+        "id": "2450",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:00040846n",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "2451": {
+        "id": "2451",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:00040846n",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "2452": {
+        "id": "2452",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:00040846n",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "2453": {
+        "id": "2453",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:13606642v",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "2454": {
+        "id": "2454",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:13606642v",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "2491": {
+        "id": "2491",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:21117877n",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "2492": {
+        "id": "2492",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:21117877n",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "2493": {
+        "id": "2493",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:00040846n",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "2494": {
+        "id": "2494",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:00040846n",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "2495": {
+        "id": "2495",
+        "homonym": "goal",
+        "gold_id": "bn:00030721n",
+        "en_id": "bn:00030721n",
+        "example_id": "bn:00030721n",
+        "urdu_id": null
+    },
+    "2496": {
+        "id": "2496",
+        "homonym": "goal",
+        "gold_id": "bn:21117877n",
+        "en_id": "bn:00030721n",
+        "example_id": "bn:21117877n",
+        "urdu_id": null
+    },
+    "2071": {
+        "id": "2071",
+        "homonym": "logs",
+        "gold_id": "bn:08736882n",
+        "en_id": "bn:30560564n",
+        "example_id": "bn:08736882n",
+        "urdu_id": null
+    },
+    "2072": {
+        "id": "2072",
+        "homonym": "logs",
+        "gold_id": "bn:30560564n",
+        "en_id": "bn:30560564n",
+        "example_id": "bn:30560564n",
+        "urdu_id": null
+    },
+    "2073": {
+        "id": "2073",
+        "homonym": "logs",
+        "gold_id": "bn:08736882n",
+        "en_id": "bn:30560564n",
+        "example_id": "bn:08736882n",
+        "urdu_id": null
+    },
+    "2074": {
+        "id": "2074",
+        "homonym": "logs",
+        "gold_id": "bn:30560564n",
+        "en_id": "bn:30560564n",
+        "example_id": "bn:30560564n",
+        "urdu_id": null
+    },
+    "2075": {
+        "id": "2075",
+        "homonym": "logs",
+        "gold_id": "bn:08736882n",
+        "en_id": "bn:30560564n",
+        "example_id": "bn:08736882n",
+        "urdu_id": null
+    },
+    "2076": {
+        "id": "2076",
+        "homonym": "logs",
+        "gold_id": "bn:30560564n",
+        "en_id": "bn:30560564n",
+        "example_id": "bn:30560564n",
+        "urdu_id": null
+    },
+    "2221": {
+        "id": "2221",
+        "homonym": "log",
+        "gold_id": "bn:05767863n",
+        "en_id": "bn:00011853n",
+        "example_id": "bn:05767863n",
+        "urdu_id": null
+    },
+    "2222": {
+        "id": "2222",
+        "homonym": "log",
+        "gold_id": "bn:00090442v",
+        "en_id": "bn:00011853n",
+        "example_id": "bn:00090442v",
+        "urdu_id": null
+    },
+    "2223": {
+        "id": "2223",
+        "homonym": "log",
+        "gold_id": "bn:05767863n",
+        "en_id": "bn:00090442v",
+        "example_id": "bn:05767863n",
+        "urdu_id": null
+    },
+    "2224": {
+        "id": "2224",
+        "homonym": "log",
+        "gold_id": "bn:00090442v",
+        "en_id": "bn:00090442v",
+        "example_id": "bn:00090442v",
+        "urdu_id": null
+    },
+    "2225": {
+        "id": "2225",
+        "homonym": "log",
+        "gold_id": "bn:05767863n",
+        "en_id": "bn:00051833n",
+        "example_id": "bn:05767863n",
+        "urdu_id": null
+    },
+    "2226": {
+        "id": "2226",
+        "homonym": "log",
+        "gold_id": "bn:00090442v",
+        "en_id": "bn:00051833n",
+        "example_id": "bn:00090442v",
+        "urdu_id": null
+    },
+    "2695": {
+        "id": "2695",
+        "homonym": "logs",
+        "gold_id": "bn:08736882n",
+        "en_id": "bn:08736882n",
+        "example_id": "bn:08736882n",
+        "urdu_id": null
+    },
+    "2696": {
+        "id": "2696",
+        "homonym": "logs",
+        "gold_id": "bn:30560564n",
+        "en_id": "bn:08736882n",
+        "example_id": "bn:30560564n",
+        "urdu_id": null
+    },
+    "2697": {
+        "id": "2697",
+        "homonym": "logs",
+        "gold_id": "bn:08736882n",
+        "en_id": "bn:30560564n",
+        "example_id": "bn:08736882n",
+        "urdu_id": null
+    },
+    "2698": {
+        "id": "2698",
+        "homonym": "logs",
+        "gold_id": "bn:30560564n",
+        "en_id": "bn:30560564n",
+        "example_id": "bn:30560564n",
+        "urdu_id": null
+    },
+    "2699": {
+        "id": "2699",
+        "homonym": "logs",
+        "gold_id": "bn:08736882n",
+        "en_id": "bn:08736882n",
+        "example_id": "bn:08736882n",
+        "urdu_id": null
+    },
+    "2700": {
+        "id": "2700",
+        "homonym": "logs",
+        "gold_id": "bn:30560564n",
+        "en_id": "bn:08736882n",
+        "example_id": "bn:30560564n",
+        "urdu_id": null
+    },
+    "1705": {
+        "id": "1705",
+        "homonym": "identities",
+        "gold_id": "bn:02345865n",
+        "en_id": "bn:02345865n",
+        "example_id": "bn:02345865n",
+        "urdu_id": null
+    },
+    "1706": {
+        "id": "1706",
+        "homonym": "identities",
+        "gold_id": "bn:02345865n",
+        "en_id": "bn:02345865n",
+        "example_id": "bn:02345865n",
+        "urdu_id": null
+    },
+    "1707": {
+        "id": "1707",
+        "homonym": "identities",
+        "gold_id": "bn:02345865n",
+        "en_id": "bn:02345865n",
+        "example_id": "bn:02345865n",
+        "urdu_id": null
+    },
+    "1708": {
+        "id": "1708",
+        "homonym": "identities",
+        "gold_id": "bn:02345865n",
+        "en_id": "bn:02345865n",
+        "example_id": "bn:02345865n",
+        "urdu_id": null
+    },
+    "1709": {
+        "id": "1709",
+        "homonym": "identities",
+        "gold_id": "bn:02345865n",
+        "en_id": "bn:02345865n",
+        "example_id": "bn:02345865n",
+        "urdu_id": null
+    },
+    "1710": {
+        "id": "1710",
+        "homonym": "identities",
+        "gold_id": "bn:02345865n",
+        "en_id": "bn:02345865n",
+        "example_id": "bn:02345865n",
+        "urdu_id": null
+    },
+    "355": {
+        "id": "355",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "356": {
+        "id": "356",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "357": {
+        "id": "357",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "358": {
+        "id": "358",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "359": {
+        "id": "359",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "360": {
+        "id": "360",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "655": {
+        "id": "655",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "656": {
+        "id": "656",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "657": {
+        "id": "657",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "658": {
+        "id": "658",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "659": {
+        "id": "659",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:00064299n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "660": {
+        "id": "660",
+        "homonym": "trailer",
+        "gold_id": "bn:13628929v",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:13628929v",
+        "urdu_id": null
+    },
+    "2467": {
+        "id": "2467",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "2468": {
+        "id": "2468",
+        "homonym": "trailer",
+        "gold_id": "bn:13628929v",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:13628929v",
+        "urdu_id": null
+    },
+    "2469": {
+        "id": "2469",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "2470": {
+        "id": "2470",
+        "homonym": "trailer",
+        "gold_id": "bn:13628929v",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:13628929v",
+        "urdu_id": null
+    },
+    "2471": {
+        "id": "2471",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "2472": {
+        "id": "2472",
+        "homonym": "trailer",
+        "gold_id": "bn:13628929v",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:13628929v",
+        "urdu_id": null
+    },
+    "3433": {
+        "id": "3433",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "3434": {
+        "id": "3434",
+        "homonym": "trailer",
+        "gold_id": "bn:13628929v",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:13628929v",
+        "urdu_id": null
+    },
+    "3435": {
+        "id": "3435",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:01015354n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "3436": {
+        "id": "3436",
+        "homonym": "trailer",
+        "gold_id": "bn:13628929v",
+        "en_id": "bn:01015354n",
+        "example_id": "bn:13628929v",
+        "urdu_id": null
+    },
+    "3437": {
+        "id": "3437",
+        "homonym": "trailer",
+        "gold_id": "bn:00064299n",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:00064299n",
+        "urdu_id": null
+    },
+    "3438": {
+        "id": "3438",
+        "homonym": "trailer",
+        "gold_id": "bn:13628929v",
+        "en_id": "bn:02559303n",
+        "example_id": "bn:13628929v",
+        "urdu_id": null
+    }
+}
