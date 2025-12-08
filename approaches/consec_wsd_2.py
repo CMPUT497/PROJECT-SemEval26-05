@@ -5,6 +5,8 @@ from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer, AutoModel
 from nltk.stem import PorterStemmer
 import torch.nn.functional as F
+import pytorch_lightning.callbacks
+
 
 
 class WSDSimpleDataset(Dataset):
@@ -34,7 +36,7 @@ class ConSeCModel(nn.Module):
 
     Output → logits for each gloss candidate.
     """
-    def __init__(self, model_name="microsoft/deberta-v3-large"):
+    def __init__(self, model_name="/home/girigowd/consec/experiments/released-ckpts"):
         super().__init__()
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         
@@ -92,7 +94,7 @@ class ConSeCModel(nn.Module):
         logits = self.classifier(gloss_reps)
         
         return logits
-
+  
 
 def wsd_collate_fn(batch):
     contexts = [item["context"] for item in batch]
@@ -115,7 +117,7 @@ def hard_label_loss(pred_logits, hard_targets):
     logits = pred_logits.squeeze(-1)
     return F.cross_entropy(logits, hard_targets)
 
-def train_consec(model, dataloader, optimizer, device, epochs=3, save_path="best_consec_model.pt"):
+def train_consec(model, dataloader, optimizer, device, epochs=3, save_path="best_consec_model_2.pt"):
     model.train()
     model.to(device)
 
@@ -134,15 +136,15 @@ def train_consec(model, dataloader, optimizer, device, epochs=3, save_path="best
             # Process examples one-by-one
             for context, glosses, labels, kind in zip(contexts, glosses_batch, labels_batch, kinds):
                 labels = labels.to(device)
-                print()
-                print(context)
-                print("------------------")
-                print(labels)
-                print("------------------")
-                print(glosses)
-                print("------------------")
-                print(kind)
-                print("------------------")
+                # print()
+                # print(context)
+                # print("------------------")
+                # print(labels)
+                # print("------------------")
+                # print(glosses)
+                # print("------------------")
+                # print(kind)
+                # print("------------------")
                 
                 optimizer.zero_grad()
 
@@ -152,7 +154,7 @@ def train_consec(model, dataloader, optimizer, device, epochs=3, save_path="best
                     loss = soft_label_loss(logits, labels)
                 else:  # "hard"
                     loss = hard_label_loss(logits, labels)
-                print("LOSS: :", loss)
+                # print("LOSS: :", loss)
 
                 loss.backward()
                 optimizer.step()
@@ -167,7 +169,7 @@ def train_consec(model, dataloader, optimizer, device, epochs=3, save_path="best
             torch.save(model.state_dict(), save_path)
             print(f"  [Best model saved at epoch {best_epoch} with loss {best_loss:.4f}]")
 
-def consec_infer(model, context, glosses, device="cpu", top_k=None, save_path="best_consec_model.pt"):
+def consec_infer(model, context, glosses, device="cpu", top_k=None, save_path="best_consec_model_2.pt"):
     """
     model: trained ConSeCModel
     context: string (with <d> markers)
@@ -198,15 +200,13 @@ def consec_infer(model, context, glosses, device="cpu", top_k=None, save_path="b
     else:
         top_results = None
     
-    print("***************************")
-    print("context: ", context)
-    print("***************************")
-    print("glosses: ", glosses)
-    print("***************************")
-    print("probabilities: ", probs)
-    print("***************************")
-    print("score: ", int(probs*5))
-    print()
+    # print("***************************")
+    # print("context: ", context)
+    # print("***************************")
+    # print("glosses: ", glosses)
+    # print("***************************")
+    # print("probabilities: ", probs)
+    # print()
     
     return {
         "context": context,
@@ -268,7 +268,7 @@ def run_inference(model, path, output_file, device):
         context_predictions = []
         for context_idx, context in enumerate(data["contexts"]):
             glosses = data["glosses"]
-            res = consec_infer(model, context, glosses, device=device, top_k=3, save_path="best_consec_model.pt")
+            res = consec_infer(model, context, glosses, device=device, top_k=3, save_path="best_consec_model_2.pt")
             context_predictions.append(res)
             inference_results[homonym]["context_results"].append({
                 "context_idx": context_idx,
@@ -416,29 +416,34 @@ def prepare_training_dataset(path):
     return dataset
 
 def main():
-    device = "cuda:3" if torch.cuda.is_available() else "cpu"
-
-    train_path = "data/train.json"
-    dev_path = "data/dev.json"
-    trail_path = "data/trail.json"
-    output_path = "predictions/consec_wsd_predictions.JSONL"
-
-    # train_dataset = prepare_training_dataset(train_path)
-    train_dataset = prepare_training_dataset(train_path)
-    # Save the prepared training dataset to a JSON file for later inspection or use
-    # import json
-    # with open("predictions/train_dataset_prepared_consec_wsd.json", "w", encoding="utf-8") as f:
-    #     json.dump(train_dataset, f, ensure_ascii=False, indent=2)
-        
-    train_dataset = WSDSimpleDataset(train_dataset)
-    dataloader = DataLoader(train_dataset, batch_size=16, shuffle=True, collate_fn=wsd_collate_fn)
-
-    model = ConSeCModel("microsoft/deberta-v3-large")
-    optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
-
-    train_consec(model, dataloader, optimizer, device, epochs=50)
     
-    run_inference(model, dev_path, output_path, device)
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+    ckpt_path = "../consec/experiments/released-ckpts/consec_wngt_best.ckpt"
+
+    # 1. Load checkpoint (trusted source → weights_only=False)
+    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+
+    # 2. Create the model EXACTLY like the original ConSeC code does
+    model = ConSeCModel(model_name="microsoft/deberta-v3-large")
+
+    # 3. Remove the prefix "sense_extractor.model." that Lightning adds
+    state_dict = {}
+    for k, v in ckpt["state_dict"].items():
+        if k.startswith("sense_extractor.model."):
+            new_key = k.replace("sense_extractor.model.", "")
+        elif k.startswith("sense_extractor."):
+            new_key = k.replace("sense_extractor.", "")
+        else:
+            new_key = k
+        state_dict[new_key] = v
+
+    # 4. Load weights + move to GPU
+    model.load_state_dict(state_dict)
+    model.to(device)
+    model.eval()
+
+    print("Model loaded perfectly – running inference")
+    run_inference(model, "data/dev.json", "predictions/consec_wsd_2_predictions.JSONL", device)
 
 
 if __name__ == "__main__":
