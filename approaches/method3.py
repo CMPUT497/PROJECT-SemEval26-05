@@ -327,9 +327,9 @@ def predict_single(model, tokenizer, item: Dict[str, Any], device=DEVICE, platt_
         a, b = platt_params
         prob = 1.0 / (1.0 + math.exp(-(a * logit + b)))
     pred_float = prob * 5.0
-    pred_int = pred_float
-    # pred_int = int(round(pred_float))
-    # pred_int = max(1, min(5, pred_int))
+    # pred_int = pred_float
+    pred_int = int(round(pred_float))
+    pred_int = max(1, min(5, pred_int))
     return {"prob": prob, "pred_float": pred_float, "pred_int": pred_int}
 
 def load_json_data(json_file: str):
@@ -354,6 +354,8 @@ def main():
     train_data = load_json_data(train_path)
     dev_path = 'data/dev.json'
     dev_data = load_json_data(dev_path)
+    test_path = 'data/test.json'
+    test_data = load_json_data(test_path)
     
     model, tokenizer, platt_params = run_training(train_data, dev_data)
     
@@ -363,12 +365,24 @@ def main():
         pred = predict_single(model, tokenizer, item, DEVICE, platt_params=platt_params)
         predictions.append(pred)
     
-    output_path = "predictions/method3_predictions.JSONL"
+    output_path = "predictions/method3_predictions_dev.JSONL"
     with open(output_path, "w", encoding="utf8") as outfile:
         for item, pred in zip(dev_data, predictions):
             entry = {"id": item["id"], "prediction": pred["pred_int"]}
             outfile.write(json.dumps(entry) + "\n")
-  
+            
+    # To get predictions in order of input for a dataset, just iterate over your list in order:
+    predictions = []
+    for item in test_data:
+        pred = predict_single(model, tokenizer, item, DEVICE, platt_params=platt_params)
+        predictions.append(pred)
+    
+    output_path = "predictions/method3_predictions_test.JSONL"
+    with open(output_path, "w", encoding="utf8") as outfile:
+        for item, pred in zip(test_data, predictions):
+            entry = {"id": item["id"], "prediction": pred["pred_int"]}
+            outfile.write(json.dumps(entry) + "\n")
+
 
 if __name__ == "__main__":
     main()
