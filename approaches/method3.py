@@ -327,8 +327,9 @@ def predict_single(model, tokenizer, item: Dict[str, Any], device=DEVICE, platt_
         a, b = platt_params
         prob = 1.0 / (1.0 + math.exp(-(a * logit + b)))
     pred_float = prob * 5.0
-    pred_int = int(round(pred_float))
-    pred_int = max(1, min(5, pred_int))
+    pred_int = pred_float
+    # pred_int = int(round(pred_float))
+    # pred_int = max(1, min(5, pred_int))
     return {"prob": prob, "pred_float": pred_float, "pred_int": pred_int}
 
 def load_json_data(json_file: str):

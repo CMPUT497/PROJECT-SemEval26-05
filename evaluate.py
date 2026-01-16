@@ -75,6 +75,7 @@ def accuracy_within_standard_deviation_score(predictions_filepath, gold_data):
         if is_within_standard_deviation(line["prediction"], labels):
             correct_guesses += 1
         else:
+            print(line["id"])
             wrong_guesses += 1
 
     print(f"----------\nAccuracy: {correct_guesses / (correct_guesses + wrong_guesses)} ({correct_guesses}/{correct_guesses+wrong_guesses})")
