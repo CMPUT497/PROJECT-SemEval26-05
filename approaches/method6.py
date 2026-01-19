@@ -30,7 +30,12 @@ os.makedirs("predictions", exist_ok=True)
 class HomonymDataset(Dataset):
     def __init__(self, path, tokenizer):
         with open(path) as f:
-            self.data = json.load(f)
+            raw = json.load(f)
+
+        self.data = []
+        for k, v in raw.items():
+            v["id"] = k
+            self.data.append(v)
         self.tokenizer = tokenizer
 
     def __len__(self):
