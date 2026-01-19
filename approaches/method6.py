@@ -65,6 +65,9 @@ class HomonymDataset(Dataset):
         )
         
         choices = ex["choices"]
+
+        choices = [int(c) for c in choices]
+
         if len(choices) > 5:
             choices = choices[:5]
         elif len(choices) < 5:

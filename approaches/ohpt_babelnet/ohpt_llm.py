@@ -81,7 +81,7 @@ def main():
         print("Error: Input or Cache file not found.")
         return
 
-    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+    # os.makedirs(OUTPUT_FOLDER, exist_ok=True)
     
     tokenizer, model, device = setup_model()
     
