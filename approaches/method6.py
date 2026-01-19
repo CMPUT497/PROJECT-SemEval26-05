@@ -16,7 +16,7 @@ EPOCHS = 60
 LR = 2e-5
 LAMBDA_CONS = 0.1
 LAMBDA_RANK = 0.4
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda:1" if torch.cuda.is_available() else "cpu"
 
 TRAIN_PATH = "data/train.json"
 DEV_PATH = "data/dev.json"
