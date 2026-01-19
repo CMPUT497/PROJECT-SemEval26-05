@@ -4,7 +4,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
-from transformers import AutoTokenizer, AutoModel, AdamW
+from transformers import AutoTokenizer, AutoModel
+from torch.optim import AdamW
 from tqdm import tqdm
 
 
