@@ -295,7 +295,7 @@ def compute_score(gold_id, en_id, urdu_id, example_id):
     return max(1.0, score)
 
 def main():
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    # os.makedirs(OUTPUT_DIR, exist_ok=True)
     if not os.path.exists(INPUT_FILE): return
 
     print(f"Reading data from {INPUT_FILE}...")
