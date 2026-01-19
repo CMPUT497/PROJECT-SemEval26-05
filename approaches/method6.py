@@ -12,7 +12,7 @@ from tqdm import tqdm
 MODEL_NAME = "microsoft/deberta-v3-large"
 MAX_LEN = 512
 BATCH_SIZE = 2
-EPOCHS = 60
+EPOCHS = 15
 LR = 2e-5
 LAMBDA_CONS = 0.1
 LAMBDA_RANK = 0.4
