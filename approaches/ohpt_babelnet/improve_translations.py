@@ -4,7 +4,8 @@ import csv
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModelForSeq2SeqLM, pipeline
 
-DATA_FILE = "../../data/dev.json"               
+# DATA_FILE = "../../data/dev.json"               
+DATA_FILE = "../../data/test.json"               
 ANNOTATIONS_FILE = "../../Manual_Annotations/annotations.tsv" 
 # OUTPUT_FOLDER = "../../predictions"
 # OUTPUT_FILE = os.path.join(OUTPUT_FOLDER, "translated_sentences.jsonl")

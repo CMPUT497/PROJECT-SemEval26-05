@@ -10,9 +10,10 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 from sentence_transformers import SentenceTransformer, util
 
 # FILE PATHS
-INPUT_FILE = "../../data/dev.json"
+# INPUT_FILE = "../../data/dev.json"
+INPUT_FILE = "../../data/test.json"
 OUTPUT_DIR = "../../predictions"
-OUTPUT_FILE = os.path.join(OUTPUT_DIR, "dev_predictions_wsd.jsonl")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "test_predictions_wsd.jsonl")
 CACHE_FILE = "processing_cache.json"
 
 # API CONFIG

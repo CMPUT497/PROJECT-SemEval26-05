@@ -7,7 +7,8 @@ from tqdm import tqdm
 from sentence_transformers import SentenceTransformer, util
 
 # --- CONFIGURATION ---
-INPUT_FILE = "../../data/dev.json"
+# INPUT_FILE = "../../data/dev.json"
+INPUT_FILE = "../../data/test.json"
 TRANSLATION_FILE = "../../predictions/translated_sentences.jsonl"
 EXISTING_CACHE_FILE = "processing_cache.json"      # Read from here (EN/Gold IDs)
 NEW_CACHE_FILE = "updated_processing_cache.json"   # Write to here (Adds Urdu IDs)
