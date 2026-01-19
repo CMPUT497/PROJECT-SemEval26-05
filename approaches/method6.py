@@ -63,12 +63,19 @@ class HomonymDataset(Dataset):
             padding="max_length",
             return_tensors="pt"
         )
+        
+        choices = ex["choices"]
+        if len(choices) > 5:
+            choices = choices[:5]
+        elif len(choices) < 5:
+            mean_val = int(round(sum(choices) / len(choices)))
+            choices = choices + [mean_val] * (5 - len(choices))
 
         return {
             "id": ex["id"],
             "input_ids": enc["input_ids"].squeeze(0),
             "attention_mask": enc["attention_mask"].squeeze(0),
-            "ratings": torch.tensor(ex["choices"], dtype=torch.long),
+            "ratings": torch.tensor(choices, dtype=torch.long),
             "mean": torch.tensor(ex["average"], dtype=torch.float)
         }
 
