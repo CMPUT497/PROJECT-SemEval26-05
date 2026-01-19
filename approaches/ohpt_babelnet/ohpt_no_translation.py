@@ -139,7 +139,7 @@ def compute_score(gold_id, en_id, urdu_id):
     return max(1.0, score)
 
 def main():
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    # os.makedirs(OUTPUT_DIR, exist_ok=True)
     
     # --- LOAD RESOURCES ---
     print(f"Reading Data from {INPUT_FILE}...")
